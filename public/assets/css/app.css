@@ -229,3 +229,55 @@ a { color: var(--primary); }
     .page-heading h1 { font-size: 1.7rem; }
     .panel, .form-section, .record-card, .stats-card, .account-details { border-radius: 20px; }
 }
+
+/* IDENTIFICACION DE LA SESION ACTIVA */
+
+.topbar-session {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 18px;
+    margin-left: auto;
+}
+
+.topbar-identity {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    padding: 9px 18px;
+    background: #eff6ff;
+    border: 1px solid #dbeafe;
+    border-radius: 12px;
+}
+
+.topbar-identity span {
+    font-size: 10px;
+    font-weight: 700;
+    color: #64748b;
+    letter-spacing: 1px;
+}
+
+.topbar-identity strong {
+    font-size: 14px;
+    color: #1d4ed8;
+}
+
+.topbar-identity small {
+    font-size: 12px;
+    color: #475569;
+}
+
+@media (max-width: 700px) {
+    .topbar-session {
+        gap: 8px;
+    }
+
+    .topbar-identity {
+        padding: 7px 10px;
+    }
+
+    .topbar-session .topbar-date {
+        display: none;
+    }
+}
