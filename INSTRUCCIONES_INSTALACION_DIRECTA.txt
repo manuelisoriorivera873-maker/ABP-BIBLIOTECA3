@@ -1,0 +1,22 @@
+BIBLIOTECA3 - COMANDOS ARTISAN BIBLIOTECARIO Y USUARIO
+
+Este ZIP tiene su raiz en app/. Por eso debe extraerse DENTRO de la carpeta del proyecto biblioteca3 (NO en htdocs).
+
+Desde la terminal de VS Code (PowerShell):
+
+cd C:\xampp\htdocs\biblioteca3
+Expand-Archive -LiteralPath "$env:USERPROFILE\Downloads\Biblioteca3_Comandos_Directo_VSCode.zip" -DestinationPath "C:\xampp\htdocs\biblioteca3" -Force
+php artisan optimize:clear
+php artisan list | findstr biblioteca
+php artisan biblioteca:crear-bibliotecario
+php artisan biblioteca:crear-usuario
+
+Comprobaciones:
+Test-Path .\app\Console\Commands\CrearBibliotecario.php
+Test-Path .\app\Console\Commands\CrearUsuario.php
+Test-Path .\app\Support\CrearCuentaPorConsola.php
+
+Las 3 verificaciones deben indicar True. Si no, el ZIP no fue extraido en el proyecto correcto.
+
+Los comandos seleccionan un bibliotecario/usuario ya registrado en su CRUD, solicitan nombre de acceso, clave de minimo 12 caracteres y confirmacion, y crean permisos iniciales.
+No cambia el esquema ni borra datos de biblioteca2.

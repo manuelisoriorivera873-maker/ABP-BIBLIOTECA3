@@ -1,0 +1,276 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body.biblioteca-login {
+    min-height: 100vh;
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: #1e293b;
+    background: linear-gradient(135deg, #e8eef8, #f8fafc);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+}
+
+.login-container {
+    width: 100%;
+    max-width: 1100px;
+    min-height: 610px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: #ffffff;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 25px 65px rgba(15, 23, 42, 0.13);
+}
+
+/* PANEL INFORMATIVO */
+
+.login-info {
+    background: linear-gradient(145deg, #10243f, #1d4ed8);
+    color: white;
+    padding: 45px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+}
+
+.login-info::after {
+    content: "";
+    position: absolute;
+    width: 320px;
+    height: 320px;
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 50%;
+    right: -150px;
+    bottom: -100px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 19px;
+    font-weight: 700;
+}
+
+.brand-icon,
+.welcome-icon {
+    width: 48px;
+    height: 48px;
+    background: #ffffff;
+    color: #1d4ed8;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 27px;
+    font-weight: 800;
+}
+
+.tag {
+    display: inline-block;
+    padding: 9px 14px;
+    background: rgba(255,255,255,0.12);
+    border-radius: 30px;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    margin-bottom: 24px;
+}
+
+.info-content h1 {
+    font-size: clamp(36px, 4vw, 55px);
+    line-height: 1.1;
+    letter-spacing: -1.5px;
+    margin-bottom: 20px;
+}
+
+.info-content p {
+    max-width: 380px;
+    line-height: 1.7;
+    color: #dbeafe;
+    font-size: 15px;
+}
+
+.features {
+    display: grid;
+    gap: 15px;
+    margin-top: 35px;
+    color: #eff6ff;
+    font-size: 14px;
+}
+
+.info-footer {
+    color: #bfdbfe;
+    font-size: 12px;
+}
+
+/* FORMULARIO */
+
+.login-form-panel {
+    padding: 55px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-content {
+    width: 100%;
+    max-width: 365px;
+}
+
+.welcome-icon {
+    color: #ffffff;
+    background: #2563eb;
+    margin-bottom: 28px;
+}
+
+.welcome-label {
+    color: #2563eb;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.form-content h2 {
+    font-size: 34px;
+    letter-spacing: -1px;
+    margin: 8px 0 10px;
+}
+
+.subtitle {
+    color: #64748b;
+    line-height: 1.6;
+    font-size: 14px;
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 22px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 9px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.form-group input {
+    width: 100%;
+    height: 49px;
+    padding: 0 15px;
+    background: #f8fafc;
+    border: 1px solid #dbe3ee;
+    border-radius: 11px;
+    outline: none;
+    font: inherit;
+    font-size: 14px;
+    transition: 0.2s ease;
+}
+
+.form-group input:focus {
+    border-color: #2563eb;
+    background: white;
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+}
+
+.login-button {
+    width: 100%;
+    height: 50px;
+    border: none;
+    border-radius: 11px;
+    background: #2563eb;
+    color: white;
+    font: inherit;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.login-button:hover {
+    background: #1d4ed8;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(37, 99, 235, 0.2);
+}
+
+.roles {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 28px;
+}
+
+.roles span {
+    background: #eff6ff;
+    color: #475569;
+    border-radius: 20px;
+    padding: 6px 9px;
+    font-size: 10px;
+    font-weight: 600;
+}
+
+.copyright {
+    margin-top: 48px;
+    font-size: 12px;
+    color: #94a3b8;
+    text-align: center;
+}
+
+.error-message {
+    padding: 13px;
+    margin-bottom: 20px;
+    color: #b91c1c;
+    background: #fef2f2;
+    border-radius: 10px;
+    font-size: 13px;
+}
+
+/* ADAPTACIÓN A CELULARES */
+
+@media (max-width: 850px) {
+    .login-container {
+        grid-template-columns: 1fr;
+    }
+
+    .login-info {
+        padding: 30px;
+        min-height: 280px;
+    }
+
+    .info-content h1 {
+        font-size: 34px;
+    }
+
+    .features,
+    .info-footer {
+        display: none;
+    }
+
+    .login-form-panel {
+        padding: 35px 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    body.biblioteca-login {
+        padding: 12px;
+    }
+
+    .login-info {
+        min-height: 220px;
+    }
+
+    .login-form-panel {
+        padding: 28px 20px;
+    }
+}

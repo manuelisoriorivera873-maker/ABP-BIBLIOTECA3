@@ -1,0 +1,3 @@
+BIBLIOTECA3 CON LOGIN Y PERMISOS INDIVIDUALES
+BASE ORIGINAL: biblioteca2 (YA EXISTE, NO TOCAR)
+Lee INICIO_AQUI.txt. No importes SQL ni ejecutes migrate:fresh.

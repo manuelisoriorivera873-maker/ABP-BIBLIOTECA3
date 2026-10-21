@@ -1,0 +1,56 @@
+BIBLIOTECA3 - CONTROL DE ACCESO POR ROL - OCTUBRE DE 2026
+=========================================================
+
+BASE DE DATOS: biblioteca2 (la misma de siempre)
+
+INSTALACION SOBRE UNA BASE CON DATOS EXISTENTES:
+1. Respaldar primero la base de datos biblioteca2 con phpMyAdmin.
+2. Descomprimir en una carpeta nueva, sin sobrescribir el proyecto original.
+3. Configurar .env con DB_DATABASE=biblioteca2, DB_USERNAME y DB_PASSWORD.
+4. Desde XAMPP Shell en la carpeta del proyecto:
+   composer install
+   php artisan key:generate   (SOLO en una instalación nueva sin clave previa)
+   php artisan migrate --path=database/migrations/2026_10_20_000001_create_acceso_y_permisos_tables.php
+   php artisan biblioteca:crear-superadmin
+   php artisan optimize:clear
+   php artisan serve
+5. Abrir http://127.0.0.1:8000/login.
+6. Desde SUPERADMIN > Cuentas y permisos > Crear cuenta, vincular cada nueva cuenta a
+   un registro de la tabla bibliotecarios o usuarios ya existente.
+7. En Permisos CRUD se eligen de forma individual los permisos que se guardan en MySQL.
+
+AVISO SOBRE MIGRACIONES:
+- NO ejecutar "php artisan migrate:fresh": BORRA TODAS las tablas y datos.
+- NO ejecutar "php artisan db:seed" si ya hay datos y no deseas duplicarlos.
+- La migración indicada solo AGREGA tres tablas de autenticación y seguridad.
+- Si conservas un .env previo al sustituir la carpeta de tu proyecto, conserva su APP_KEY.
+- NO se incluyen contraseñas predefinidas; la primera clave se crea en la terminal.
+- El APP_KEY de este ZIP se deja vacío para que cada instalación genere el suyo.
+
+REGLAS Y ALCANCE:
+SUPERADMIN: acceso integral, asigna permisos y da de alta cuentas.
+BIBLIOTECARIO: permisos CRUD individuales, administrados desde el panel SUPERADMIN.
+USUARIO: SOLO consultas de libros, autores, categorías y editoriales, según la
+configuración individual. Incluso si alguien falsifica una solicitud para editar,
+el middleware del servidor responde 403.
+
+Los roles de Laravel NO son cuentas MySQL. La aplicación usa UNA conexión MySQL
+configurada en .env, preferentemente una cuenta de servicio restringida al esquema.
+
+SEGURIDAD:
+- Proteger .env y establecer APP_DEBUG=false cuando se publique fuera del equipo local.
+- No usar una contraseña fija para todos los usuarios ni guardar contraseñas en texto.
+- Mantener backup del dump de la base de datos y de los archivos originales.
+- No habilitar acceso público al servidor local sin HTTPS y endurecimiento adicional.
+- Los botones ocultos son solo interfaz; el control efectivo se hace del lado del servidor.
+- La tabla historial_permisos conserva cambios; no sustituye auditoría completa de datos.
+
+PRUEBAS SUGERIDAS:
+- USUARIO GET /libros = 200, GET /autores = 200 si tiene permiso ver.
+- USUARIO GET /usuarios y GET /prestamos = 403.
+- USUARIO POST /libros o PUT /libros/{id} = 403.
+- BIBLIOTECARIO con crear libros desmarcado POST /libros = 403.
+- SUPERADMIN puede seleccionar cuenta y guardar permisos CRUD con historial.
+
+VERIFICACIÓN AUTOMÁTICA (cuando PHPUnit esté instalado):
+   php artisan test --filter=PermisosBibliotecaTest

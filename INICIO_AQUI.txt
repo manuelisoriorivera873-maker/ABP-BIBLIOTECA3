@@ -1,0 +1,68 @@
+BIBLIOTECA3 - RESTAURAR EL PROYECTO LARAVEL SIN BORRAR biblioteca2
+==================================================================
+
+ESTADO: la base de datos biblioteca2 YA EXISTE con sus 17 tablas y datos.
+Este ZIP restaura la aplicacion perdida y agrega el login y permisos individuales.
+NO importes otro archivo SQL. NO ejecutes migrate:fresh, migrate:refresh, db:wipe
+ni db:seed. Este ZIP NO contiene sentencias DROP ni scripts de reconstruccion.
+
+PASOS EN WINDOWS / XAMPP
+------------------------
+1. En phpMyAdmin exporta la base completa biblioteca2 a un respaldo .sql.
+2. Descomprime este ZIP en C:\xampp\htdocs\biblioteca3 (u otra carpeta).
+3. Abre XAMPP y enciende MySQL; usa XAMPP Shell.
+4. Entra a la carpeta real que contiene el archivo artisan:
+       cd C:\xampp\htdocs\biblioteca3
+5. Si no existe .env, copia .env.example a .env:
+       copy .env.example .env
+   Confirma que DB_DATABASE=biblioteca2 y revisa usuario, clave y puerto de MySQL.
+   Ejemplo local: DB_USERNAME=root y DB_PASSWORD= (vacio solo si tu XAMPP lo usa).
+6. Instala dependencias:
+       composer install
+   Se requiere acceso a Internet para Composer si las dependencias no estan ya
+   en su cache. El ZIP incluye Bootstrap y scripts CSS/JS locales, no vendor.
+7. SOLO si APP_KEY esta vacia, genera una nueva:
+       php artisan key:generate
+8. CREA SOLO LAS TRES TABLAS NUEVAS DE ACCESO con la migracion especifica:
+       php artisan migrate --path=database/migrations/2026_10_20_000001_create_acceso_y_permisos_tables.php
+9. Crea tu primer SUPERADMIN, definiendo nombre y clave (NO hay contrasenas fijas):
+       php artisan biblioteca:crear-superadmin
+10. Limpia cache de configuracion y arranca Laravel:
+       php artisan optimize:clear
+       php artisan serve
+11. Abre http://127.0.0.1:8000/login
+
+PRIMER USO
+---------
+- SUPERADMIN: menu > Cuentas y permisos > Nueva cuenta.
+- Vincula la cuenta a un registro existente de bibliotecarios o usuarios.
+- Selecciona la persona y marca permisos por modulo y accion CRUD.
+- USUARIO nunca podra crear, editar ni eliminar, aunque se alteren formularios.
+- USUARIO solo puede consultar libros, autores, categorias y editoriales.
+- BIBLIOTECARIO recibe permisos individuales asignados por SUPERADMIN.
+- Las rutas estan protegidas en el servidor (403 si no hay acceso).
+
+TABLAS AGREGADAS, SIN CAMBIAR LAS 17 EXISTENTES
+---------------------------------------------
+cuentas_acceso | cuenta_permisos | historial_permisos
+
+IMPORTANTE
+---------
+- Laravel usa sus propias cuentas (no son los CREATE USER de MariaDB).
+- Conserva .env/APP_KEY si recuperas configuraciones anteriores; nunca publiques .env.
+- Para un servicio real, configura credenciales MySQL de aplicacion de privilegio
+  minimo y no dejes APP_DEBUG=true ni expongas XAMPP directamente a Internet.
+- PHP >= 8.2, Composer y extensiones PHP para Laravel son necesarios.
+- La base actual debe tener los catalogos de estados ACTIVO, DISPONIBLE, PRESTADO
+  para las operaciones de prestamos; las migraciones no los modifican.
+
+VERIFICACION RECOMENDADA
+-----------------------
+SHOW TABLES FROM biblioteca2;     (debe incluir las 17 tablas originales, 3 nuevas
+                              de acceso y posiblemente la tabla migrations)
+SUPERADMIN: puede entrar al panel de cuentas y asignar permisos.
+USUARIO: debe ver catalogo, pero no puede POST/PUT/DELETE (403).
+BIBLIOTECARIO: cuando se quita un permiso, su ruta devuelve 403.
+
+NO se ha conectado este codigo al XAMPP personal; las pruebas finales de
+inicio de sesion deben realizarse en el Windows donde existe biblioteca2.

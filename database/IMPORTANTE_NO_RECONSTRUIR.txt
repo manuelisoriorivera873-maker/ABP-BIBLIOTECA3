@@ -1,0 +1,1 @@
+No importes SQL: biblioteca2 ya existe. Ejecuta SOLO la migracion 2026_10_20_000001_create_acceso_y_permisos_tables.php.

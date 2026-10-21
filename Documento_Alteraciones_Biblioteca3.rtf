@@ -1,0 +1,33 @@
+{\rtf1\ansi\deff0
+{\fonttbl{\f0 Calibri;}}
+\fs24
+\b DOCUMENTO DE ALTERACIONES - BIBLIOTECA 3\b0\par
+\par
+\b 1. Objetivo general\b0\par
+Realizar las correcciones solicitadas por la profesora para mejorar la normalizacion de la base de datos y la presentacion del sistema.\par
+\par
+\b 2. Cambios realizados\b0\par
+\b a) Tabla autores\b0\par
+Se elimino la redundancia de nombre y apellidos dentro de la tabla autores. Ahora autores se relaciona con personas mediante el campo id_persona. De esta forma, al registrar un libro, el autor puede seleccionarse con base en una persona ya existente.\par
+\par
+\b b) Tabla detalle_devolucion\b0\par
+Se agrego la tabla detalle_devolucion para que una devolucion pueda contener uno o varios ejemplares pertenecientes a un prestamo. Esto permite devoluciones parciales o totales.\par
+\par
+\b c) Interfaz de cuentas y permisos\b0\par
+Se rediseño la vista para mostrar una matriz de permisos mas clara, elegante y profesional, con apariencia mas adecuada para presentacion.\par
+\par
+\b d) Mejora visual general\b0\par
+Se mejoro el estilo visual del login, panel lateral, tablas, tarjetas, formularios y panel de control, buscando una apariencia mas sofisticada y limpia.\par
+\par
+\b 3. Logica recomendada\b0\par
+- Primero se registra la persona.\par
+- Si esa persona es autora, se crea su registro en autores enlazado con id_persona.\par
+- Al registrar un libro, se elige uno o varios autores ya vinculados.\par
+- En devoluciones, ahora se seleccionan uno o varios ejemplares pendientes del prestamo.\par
+\par
+\b 4. Archivo SQL\b0\par
+El archivo llamado ALTERACIONES_BIBLIOTECA3.sql contiene los ALTER, CREATE TABLE e inserciones de migracion para aplicar los cambios en la base de datos.\par
+\par
+\b 5. Recomendacion\b0\par
+Antes de ejecutar el script SQL, realizar una copia de seguridad de la base de datos actual.\par
+}
