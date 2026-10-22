@@ -68,7 +68,7 @@ class CatalogoController extends Controller
         $buscar = trim((string) $request->input('buscar'));
         $registros = $modelo::query()
             ->when($buscar !== '', fn ($q) => $q->where($c['campo'], 'like', "%{$buscar}%"))
-            ->orderBy($c['campo'])
+            ->orderBy($c['pk'])
             ->paginate(15)
             ->withQueryString();
 
@@ -78,6 +78,7 @@ class CatalogoController extends Controller
     public function create(string $catalogo)
     {
         $c = $this->getConfig($catalogo);
+
         return view('catalogos.create', compact('catalogo', 'c'));
     }
 
@@ -94,6 +95,7 @@ class CatalogoController extends Controller
     {
         $c = $this->getConfig($catalogo);
         $registro = $c['modelo']::findOrFail($id);
+
         return view('catalogos.edit', compact('catalogo', 'c', 'registro'));
     }
 
@@ -122,7 +124,7 @@ class CatalogoController extends Controller
 
     public function rapido(Request $request, string $catalogo)
     {
-        if (!in_array($catalogo, ['categorias', 'editoriales'], true)) {
+        if (! in_array($catalogo, ['categorias', 'editoriales'], true)) {
             abort(404);
         }
 
@@ -138,7 +140,7 @@ class CatalogoController extends Controller
 
     private function getConfig(string $catalogo): array
     {
-        if (!isset($this->config[$catalogo])) {
+        if (! isset($this->config[$catalogo])) {
             abort(404);
         }
 
@@ -149,13 +151,14 @@ class CatalogoController extends Controller
     {
         $rules = [
             $c['campo'] => [
-                'required', 'string', 'max:' . $c['max'],
+                'required', 'string', 'max:'.$c['max'],
                 Rule::unique((new ($c['modelo']))->getTable(), $c['campo'])->ignore($id, $c['pk']),
             ],
         ];
         if ($c['descripcion']) {
             $rules['descripcion'] = ['nullable', 'string', 'max:255'];
         }
+
         return $request->validate($rules);
     }
 }

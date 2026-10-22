@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
-@section('title', 'Préstamos')
+@section('title', auth()->user()->rol === 'USUARIO' ? 'Mis préstamos' : 'Préstamos')
 
 @section('content')
     <div class="page-heading">
         <div>
-            <h1>Préstamos</h1>
+            <h1>{{ auth()->user()->rol === 'USUARIO' ? 'Mis préstamos' : 'Préstamos' }}</h1>
             <p>Control de préstamos activos, atrasados y devueltos.</p>
         </div>
 
@@ -41,7 +41,7 @@
             </select>
 
             <button class="btn btn-dark" type="submit">Filtrar</button>
-            <a class="btn btn-light" href="{{ route('prestamos.index') }}">Limpiar</a>
+            <a class="btn btn-light" href="{{ route(request()->routeIs('solicitudes.prestamos') ? 'solicitudes.prestamos' : 'prestamos.index') }}">Limpiar</a>
         </form>
 
         <div class="table-responsive">

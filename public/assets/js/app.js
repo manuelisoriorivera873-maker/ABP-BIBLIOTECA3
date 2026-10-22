@@ -1,4 +1,21 @@
 document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('[data-matriz-permisos]').forEach(function (formulario) {
+        formulario.addEventListener('change', function (evento) {
+            const casilla = evento.target;
+            if (!(casilla instanceof HTMLInputElement) || casilla.type !== 'checkbox' || casilla.disabled || !casilla.dataset.modulo) {
+                return;
+            }
+            const grupo = Array.from(formulario.querySelectorAll('input[type="checkbox"][data-modulo]'))
+                .filter(input => input.dataset.modulo === casilla.dataset.modulo && !input.disabled);
+            if (casilla.dataset.accion === 'ver' && !casilla.checked) {
+                grupo.forEach(input => { input.checked = false; });
+            } else if (casilla.checked) {
+                const consulta = grupo.find(input => input.dataset.accion === 'ver');
+                if (consulta) consulta.checked = true;
+            }
+        });
+    });
+
     const sidebar = document.getElementById('sidebar');
     const sidebarButton = document.getElementById('sidebarButton');
 
@@ -72,7 +89,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
 
                 const select = document.getElementById('autoresSelect');
-                select.add(new Option(data.texto, data.id, true, true));
+                const existente = Array.from(select.options).find(option => option.value === String(data.id));
+                if (existente) {
+                    existente.selected = true;
+                    existente.hidden = false;
+                } else {
+                    select.add(new Option(data.texto, data.id, true, true));
+                }
                 persona.querySelector(`option[value="${persona.value}"]`)?.remove();
 
                 bootstrap.Modal.getOrCreateInstance(document.getElementById('modalAutor')).hide();

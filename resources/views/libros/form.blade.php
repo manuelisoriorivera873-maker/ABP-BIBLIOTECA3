@@ -91,6 +91,7 @@
     <button class="btn btn-primary" type="submit">Guardar libro</button>
 </div>
 
+@push('modals')
 <div class="modal fade" id="modalAutor" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -152,3 +153,4 @@
         </div>
     </div>
 </div>
+@endpush

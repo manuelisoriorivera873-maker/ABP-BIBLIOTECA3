@@ -24,11 +24,7 @@ class AutorController extends Controller
                         ->orWhere('apellido_materno', 'like', "%{$buscar}%");
                 });
             })
-            ->orderBy(
-                Persona::select('apellido_paterno')
-                    ->whereColumn('personas.id_persona', 'autores.id_persona')
-                    ->limit(1)
-            )
+            ->orderBy('id_autor')
             ->paginate(15)
             ->withQueryString();
 
@@ -83,13 +79,17 @@ class AutorController extends Controller
 
     public function rapido(Request $request)
     {
-        $autor = Autor::with('persona')->create($this->validar($request));
+        $datos = $request->validate([
+            'id_persona' => ['required', 'integer', 'exists:personas,id_persona'],
+        ], ['id_persona.required' => 'Selecciona una persona para registrarla como autor.']);
+        // La clave única por persona también protege las peticiones simultáneas.
+        $autor = Autor::firstOrCreate(['id_persona' => $datos['id_persona']]);
         $autor->load('persona');
 
         return response()->json([
             'id' => $autor->id_autor,
             'texto' => $autor->nombre_completo,
-        ], 201);
+        ], $autor->wasRecentlyCreated ? 201 : 200);
     }
 
     private function validar(Request $request, ?Autor $autor = null): array

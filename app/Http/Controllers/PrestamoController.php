@@ -9,9 +9,7 @@ use App\Models\EstadoEjemplar;
 use App\Models\Prestamo;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
-use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Carbon;
-use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\ValidationException;
 
@@ -23,13 +21,14 @@ class PrestamoController extends Controller
         $filtro = (string) $request->input('estado', 'todos');
         $hoy = Carbon::today();
 
-        $prestamosColeccion = Prestamo::with([
+        $prestamos = Prestamo::with([
             'usuario.persona',
             'bibliotecario.persona',
             'detalles.ejemplar.libro',
             'detalles.devolucionesDetalle',
             'devolucion',
         ])
+            ->visiblesPara($request->user())
             ->when($buscar !== '', function ($query) use ($buscar): void {
                 $query->where(function ($subquery) use ($buscar): void {
                     $subquery
@@ -50,28 +49,24 @@ class PrestamoController extends Controller
                         });
                 });
             })
-            ->orderByDesc('id_prestamo')
-            ->get()
-            ->map(function (Prestamo $prestamo) use ($hoy): Prestamo {
+            ->when($filtro === 'devueltos', fn ($query) => $query->whereHas('detalles')->whereDoesntHave('detalles', fn ($detalle) => $detalle->whereDoesntHave('devolucionesDetalle')))
+            ->when(in_array($filtro, ['activos', 'atrasados'], true), function ($query) use ($filtro, $hoy): void {
+                $query->where(function ($pendientes): void {
+                    $pendientes->whereDoesntHave('detalles')->orWhereHas('detalles', fn ($detalle) => $detalle->whereDoesntHave('devolucionesDetalle'));
+                })->whereDate('fecha_limite', $filtro === 'atrasados' ? '<' : '>=', $hoy);
+            })
+            ->orderBy('id_prestamo')
+            ->paginate(12)->withQueryString()
+            ->through(function (Prestamo $prestamo) use ($hoy): Prestamo {
                 $pendientes = $prestamo->detalles->filter(fn ($detalle) => $detalle->devolucionesDetalle->isEmpty())->count();
                 $estaDevuelto = $prestamo->detalles->isNotEmpty() && $pendientes === 0;
-                $atrasado = !$estaDevuelto && $prestamo->fecha_limite->lt($hoy);
+                $atrasado = ! $estaDevuelto && $prestamo->fecha_limite->lt($hoy);
                 $prestamo->pendientes = $pendientes;
                 $prestamo->esta_devuelto = $estaDevuelto;
                 $prestamo->esta_atrasado = $atrasado;
-                return $prestamo;
-            })
-            ->filter(function (Prestamo $prestamo) use ($filtro): bool {
-                return match ($filtro) {
-                    'devueltos' => $prestamo->esta_devuelto,
-                    'activos' => !$prestamo->esta_devuelto && !$prestamo->esta_atrasado,
-                    'atrasados' => $prestamo->esta_atrasado,
-                    default => true,
-                };
-            })
-            ->values();
 
-        $prestamos = $this->paginadorColeccion($prestamosColeccion, 12, $request);
+                return $prestamo;
+            });
 
         return view('prestamos.index', compact('prestamos', 'buscar', 'filtro', 'hoy'));
     }
@@ -248,7 +243,7 @@ class PrestamoController extends Controller
     {
         $usuario = Usuario::with('estado')->findOrFail($idUsuario);
 
-        if (!$usuario->estado || $usuario->estado->nombre_estado_usuario !== 'ACTIVO') {
+        if (! $usuario->estado || $usuario->estado->nombre_estado_usuario !== 'ACTIVO') {
             throw ValidationException::withMessages([
                 'id_usuario' => 'Solo se pueden registrar préstamos a usuarios con estado ACTIVO.',
             ]);
@@ -260,7 +255,7 @@ class PrestamoController extends Controller
         $ids = array_map('intval', $idsEjemplares);
         $estadoDisponible = EstadoEjemplar::where('nombre_estado', 'DISPONIBLE')->first();
 
-        if (!$estadoDisponible) {
+        if (! $estadoDisponible) {
             throw ValidationException::withMessages([
                 'ejemplares' => 'No existe el estado DISPONIBLE en el catálogo de ejemplares.',
             ]);
@@ -288,7 +283,7 @@ class PrestamoController extends Controller
 
         $estado = EstadoEjemplar::where('nombre_estado', $nombreEstado)->first();
 
-        if (!$estado) {
+        if (! $estado) {
             throw ValidationException::withMessages([
                 'ejemplares' => "No existe el estado {$nombreEstado} en el catálogo de ejemplares.",
             ]);
@@ -296,20 +291,6 @@ class PrestamoController extends Controller
 
         Ejemplar::whereIn('id_ejemplar', $idsEjemplares)->update([
             'id_estado_ejemplar' => $estado->id_estado_ejemplar,
-        ]);
-    }
-
-    private function paginadorColeccion(Collection $items, int $porPagina, Request $request): LengthAwarePaginator
-    {
-        $pageName = 'page';
-        $pagina = LengthAwarePaginator::resolveCurrentPage($pageName);
-        $total = $items->count();
-        $resultados = $items->slice(($pagina - 1) * $porPagina, $porPagina)->values();
-
-        return new LengthAwarePaginator($resultados, $total, $porPagina, $pagina, [
-            'path' => $request->url(),
-            'query' => $request->query(),
-            'pageName' => $pageName,
         ]);
     }
 }

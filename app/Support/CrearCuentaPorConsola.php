@@ -14,8 +14,9 @@ final class CrearCuentaPorConsola
 {
     public function ejecutar(Command $terminal, string $rol): int
     {
-        if (!in_array($rol, ['BIBLIOTECARIO', 'USUARIO'], true)) {
+        if (! in_array($rol, ['BIBLIOTECARIO', 'USUARIO'], true)) {
             $terminal->error('Rol no permitido.');
+
             return Command::FAILURE;
         }
 
@@ -31,6 +32,7 @@ final class CrearCuentaPorConsola
 
         if ($disponibles->isEmpty()) {
             $terminal->error("No hay {$titulo} disponibles sin cuenta. Registra uno primero desde el CRUD.");
+
             return Command::FAILURE;
         }
 
@@ -44,18 +46,21 @@ final class CrearCuentaPorConsola
         );
 
         $id = trim((string) $terminal->ask("Escribe el ID del {$rol} al que asignarás la cuenta"));
-        if (!ctype_digit($id) || !$disponibles->contains(fn ($registro) => (string) $registro->getAttribute($campo) === $id)) {
+        if (! ctype_digit($id) || ! $disponibles->contains(fn ($registro) => (string) $registro->getAttribute($campo) === $id)) {
             $terminal->error('Debes seleccionar un ID válido de la tabla anterior.');
+
             return Command::FAILURE;
         }
 
         $nombre = trim((string) $terminal->ask('Nombre de acceso (4 a 60 caracteres)'));
-        if (!preg_match('/^[a-zA-Z0-9._-]{4,60}$/', $nombre)) {
+        if (! preg_match('/^[a-zA-Z0-9._-]{4,60}$/', $nombre)) {
             $terminal->error('El nombre solo admite letras, números, punto, guion o guion bajo.');
+
             return Command::FAILURE;
         }
         if (CuentaAcceso::where('nombre_usuario', $nombre)->exists()) {
             $terminal->error('Ese nombre de acceso ya está registrado.');
+
             return Command::FAILURE;
         }
 
@@ -63,6 +68,7 @@ final class CrearCuentaPorConsola
         $confirmacion = (string) $terminal->secret('Confirma la contraseña');
         if (strlen($clave) < 12 || $clave !== $confirmacion) {
             $terminal->error('La contraseña debe tener al menos 12 caracteres y coincidir con la confirmación.');
+
             return Command::FAILURE;
         }
 
@@ -84,14 +90,7 @@ final class CrearCuentaPorConsola
                     'id_bibliotecario' => $rol === 'BIBLIOTECARIO' ? (int) $id : null,
                 ]);
 
-                $permisos = collect(PermisosBiblioteca::iniciales($rol))
-                    ->map(function ($permiso) use ($cuenta): array {
-                        [$modulo, $accion] = explode(':', $permiso, 2);
-                        return ['id_cuenta' => $cuenta->id_cuenta, 'modulo' => $modulo, 'accion' => $accion];
-                    })->all();
-                if ($permisos !== []) {
-                    DB::table('cuenta_permisos')->insert($permisos);
-                }
+                // La cuenta hereda la matriz vigente de su rol.
 
                 DB::table('historial_permisos')->insert([
                     'actor_id' => null,
@@ -102,12 +101,14 @@ final class CrearCuentaPorConsola
                 ]);
             });
         } catch (Throwable $error) {
-            $terminal->error('No se pudo registrar la cuenta: ' . $error->getMessage());
+            $terminal->error('No se pudo registrar la cuenta: '.$error->getMessage());
+
             return Command::FAILURE;
         }
 
         $terminal->info("Cuenta {$rol} creada correctamente. Puedes iniciar sesión como {$nombre}.");
-        $terminal->comment('Los permisos se pueden editar desde el panel SUPERADMIN.');
+        $terminal->comment('Los permisos se heredan de la matriz por rol del panel SUPERADMIN.');
+
         return Command::SUCCESS;
     }
 }

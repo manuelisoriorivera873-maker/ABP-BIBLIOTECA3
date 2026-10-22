@@ -11,22 +11,31 @@ class AutorizarBiblioteca
     public function handle(Request $request, Closure $next): Response
     {
         $cuenta = $request->user();
-        abort_unless($cuenta && $cuenta->activo, 403, 'Cuenta desactivada o sin autorización.');
+        abort_unless($cuenta && $cuenta->activo && in_array($cuenta->rol, ['SUPERADMIN', 'BIBLIOTECARIO', 'USUARIO'], true), 403, 'Cuenta desactivada o sin autorización.');
 
         $nombre = $request->route()?->getName();
         if ($nombre === 'dashboard') {
             if ($cuenta->rol === 'USUARIO') {
-                return redirect()->route(...$cuenta->destinoInicio());
+                return redirect()->route('libros.index');
             }
+
             return $next($request);
         }
 
         if (str_starts_with((string) $nombre, 'cuentas.') || str_starts_with((string) $nombre, 'permisos.')) {
             abort_unless($cuenta->rol === 'SUPERADMIN', 403);
+
             return $next($request);
         }
 
-        if ($nombre === 'devoluciones.registrar') {
+        if ($nombre === 'solicitudes.prestamos') {
+            abort_unless($cuenta->rol === 'USUARIO', 403);
+            $modulo = 'solicitudes';
+            $accion = 'ver';
+        } elseif ($nombre === 'solicitudes.disponibilidad') {
+            $modulo = 'solicitudes';
+            $accion = 'editar';
+        } elseif ($nombre === 'devoluciones.registrar') {
             $modulo = 'devoluciones';
             $accion = 'crear';
         } elseif ($nombre === 'rapido.autores') {

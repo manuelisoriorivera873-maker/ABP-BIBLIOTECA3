@@ -7,9 +7,7 @@ use App\Models\Ejemplar;
 use App\Models\EstadoEjemplar;
 use App\Models\Prestamo;
 use Illuminate\Http\Request;
-use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Carbon;
-use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\ValidationException;
 
@@ -19,12 +17,13 @@ class DevolucionController extends Controller
     {
         $buscar = trim((string) $request->input('buscar'));
 
-        $prestamosBase = Prestamo::with([
+        $pendientes = Prestamo::with([
             'usuario.persona',
             'bibliotecario.persona',
             'detalles.ejemplar.libro',
             'detalles.devolucionesDetalle',
         ])
+            ->visiblesPara($request->user())
             ->when($buscar !== '', function ($query) use ($buscar): void {
                 $query->where(function ($subquery) use ($buscar): void {
                     if (ctype_digit($buscar)) {
@@ -47,24 +46,22 @@ class DevolucionController extends Controller
                         });
                 });
             })
-            ->orderBy('fecha_limite')
+            ->whereHas('detalles', fn ($detalle) => $detalle->whereDoesntHave('devolucionesDetalle'))
             ->orderBy('id_prestamo')
-            ->get()
-            ->map(function (Prestamo $prestamo): Prestamo {
+            ->paginate(8, ['*'], 'pendientes_page')->withQueryString()
+            ->through(function (Prestamo $prestamo): Prestamo {
                 $pendientes = $prestamo->detalles->filter(fn ($detalle) => $detalle->devolucionesDetalle->isEmpty())->values();
                 $prestamo->setRelation('detalles_pendientes', $pendientes);
-                return $prestamo;
-            })
-            ->filter(fn (Prestamo $prestamo) => $prestamo->detalles_pendientes->isNotEmpty())
-            ->values();
 
-        $pendientes = $this->paginadorColeccion($prestamosBase, 8, 'pendientes_page', $request);
+                return $prestamo;
+            });
 
         $devoluciones = Devolucion::with([
             'prestamo.usuario.persona',
             'prestamo.bibliotecario.persona',
             'detalles.detallePrestamo.ejemplar.libro',
         ])
+            ->whereHas('prestamo', fn ($prestamo) => $prestamo->visiblesPara($request->user()))
             ->when($buscar !== '', function ($query) use ($buscar): void {
                 $query->where(function ($subquery) use ($buscar): void {
                     if (ctype_digit($buscar)) {
@@ -89,8 +86,7 @@ class DevolucionController extends Controller
                         });
                 });
             })
-            ->orderByDesc('fecha_devolucion')
-            ->orderByDesc('id_devolucion')
+            ->orderBy('id_devolucion')
             ->paginate(10, ['*'], 'historial_page')
             ->withQueryString();
 
@@ -127,7 +123,7 @@ class DevolucionController extends Controller
                 ->keyBy('id_detalle');
 
             foreach ($seleccionados as $idDetalle) {
-                if (!$detallesPendientes->has($idDetalle)) {
+                if (! $detallesPendientes->has($idDetalle)) {
                     throw ValidationException::withMessages([
                         'detalles' => 'Uno de los ejemplares seleccionados ya fue devuelto o no pertenece al préstamo.',
                     ]);
@@ -141,7 +137,7 @@ class DevolucionController extends Controller
 
             $estadoDisponible = EstadoEjemplar::where('nombre_estado', 'DISPONIBLE')->first();
 
-            if (!$estadoDisponible) {
+            if (! $estadoDisponible) {
                 throw ValidationException::withMessages([
                     'fecha_devolucion' => 'No existe el estado DISPONIBLE en el catálogo de ejemplares.',
                 ]);
@@ -232,24 +228,5 @@ class DevolucionController extends Controller
         });
 
         return redirect()->route('devoluciones.index')->with('success', 'Devolución anulada. Los ejemplares volvieron al estado PRESTADO.');
-    }
-
-    private function paginadorColeccion(Collection $items, int $porPagina, string $pageName, Request $request): LengthAwarePaginator
-    {
-        $pagina = LengthAwarePaginator::resolveCurrentPage($pageName);
-        $total = $items->count();
-        $resultados = $items->slice(($pagina - 1) * $porPagina, $porPagina)->values();
-
-        return new LengthAwarePaginator(
-            $resultados,
-            $total,
-            $porPagina,
-            $pagina,
-            [
-                'path' => $request->url(),
-                'query' => $request->query(),
-                'pageName' => $pageName,
-            ]
-        );
     }
 }

@@ -110,6 +110,14 @@
                     </button>
 
                 </form>
+                <div class="registro-link">
+                    <p>
+                        ¿Todavía no tienes una cuenta?
+                        <a href="{{ route('registro') }}">
+                            Regístrate aquí
+                         </a>
+                     </p>
+                </div>
 
                 <div class="roles">
                     <span>SUPERADMIN</span>

@@ -5,7 +5,6 @@ namespace App\Console\Commands;
 use App\Models\Bibliotecario;
 use App\Models\CuentaAcceso;
 use App\Models\Usuario;
-use App\Support\PermisosBiblioteca;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -22,14 +21,16 @@ class CrearAccesoBiblioteca extends Command
     {
         $rol = strtoupper(trim((string) $this->argument('rol')));
 
-        if (!in_array($rol, ['BIBLIOTECARIO', 'USUARIO'], true)) {
+        if (! in_array($rol, ['BIBLIOTECARIO', 'USUARIO'], true)) {
             $this->error('El rol debe ser bibliotecario o usuario.');
+
             return self::FAILURE;
         }
 
         foreach (['cuentas_acceso', 'cuenta_permisos', 'historial_permisos'] as $tabla) {
-            if (!Schema::hasTable($tabla)) {
+            if (! Schema::hasTable($tabla)) {
                 $this->error("Falta la tabla {$tabla}. Debe recuperarse primero.");
+
                 return self::FAILURE;
             }
         }
@@ -46,8 +47,9 @@ class CrearAccesoBiblioteca extends Command
             ? 'bibliotecarios'
             : 'usuarios';
 
-        if (!Schema::hasTable($tabla)) {
+        if (! Schema::hasTable($tabla)) {
             $this->error("Falta la tabla {$tabla}.");
+
             return self::FAILURE;
         }
 
@@ -57,6 +59,7 @@ class CrearAccesoBiblioteca extends Command
 
         if ($disponibles->isEmpty()) {
             $this->error("No hay {$tabla} disponibles sin cuenta.");
+
             return self::FAILURE;
         }
 
@@ -64,29 +67,31 @@ class CrearAccesoBiblioteca extends Command
             ['ID', 'Nombre'],
             $disponibles->map(fn ($r) => [
                 $r->getAttribute($campo),
-                $r->persona?->nombre_completo ?? 'Sin nombre'
+                $r->persona?->nombre_completo ?? 'Sin nombre',
             ])->all()
         );
 
         $id = trim((string) $this->ask('ID de la persona seleccionada'));
 
         if (
-            !ctype_digit($id) ||
-            !$disponibles->contains(
+            ! ctype_digit($id) ||
+            ! $disponibles->contains(
                 fn ($r) => (string) $r->getAttribute($campo) === $id
             )
         ) {
             $this->error('Selecciona un ID válido.');
+
             return self::FAILURE;
         }
 
         $nombre = trim((string) $this->ask('Nombre de usuario'));
 
         if (
-            !preg_match('/^[A-Za-z0-9._-]{4,60}$/', $nombre) ||
+            ! preg_match('/^[A-Za-z0-9._-]{4,60}$/', $nombre) ||
             CuentaAcceso::where('nombre_usuario', $nombre)->exists()
         ) {
             $this->error('Nombre inválido o ya registrado.');
+
             return self::FAILURE;
         }
 
@@ -95,6 +100,7 @@ class CrearAccesoBiblioteca extends Command
 
         if (strlen($clave) < 12 || $clave !== $confirmar) {
             $this->error('Las contraseñas no coinciden o son demasiado cortas.');
+
             return self::FAILURE;
         }
 
@@ -114,18 +120,10 @@ class CrearAccesoBiblioteca extends Command
                     'rol' => $rol,
                     'activo' => true,
                     'id_usuario' => $rol === 'USUARIO' ? (int) $id : null,
-                    'id_bibliotecario' => $rol === 'BIBLIOTECARIO' ? (int) $id : null
+                    'id_bibliotecario' => $rol === 'BIBLIOTECARIO' ? (int) $id : null,
                 ]);
 
-                foreach (PermisosBiblioteca::iniciales($rol) as $permiso) {
-                    [$modulo, $accion] = explode(':', $permiso, 2);
-
-                    DB::table('cuenta_permisos')->insert([
-                        'id_cuenta' => $cuenta->id_cuenta,
-                        'modulo' => $modulo,
-                        'accion' => $accion
-                    ]);
-                }
+                // Los permisos se heredan del rol; cuenta_permisos queda como archivo histórico.
 
                 DB::table('historial_permisos')->insert([
                     'actor_id' => null,
@@ -134,13 +132,14 @@ class CrearAccesoBiblioteca extends Command
                     'detalle' => json_encode([
                         'rol' => $rol,
                         'vinculo' => $campo,
-                        'id' => (int) $id
+                        'id' => (int) $id,
                     ]),
-                    'created_at' => now()
+                    'created_at' => now(),
                 ]);
             });
         } catch (Throwable $e) {
-            $this->error('Error: ' . $e->getMessage());
+            $this->error('Error: '.$e->getMessage());
+
             return self::FAILURE;
         }
 

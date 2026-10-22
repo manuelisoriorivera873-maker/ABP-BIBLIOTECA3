@@ -13,7 +13,14 @@
     <div class="panel">
         <form method="POST" action="{{ route('bibliotecarios.store') }}">
             @csrf
-            @include('bibliotecarios.form')
+            <label class="form-label" for="persona">Persona existente</label>
+            <select class="form-select" name="id_persona" id="persona" required>
+                <option value="">Selecciona una persona</option>
+                @foreach($personas as $persona)
+                    <option value="{{ $persona->id_persona }}" @selected(old('id_persona') == $persona->id_persona)>{{ $persona->nombre_completo }}</option>
+                @endforeach
+            </select>
+            <button class="btn btn-primary mt-3" type="submit">Guardar bibliotecario</button>
         </form>
     </div>
 @endsection

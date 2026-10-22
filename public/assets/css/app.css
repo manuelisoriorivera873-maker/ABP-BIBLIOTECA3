@@ -229,3 +229,67 @@ a { color: var(--primary); }
     .page-heading h1 { font-size: 1.7rem; }
     .panel, .form-section, .record-card, .stats-card, .account-details { border-radius: 20px; }
 }
+
+/* IDENTIFICACION DE LA SESION ACTIVA */
+
+.topbar-session {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 18px;
+    margin-left: auto;
+}
+
+.topbar-identity {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    padding: 9px 18px;
+    background: #eff6ff;
+    border: 1px solid #dbeafe;
+    border-radius: 12px;
+}
+
+.topbar-identity span {
+    font-size: 10px;
+    font-weight: 700;
+    color: #64748b;
+    letter-spacing: 1px;
+}
+
+.topbar-identity strong {
+    font-size: 14px;
+    color: #1d4ed8;
+}
+
+.topbar-identity small {
+    font-size: 12px;
+    color: #475569;
+}
+
+@media (max-width: 700px) {
+    .topbar-session {
+        gap: 8px;
+    }
+
+    .topbar-identity {
+        padding: 7px 10px;
+    }
+
+    .topbar-session .topbar-date {
+        display: none;
+    }
+}
+/* Paginación Bootstrap compartida por los listados de SAIDE. */
+.saide-pagination { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem; margin-top: 1.25rem; }
+.saide-pagination__summary { margin: 0; color: #64748b; font-size: .875rem; }
+.saide-pagination .pagination { display: flex; flex-wrap: wrap; gap: .25rem; list-style: none; padding: 0; }
+.saide-pagination .page-link { border-radius: .5rem; color: #1d4ed8; min-width: 2.25rem; text-align: center; }
+.saide-pagination .active > .page-link { background: #1d4ed8; border-color: #1d4ed8; color: #fff; }
+.saide-pagination .disabled > .page-link { color: #64748b; background: #f1f5f9; }
+@media (max-width: 575.98px) {
+    .saide-pagination { flex-direction: column; align-items: flex-start; }
+    .saide-pagination .page-number:not(.active) { display: none; }
+    .saide-pagination .page-link { padding: .5rem .65rem; }
+}

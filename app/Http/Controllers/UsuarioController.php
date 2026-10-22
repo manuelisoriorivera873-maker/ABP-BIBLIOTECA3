@@ -8,6 +8,7 @@ use App\Models\Usuario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
+use Illuminate\Validation\ValidationException;
 use Throwable;
 
 class UsuarioController extends Controller
@@ -17,7 +18,7 @@ class UsuarioController extends Controller
         $buscar = trim((string) $request->input('buscar'));
 
         $usuarios = Usuario::with(['persona', 'estado'])
-            ->withCount('prestamos')
+            ->withCount(['prestamos' => fn ($prestamos) => $prestamos->visiblesPara($request->user())])
             ->when($buscar !== '', function ($query) use ($buscar): void {
                 $query->where(function ($subquery) use ($buscar): void {
                     $subquery
@@ -30,7 +31,7 @@ class UsuarioController extends Controller
                         });
                 });
             })
-            ->orderByDesc('id_usuario')
+            ->orderBy('id_usuario')
             ->paginate(15)
             ->withQueryString();
 
@@ -43,7 +44,9 @@ class UsuarioController extends Controller
         $estadoPredeterminado = EstadoUsuario::where('nombre_estado_usuario', 'ACTIVO')
             ->value('id_estado_usuario');
 
-        return view('usuarios.create', compact('estados', 'estadoPredeterminado'));
+        $personasDisponibles = Persona::whereDoesntHave('usuario')->orderBy('nombre')->get();
+
+        return view('usuarios.create', compact('estados', 'estadoPredeterminado', 'personasDisponibles'));
     }
 
     public function store(Request $request)
@@ -51,7 +54,13 @@ class UsuarioController extends Controller
         $data = $this->validar($request);
 
         DB::transaction(function () use ($data): void {
-            $persona = Persona::create([
+            $persona = ! empty($data['id_persona'])
+                ? Persona::whereKey($data['id_persona'])->lockForUpdate()->firstOrFail()
+                : null;
+            if ($persona && $persona->usuario()->exists()) {
+                throw ValidationException::withMessages(['id_persona' => 'La persona ya está registrada como lector.']);
+            }
+            $persona ??= Persona::create([
                 'nombre' => $data['nombre'],
                 'apellido_paterno' => $data['apellido_paterno'],
                 'apellido_materno' => $data['apellido_materno'],
@@ -99,8 +108,8 @@ class UsuarioController extends Controller
 
     public function destroy(Usuario $usuario)
     {
-        if ($usuario->prestamos()->exists()) {
-            return back()->with('error', 'No se puede eliminar el usuario porque tiene préstamos registrados.');
+        if ($usuario->cuentaAcceso()->exists() || $usuario->prestamos()->exists()) {
+            return back()->with('error', 'No se puede eliminar el usuario porque tiene una cuenta o préstamos registrados.');
         }
 
         try {
@@ -108,9 +117,7 @@ class UsuarioController extends Controller
                 $persona = $usuario->persona;
                 $usuario->delete();
 
-                if ($persona && !$persona->bibliotecario()->exists()) {
-                    $persona->delete();
-                }
+                // Conservar la persona y sus demás funciones e historial.
             });
         } catch (Throwable $e) {
             return back()->with('error', 'No fue posible eliminar el usuario.');
@@ -121,14 +128,19 @@ class UsuarioController extends Controller
 
     private function validar(Request $request, ?Usuario $usuario = null): array
     {
+        $personaExistente = ! $usuario && $request->filled('id_persona');
+
         return $request->validate([
-            'nombre' => ['required', 'string', 'max:80'],
-            'apellido_paterno' => ['required', 'string', 'max:80'],
-            'apellido_materno' => ['required', 'string', 'max:80'],
+            'id_persona' => [$usuario ? 'prohibited' : 'nullable', 'integer', 'exists:personas,id_persona', 'unique:usuarios,id_persona'],
+            'nombre' => [Rule::excludeIf($personaExistente), 'required', 'string', 'max:80'],
+            'apellido_paterno' => [Rule::excludeIf($personaExistente), 'required', 'string', 'max:80'],
+            'apellido_materno' => [Rule::excludeIf($personaExistente), 'required', 'string', 'max:80'],
             'telefono' => [
                 'required',
                 'string',
+                'min:8',
                 'max:20',
+                'regex:/^[0-9 +()\-]+$/',
                 Rule::unique('usuarios', 'telefono')->ignore($usuario?->id_usuario, 'id_usuario'),
             ],
             'id_estado_usuario' => ['required', 'integer', 'exists:estados_usuario,id_estado_usuario'],

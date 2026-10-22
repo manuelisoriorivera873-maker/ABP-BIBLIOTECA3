@@ -274,3 +274,25 @@ body.biblioteca-login {
         padding: 28px 20px;
     }
 }
+/* ENLACE DE REGISTRO */
+
+.registro-link {
+    margin-top: 24px;
+    text-align: center;
+}
+
+.registro-link p {
+    color: #64748b;
+    font-size: 14px;
+}
+
+.registro-link a {
+    color: #2563eb;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.registro-link a:hover {
+    color: #1d4ed8;
+    text-decoration: underline;
+}
