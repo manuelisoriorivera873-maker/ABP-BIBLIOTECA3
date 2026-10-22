@@ -2,19 +2,14 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Prestamo extends Model
 {
-    public function scopeVisiblesPara(Builder $query, CuentaAcceso $cuenta): Builder
-    {
-        return $query->when($cuenta->rol === 'USUARIO', fn ($prestamos) => $prestamos->where('id_usuario', $cuenta->id_usuario ?? 0));
-    }
-
     protected $table = 'prestamos';
 
     protected $primaryKey = 'id_prestamo';
@@ -24,6 +19,11 @@ class Prestamo extends Model
     protected $fillable = ['id_usuario', 'fecha_prestamo', 'fecha_limite', 'id_bibliotecario'];
 
     protected $casts = ['fecha_prestamo' => 'date', 'fecha_limite' => 'date'];
+
+    public function scopeVisiblesPara(Builder $query, CuentaAcceso $cuenta): Builder
+    {
+        return $query->when($cuenta->rol === 'USUARIO', fn ($prestamos) => $prestamos->where('id_usuario', $cuenta->id_usuario ?? 0));
+    }
 
     public function usuario(): BelongsTo
     {

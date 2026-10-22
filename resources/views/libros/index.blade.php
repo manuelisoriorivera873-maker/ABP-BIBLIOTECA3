@@ -9,6 +9,9 @@
             <p>Catálogo bibliográfico con autores, categorías y editoriales.</p>
         </div>
 
+        @if (auth()->user()->rol === 'USUARIO' && auth()->user()->puede('solicitudes', 'crear'))
+        <a class="btn btn-primary" href="{{ route('solicitudes.create') }}">Solicitar préstamo</a>
+        @endif
         @if (auth()->user()->puede('libros', 'crear'))
         <a class="btn btn-primary" href="{{ route('libros.create') }}">
             + Registrar libro

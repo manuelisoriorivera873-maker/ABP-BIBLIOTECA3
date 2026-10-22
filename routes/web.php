@@ -12,6 +12,7 @@ use App\Http\Controllers\LibroController;
 use App\Http\Controllers\PersonaController;
 use App\Http\Controllers\PrestamoController;
 use App\Http\Controllers\RegistroPublicoController;
+use App\Http\Controllers\SolicitudPrestamoController;
 use App\Http\Controllers\UsuarioController;
 use Illuminate\Support\Facades\Route;
 
@@ -74,6 +75,12 @@ Route::get('/sin-permisos', function () {
 */
 
 Route::middleware(['auth', 'biblioteca'])->group(function (): void {
+    Route::get('solicitudes', [SolicitudPrestamoController::class, 'index'])->name('solicitudes.index');
+    Route::get('solicitudes/nueva', [SolicitudPrestamoController::class, 'create'])->name('solicitudes.create');
+    Route::post('solicitudes', [SolicitudPrestamoController::class, 'store'])->name('solicitudes.store');
+    Route::post('solicitudes/disponibilidad', [SolicitudPrestamoController::class, 'disponibilidad'])->name('solicitudes.disponibilidad');
+    Route::put('solicitudes/{solicitud}', [SolicitudPrestamoController::class, 'update'])->whereNumber('solicitud')->name('solicitudes.update');
+    Route::get('lector/prestamos', [PrestamoController::class, 'index'])->name('solicitudes.prestamos');
 
     /*
     |--------------------------------------------------------------------------

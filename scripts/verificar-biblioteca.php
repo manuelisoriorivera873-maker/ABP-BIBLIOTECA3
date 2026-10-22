@@ -61,7 +61,7 @@ foreach (DB::table('rol_permisos')->get() as $permiso) {
 $admin = CuentaAcceso::where('rol', 'SUPERADMIN')->where('activo', true)->firstOrFail();
 $kernel = $app->make(Kernel::class);
 // Simular exclusivamente GET con el guard en memoria; no guardar sesiones reales.
-$rutas = ['/', '/cuentas', '/cuentas/historial', '/libros', '/autores', '/personas', '/usuarios', '/usuarios/create', '/bibliotecarios', '/bibliotecarios/create', '/prestamos', '/devoluciones', '/ejemplares'];
+$rutas = ['/', '/cuentas', '/cuentas/historial', '/libros', '/autores', '/personas', '/usuarios', '/usuarios/create', '/bibliotecarios', '/bibliotecarios/create', '/prestamos', '/devoluciones', '/ejemplares', '/solicitudes'];
 $rutas = array_merge($rutas, ['/cuentas/roles/BIBLIOTECARIO/permisos', '/cuentas/roles/USUARIO/permisos', '/personas?page=2']);
 foreach (['categorias', 'editoriales', 'ubicaciones', 'estados-usuario', 'estados-ejemplar'] as $catalogo) {
     $rutas[] = '/catalogos/'.$catalogo;
@@ -81,6 +81,32 @@ foreach ($rutas as $ruta) {
     if ($codigo !== 200) {
         $errores++;
     }
+}
+$lector = CuentaAcceso::where('rol', 'USUARIO')->where('activo', true)->whereNotNull('id_usuario')->firstOrFail();
+foreach (['/libros', '/solicitudes/nueva', '/solicitudes', '/lector/prestamos'] as $ruta) {
+    Auth::forgetGuards();
+    Auth::guard()->setUser($lector);
+    $respuesta = $kernel->handle(Request::create($ruta, 'GET'));
+    echo 'GET lector '.$ruta.' '.$respuesta->getStatusCode().PHP_EOL;
+    if ($respuesta->getStatusCode() !== 200) {
+        $errores++;
+    }
+    if ($ruta === '/libros') {
+        foreach (['Catálogo de libros', 'Solicitar préstamo', 'Mis solicitudes', 'Mis préstamos'] as $enlace) {
+            if (! str_contains($respuesta->getContent(), $enlace)) {
+                echo 'ERROR: falta enlace '.$enlace.PHP_EOL;
+                $errores++;
+            }
+        }
+    }
+}
+$personal = CuentaAcceso::where('rol', 'BIBLIOTECARIO')->where('activo', true)->firstOrFail();
+Auth::forgetGuards();
+Auth::guard()->setUser($personal);
+$respuesta = $kernel->handle(Request::create('/', 'GET'));
+echo 'GET escritorio bibliotecario '.$respuesta->getStatusCode().PHP_EOL;
+if ($respuesta->getStatusCode() !== 200 || ! str_contains($respuesta->getContent(), 'Solicitudes de préstamo')) {
+    $errores++;
 }
 foreach ($conteos as $tabla => $cantidad) {
     if (DB::table($tabla)->count() !== $cantidad) {

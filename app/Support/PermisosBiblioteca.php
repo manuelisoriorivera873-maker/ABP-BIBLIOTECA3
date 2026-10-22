@@ -16,6 +16,7 @@ final class PermisosBiblioteca
         'usuarios' => 'Usuarios (lectores)',
         'bibliotecarios' => 'Bibliotecarios (personal)',
         'prestamos' => 'Préstamos',
+        'solicitudes' => 'Solicitudes de préstamo',
         'devoluciones' => 'Devoluciones',
         'categorias' => 'Categorías',
         'editoriales' => 'Editoriales',
@@ -52,6 +53,8 @@ final class PermisosBiblioteca
         }
         foreach (array_keys(self::MODULOS) as $modulo) {
             $acciones = match ($modulo) {
+                // Se habilita mediante su migración incremental, sin alterar las matrices existentes.
+                'solicitudes' => [],
                 'bibliotecarios', 'estados-ejemplar', 'estados-usuario' => ['ver'],
                 'devoluciones' => ['ver', 'crear'],
                 default => ['ver', 'crear', 'editar'],

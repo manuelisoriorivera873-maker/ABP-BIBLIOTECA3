@@ -208,7 +208,7 @@
                         href="{{ route('libros.index') }}"
                     >
                         <span class="nav-icon">▤</span>
-                        Libros
+                        {{ $rolActual === 'USUARIO' ? 'Catálogo de libros' : 'Libros' }}
                     </a>
                 @endif
 
@@ -274,7 +274,17 @@
 
                 <!-- PRESTAMOS -->
 
-                @if ($cuentaActual->puede('prestamos', 'ver'))
+                @if ($rolActual === 'USUARIO' && $cuentaActual->puede('solicitudes', 'crear'))
+                    <a class="nav-link {{ request()->routeIs('solicitudes.create') ? 'active' : '' }}" href="{{ route('solicitudes.create') }}"><span class="nav-icon">＋</span>Solicitar préstamo</a>
+                @endif
+                @if ($cuentaActual->puede('solicitudes', 'ver'))
+                    <a class="nav-link {{ request()->routeIs('solicitudes.index') ? 'active' : '' }}" href="{{ route('solicitudes.index') }}"><span class="nav-icon">▤</span>{{ $rolActual === 'USUARIO' ? 'Mis solicitudes' : 'Solicitudes de préstamo' }}</a>
+                    @if ($rolActual === 'USUARIO')
+                        <a class="nav-link {{ request()->routeIs('solicitudes.prestamos') ? 'active' : '' }}" href="{{ route('solicitudes.prestamos') }}"><span class="nav-icon">↔</span>Mis préstamos</a>
+                    @endif
+                @endif
+
+                @if ($cuentaActual->puede('prestamos', 'ver') && ! ($rolActual === 'USUARIO' && $cuentaActual->puede('solicitudes', 'ver')))
                     <a
                         class="nav-link {{ request()->routeIs('prestamos.*') ? 'active' : '' }}"
                         href="{{ route('prestamos.index') }}"

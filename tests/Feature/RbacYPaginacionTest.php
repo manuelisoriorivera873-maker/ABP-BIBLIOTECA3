@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Models\CuentaAcceso;
+use App\Models\Persona;
 use App\Support\PermisosBiblioteca;
 use Illuminate\Foundation\Testing\TestCase;
 use Illuminate\Support\Facades\DB;
@@ -34,6 +35,7 @@ class RbacYPaginacionTest extends TestCase
         foreach ($consulta->query('//input[@type="checkbox" and @name="permisos[]"]') as $input) {
             $resultado[$input->getAttribute('value')] = ['checked' => $input->hasAttribute('checked'), 'disabled' => $input->hasAttribute('disabled')];
         }
+
         return $resultado;
     }
 
@@ -84,7 +86,7 @@ class RbacYPaginacionTest extends TestCase
         $casillas = $this->casillas($this->get($url)->assertOk()->getContent());
         foreach ($casillas as $valor => $estado) {
             [$modulo, $accion] = explode(':', $valor);
-            $this->assertSame(!PermisosBiblioteca::permiteRol('USUARIO', $modulo, $accion), $estado['disabled']);
+            $this->assertSame(! PermisosBiblioteca::permiteRol('USUARIO', $modulo, $accion), $estado['disabled']);
         }
         $this->put($url, ['permisos' => ['cuentas:editar']])->assertSessionHasErrors('permisos');
         $casillas = $this->casillas($this->get('/cuentas/roles/BIBLIOTECARIO/permisos')->assertOk()->getContent());
@@ -168,7 +170,7 @@ class RbacYPaginacionTest extends TestCase
             $this->actingAs($lector)->get('/libros/create')->assertOk();
             $this->get('/cuentas')->assertForbidden();
             $this->put($url, ['permisos' => []])->assertForbidden();
-            $persona = \App\Models\Persona::create(['nombre' => 'Prueba', 'apellido_paterno' => 'Sin', 'apellido_materno' => 'Escalada']);
+            $persona = Persona::create(['nombre' => 'Prueba', 'apellido_paterno' => 'Sin', 'apellido_materno' => 'Escalada']);
             $this->put('/personas/'.$persona->id_persona, ['nombre' => 'Prueba', 'apellido_paterno' => 'Sin', 'apellido_materno' => 'Escalada', 'acceso' => ['gestionar' => 1, 'rol' => 'SUPERADMIN']])->assertForbidden();
         }
         $nuevo = $this->cuenta('USUARIO');

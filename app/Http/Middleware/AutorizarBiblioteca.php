@@ -28,7 +28,14 @@ class AutorizarBiblioteca
             return $next($request);
         }
 
-        if ($nombre === 'devoluciones.registrar') {
+        if ($nombre === 'solicitudes.prestamos') {
+            abort_unless($cuenta->rol === 'USUARIO', 403);
+            $modulo = 'solicitudes';
+            $accion = 'ver';
+        } elseif ($nombre === 'solicitudes.disponibilidad') {
+            $modulo = 'solicitudes';
+            $accion = 'editar';
+        } elseif ($nombre === 'devoluciones.registrar') {
             $modulo = 'devoluciones';
             $accion = 'crear';
         } elseif ($nombre === 'rapido.autores') {

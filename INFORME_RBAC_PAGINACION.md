@@ -4,6 +4,8 @@ Fecha: 22 de octubre de 2026. Rama: `mejora-registro-roles`.
 
 Este informe describe el estado vigente y sustituye las indicaciones anteriores de administración de permisos individuales. La asignación del rol permanece exclusivamente en Personas → Editar persona.
 
+**Ampliación vigente de USUARIO:** la aclaración posterior del usuario autoriza al SUPERADMIN a configurar permisos ordinarios adicionales para lectores. La sección final «Corrección funcional de ambas matrices» sustituye las referencias anteriores a cuatro consultas como límite obligatorio; esas cuatro consultas permanecen únicamente como configuración inicial.
+
 ## Resultado
 
 - Matrices únicas para BIBLIOTECARIO y USUARIO, configurables por SUPERADMIN en Cuentas y permisos → Administración de permisos por rol.
@@ -145,3 +147,33 @@ Se conservaron los cambios locales de las solicitudes anteriores. El middleware 
 ## Git y configuración
 
 Rama activa: `mejora-registro-roles`. Se dejaron los cambios revisables, sin commit automático. No se cambió `main`, no se hizo push ni merge y no se usaron operaciones destructivas de Git. `.env`, las credenciales y `APP_KEY` permanecen intactos.
+
+## Corrección funcional de ambas matrices
+
+La causa del bloqueo de USUARIO era una condición de `PermisosBiblioteca::permiteRol()` que admitía solamente cuatro combinaciones de consulta. La misma condición deshabilitaba las otras 48 casillas en Blade, rechazaba sus valores al guardar y los descartaba al autorizar. No era un bloqueo general del navegador ni del JavaScript.
+
+Según la aclaración expresa del usuario, ahora SUPERADMIN puede configurar las 52 combinaciones ordinarias de módulo y acción para USUARIO, igual que para BIBLIOTECARIO. Las cuatro consultas del catálogo se mantienen como valor inicial, sin limitar configuraciones posteriores. Los permisos extra deben guardarse explícitamente por SUPERADMIN; no se concedieron automáticamente en MariaDB.
+
+Se conservaron las clases, controles, colores, tamaños, espaciados, distribución y estilos. Solo se actualizó el texto funcional que afirmaba que USUARIO estaba limitado a cuatro consultas. No se modificaron archivos CSS ni JavaScript en esta ampliación.
+
+Seguridad conservada:
+
+- Cuentas, roles y permisos no forman parte de los módulos ordinarios configurables. Sus rutas permanecen reservadas al SUPERADMIN, independientemente de los permisos adicionales del lector.
+- Asignar `personas:editar` no permite a USUARIO enviar cambios de rol o acceso; el controlador sigue rechazándolos.
+- Al autorizar `prestamos:ver` o `devoluciones:ver`, el lector consulta solo los movimientos asociados a su `id_usuario`. Las fichas de personas y los contadores de lectores/personal aplican el mismo límite para evitar exposición indirecta de movimientos ajenos.
+- Los permisos de matriz no sustituyen el proceso de solicitud y aprobación: las operaciones sobre préstamos y devoluciones definitivos siguen reservadas al personal. Su selección puede almacenarse en la matriz, pero no habilita al lector para registrar, editar o eliminar movimientos definitivos. Este límite de negocio se aplica también en `puede()` y en las rutas.
+- El módulo de solicitudes propias continúa sin existir en el proyecto actual; no se creó ni se declara implementado mediante esta corrección.
+
+Archivos intervenidos en esta ampliación:
+
+- `app/Support/PermisosBiblioteca.php`: ampliación de las combinaciones ordinarias configurables de USUARIO.
+- `app/Models/CuentaAcceso.php`: conservación del límite de negocio para movimientos definitivos del lector.
+- `app/Models/Prestamo.php`: ámbito reutilizable de consulta por propietario.
+- Controladores `PrestamoController.php`, `DevolucionController.php`, `PersonaController.php`, `UsuarioController.php` y `BibliotecarioController.php`: aplicación del ámbito a listados, relaciones y contadores.
+- `resources/views/cuentas/permisos.blade.php`: actualización de la descripción funcional, manteniendo todos los componentes visuales.
+- `tests/Feature/RbacYPaginacionTest.php`, `tests/Feature/SeguridadBibliotecaTest.php` y `tests/Unit/PermisosBibliotecaTest.php`: nuevas reglas, independencia entre roles, concesión/revocación, persistencia, recarga y propiedad.
+- Este informe: aclaración del alcance vigente.
+
+Resultados: **36 pruebas y 1.593 aserciones aprobadas** en SQLite aislado. Se verificó que lectores existentes y nuevos heredan permisos extra; modificar BIBLIOTECARIO no cambia USUARIO ni viceversa; revocar permisos bloquea la siguiente operación; las casillas recargadas coinciden con lo almacenado; y los lectores no obtienen administración de acceso ni movimientos ajenos.
+
+Comprobación de solo lectura con MariaDB: ambas matrices respondieron HTTP 200 con **52 casillas habilitadas y ninguna deshabilitada**. Los estados seleccionados coincidieron exactamente con los datos existentes: 32 para BIBLIOTECARIO y 4 para USUARIO. No se cambiaron esas configuraciones para las pruebas, ni se ejecutaron migraciones. Se conserva la rama `mejora-registro-roles`, sin modificar `main` ni realizar push.
