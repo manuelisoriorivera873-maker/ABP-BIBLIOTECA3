@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Bibliotecario;
 use App\Models\CuentaAcceso;
-use App\Models\Usuario;
+use App\Rules\LimiteBcrypt;
+use App\Support\AdministrarCuenta;
 use App\Support\PermisosBiblioteca;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -13,138 +13,113 @@ use Illuminate\Validation\ValidationException;
 
 class CuentaAccesoController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $cuentas = CuentaAcceso::with(['lector.persona', 'empleado.persona', 'permisos'])
-            ->orderByRaw("CASE WHEN rol = 'SUPERADMIN' THEN 0 WHEN rol = 'BIBLIOTECARIO' THEN 1 ELSE 2 END")
-            ->orderBy('nombre_usuario')->get();
-        return view('cuentas.index', ['cuentas' => $cuentas, 'modulos' => PermisosBiblioteca::MODULOS]);
+        $buscar = trim((string) $request->input('buscar'));
+        $cuentas = CuentaAcceso::with(['lector.persona', 'empleado.persona'])
+            ->when($buscar !== '', function ($query) use ($buscar): void {
+                $query->where(function ($subquery) use ($buscar): void {
+                    $subquery->where('nombre_usuario', 'like', "%{$buscar}%")
+                        ->orWhereHas('lector.persona', fn ($persona) => $persona->where('nombre', 'like', "%{$buscar}%")->orWhere('apellido_paterno', 'like', "%{$buscar}%"))
+                        ->orWhereHas('empleado.persona', fn ($persona) => $persona->where('nombre', 'like', "%{$buscar}%")->orWhere('apellido_paterno', 'like', "%{$buscar}%"));
+                });
+            })
+            ->orderBy('id_cuenta')->paginate(15)->withQueryString();
+        $totales = CuentaAcceso::selectRaw('rol, COUNT(*) as total')->groupBy('rol')->pluck('total', 'rol');
+        $permisosRol = [];
+        foreach (['BIBLIOTECARIO', 'USUARIO'] as $rol) {
+            $permisosRol[$rol] = PermisosBiblioteca::vigentes($rol);
+        }
+
+        return view('cuentas.index', compact('cuentas', 'totales', 'permisosRol', 'buscar'));
     }
 
     public function create()
     {
-        return view('cuentas.formulario', [
-            'cuenta' => null,
-            'lectores' => Usuario::with('persona')->whereDoesntHave('cuentaAcceso')->orderBy('id_usuario')->get(),
-            'empleados' => Bibliotecario::with('persona')->whereDoesntHave('cuentaAcceso')->orderBy('id_bibliotecario')->get(),
-        ]);
+        return redirect()->route('personas.index')->with('success', 'Para crear una cuenta y asignar su rol, abre Editar persona.');
     }
 
     public function store(Request $request)
     {
-        $data = $request->validate([
-            'nombre_usuario' => ['required', 'regex:/^[a-zA-Z0-9._-]+$/', 'min:4', 'max:60', 'unique:cuentas_acceso,nombre_usuario'],
-            'password' => ['required', 'string', 'min:12', 'confirmed'],
-            'rol' => ['required', Rule::in(['USUARIO', 'BIBLIOTECARIO'])],
-            'id_usuario' => ['nullable', 'integer', 'exists:usuarios,id_usuario', 'unique:cuentas_acceso,id_usuario'],
-            'id_bibliotecario' => ['nullable', 'integer', 'exists:bibliotecarios,id_bibliotecario', 'unique:cuentas_acceso,id_bibliotecario'],
-        ]);
-        $this->verificarVinculo($data);
-
-        $cuenta = DB::transaction(function () use ($data, $request) {
-            $cuenta = CuentaAcceso::create([
-                'nombre_usuario' => $data['nombre_usuario'],
-                'password' => $data['password'],
-                'rol' => $data['rol'],
-                'activo' => true,
-                'id_usuario' => $data['rol'] === 'USUARIO' ? $data['id_usuario'] : null,
-                'id_bibliotecario' => $data['rol'] === 'BIBLIOTECARIO' ? $data['id_bibliotecario'] : null,
-            ]);
-            $filas = [];
-            foreach (PermisosBiblioteca::iniciales($cuenta->rol) as $permiso) {
-                [$modulo, $accion] = explode(':', $permiso, 2);
-                $filas[] = compact('modulo', 'accion') + ['id_cuenta' => $cuenta->id_cuenta];
-            }
-            DB::table('cuenta_permisos')->insert($filas);
-            DB::table('historial_permisos')->insert([
-                'actor_id' => $request->user()->id_cuenta,
-                'cuenta_id' => $cuenta->id_cuenta,
-                'evento' => 'CREAR_CUENTA',
-                'detalle' => json_encode(['rol' => $cuenta->rol, 'permisos' => PermisosBiblioteca::iniciales($cuenta->rol)]),
-                'created_at' => now(),
-            ]);
-            return $cuenta;
-        });
-        return redirect()->route('cuentas.permisos', $cuenta)->with('success', 'Cuenta creada; ahora puedes personalizar sus permisos.');
+        abort(403, 'Las cuentas y sus roles se crean desde Personas → Editar persona.');
     }
 
     public function edit(CuentaAcceso $cuenta)
     {
-        abort_if($cuenta->rol === 'SUPERADMIN', 403);
         return view('cuentas.formulario', ['cuenta' => $cuenta]);
     }
 
     public function update(Request $request, CuentaAcceso $cuenta)
     {
-        abort_if($cuenta->rol === 'SUPERADMIN', 403);
+        abort_if($request->hasAny(['rol', 'acceso', 'id_usuario', 'id_bibliotecario', 'permisos']), 403, 'Los roles se asignan exclusivamente desde Personas → Editar persona.');
         $data = $request->validate([
             'nombre_usuario' => ['required', 'regex:/^[a-zA-Z0-9._-]+$/', 'min:4', 'max:60', Rule::unique('cuentas_acceso', 'nombre_usuario')->ignore($cuenta->id_cuenta, 'id_cuenta')],
-            'password' => ['nullable', 'string', 'min:12', 'confirmed'],
+            'password' => ['nullable', 'string', 'min:12', new LimiteBcrypt, 'confirmed'],
             'activo' => ['required', 'boolean'],
         ]);
-        DB::transaction(function () use ($cuenta, $data, $request): void {
-            $anterior = ['nombre_usuario' => $cuenta->nombre_usuario, 'activo' => $cuenta->activo];
-            $cuenta->nombre_usuario = $data['nombre_usuario'];
-            $cuenta->activo = (bool) $data['activo'];
-            if (filled($data['password'] ?? null)) {
-                $cuenta->password = $data['password'];
-            }
-            $cuenta->save();
-            DB::table('historial_permisos')->insert([
-                'actor_id' => $request->user()->id_cuenta,
-                'cuenta_id' => $cuenta->id_cuenta,
-                'evento' => 'ACTUALIZAR_CUENTA',
-                'detalle' => json_encode(['antes' => $anterior, 'despues' => ['nombre_usuario' => $cuenta->nombre_usuario, 'activo' => $cuenta->activo], 'password_cambiada' => filled($data['password'] ?? null)]),
-                'created_at' => now(),
-            ]);
-        });
+        app(AdministrarCuenta::class)->actualizar($cuenta, $data, $request->user());
+
         return redirect()->route('cuentas.index')->with('success', 'Cuenta actualizada.');
     }
 
     public function permisos(CuentaAcceso $cuenta)
     {
-        abort_if($cuenta->rol === 'SUPERADMIN', 403, 'Los permisos del SUPERADMIN no se modifican desde este panel.');
-        $asignados = $cuenta->permisos->map(fn ($permiso) => $permiso->modulo . ':' . $permiso->accion)->all();
-        return view('cuentas.permisos', [
-            'cuenta' => $cuenta,
-            'modulos' => PermisosBiblioteca::MODULOS,
-            'acciones' => PermisosBiblioteca::ACCIONES,
-            'asignados' => $asignados,
-        ]);
+        abort_if($cuenta->rol === 'SUPERADMIN', 403);
+
+        return redirect()->route('cuentas.roles.permisos', $cuenta->rol);
     }
 
     public function guardarPermisos(Request $request, CuentaAcceso $cuenta)
     {
-        abort_if($cuenta->rol === 'SUPERADMIN', 403);
-        $datos = $request->validate([
-            'permisos' => ['sometimes', 'array'],
-            'permisos.*' => ['string', 'max:65'],
+        abort(403, 'Los permisos individuales son históricos. Configura la matriz del rol.');
+    }
+
+    public function permisosRol(string $rol)
+    {
+        abort_unless(in_array($rol, ['BIBLIOTECARIO', 'USUARIO'], true), 404);
+
+        return view('cuentas.permisos', [
+            'rol' => $rol, 'modulos' => PermisosBiblioteca::MODULOS,
+            'acciones' => PermisosBiblioteca::ACCIONES, 'asignados' => PermisosBiblioteca::vigentes($rol),
         ]);
+    }
+
+    public function guardarPermisosRol(Request $request, string $rol)
+    {
+        abort_unless(in_array($rol, ['BIBLIOTECARIO', 'USUARIO'], true), 404);
+        // Identificar la matriz de los errores de validación sin confiar en el campo enviado.
+        $request->merge(['matriz_rol' => $rol]);
+        $datos = $request->validate(['permisos' => ['sometimes', 'array'], 'permisos.*' => ['string', 'max:65']]);
         $nuevos = array_values(array_unique($datos['permisos'] ?? []));
         foreach ($nuevos as $valor) {
             $partes = explode(':', $valor);
-            if (count($partes) !== 2 || !PermisosBiblioteca::permiteRol($cuenta->rol, $partes[0], $partes[1])) {
-                throw ValidationException::withMessages(['permisos' => 'Uno de los permisos enviados no es válido para este rol.']);
+            if (count($partes) !== 2 || ! PermisosBiblioteca::permiteRol($rol, $partes[0], $partes[1])) {
+                throw ValidationException::withMessages(['permisos' => 'Uno de los permisos no es válido para este rol.']);
+            }
+            if ($partes[1] !== 'ver') {
+                $nuevos[] = $partes[0].':ver';
             }
         }
+        $nuevos = array_values(array_unique($nuevos));
         sort($nuevos);
-        DB::transaction(function () use ($nuevos, $cuenta, $request): void {
-            $actuales = $cuenta->permisos()->get()->map(fn ($p) => $p->modulo . ':' . $p->accion)->all();
-            sort($actuales);
-            $cuenta->permisos()->delete();
+        DB::transaction(function () use ($rol, $nuevos, $request): void {
+            $cuentas = CuentaAcceso::orderBy('id_cuenta')->lockForUpdate()->get();
+            $actor = $cuentas->firstWhere('id_cuenta', $request->user()->id_cuenta);
+            abort_unless($actor && $actor->activo && $actor->rol === 'SUPERADMIN', 403);
+            $anteriores = PermisosBiblioteca::vigentes($rol);
+            DB::table('rol_permisos')->where('rol', $rol)->delete();
             foreach ($nuevos as $valor) {
                 [$modulo, $accion] = explode(':', $valor, 2);
-                $cuenta->permisos()->create(compact('modulo', 'accion'));
+                DB::table('rol_permisos')->insert(compact('rol', 'modulo', 'accion'));
             }
-            DB::table('historial_permisos')->insert([
-                'actor_id' => $request->user()->id_cuenta,
-                'cuenta_id' => $cuenta->id_cuenta,
-                'evento' => 'CAMBIAR_PERMISOS',
-                'detalle' => json_encode(['anteriores' => $actuales, 'nuevos' => $nuevos], JSON_UNESCAPED_UNICODE),
+            DB::table('historial_rol_permisos')->insert([
+                'actor_id' => $actor->id_cuenta, 'rol' => $rol,
+                'detalle' => json_encode(['evento' => 'CONFIGURAR_ROL', 'anteriores' => $anteriores, 'nuevos' => $nuevos], JSON_UNESCAPED_UNICODE),
                 'created_at' => now(),
             ]);
         });
-        return redirect()->route('cuentas.permisos', $cuenta)->with('success', 'Permisos guardados y aplicados.');
+
+        return redirect()->route('cuentas.roles.permisos', $rol)->with('success', 'Permisos del rol guardados. Todas sus cuentas heredan los cambios.');
     }
 
     public function historial()
@@ -153,17 +128,13 @@ class CuentaAccesoController extends Controller
             ->leftJoin('cuentas_acceso as actor', 'actor.id_cuenta', '=', 'h.actor_id')
             ->join('cuentas_acceso as destino', 'destino.id_cuenta', '=', 'h.cuenta_id')
             ->select('h.*', 'actor.nombre_usuario as actor', 'destino.nombre_usuario as destino')
-            ->orderByDesc('h.id_cambio')->paginate(25);
-        return view('cuentas.historial', compact('cambios'));
-    }
+            ->orderBy('h.id_cambio')->paginate(25, ['*'], 'cuentas_page')->withQueryString();
 
-    private function verificarVinculo(array $data): void
-    {
-        if ($data['rol'] === 'USUARIO' && (empty($data['id_usuario']) || !empty($data['id_bibliotecario']))) {
-            throw ValidationException::withMessages(['id_usuario' => 'Vincula exactamente un lector existente.']);
-        }
-        if ($data['rol'] === 'BIBLIOTECARIO' && (empty($data['id_bibliotecario']) || !empty($data['id_usuario']))) {
-            throw ValidationException::withMessages(['id_bibliotecario' => 'Vincula exactamente un bibliotecario existente.']);
-        }
+        $cambiosRoles = DB::table('historial_rol_permisos as h')
+            ->leftJoin('cuentas_acceso as actor', 'actor.id_cuenta', '=', 'h.actor_id')
+            ->select('h.*', 'actor.nombre_usuario as actor')->orderBy('h.id_cambio')
+            ->paginate(25, ['*'], 'roles_page')->withQueryString();
+
+        return view('cuentas.historial', compact('cambios', 'cambiosRoles'));
     }
 }

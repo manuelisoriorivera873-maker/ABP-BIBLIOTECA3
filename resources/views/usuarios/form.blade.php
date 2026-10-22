@@ -1,7 +1,17 @@
 <div class="form-section">
     <h3>Datos personales</h3>
 
-    <div class="row g-3">
+    @isset($personasDisponibles)
+        <label class="form-label" for="personaExistente">Persona existente</label>
+        <select class="form-select mb-3" name="id_persona" id="personaExistente">
+            <option value="">Registrar una persona nueva</option>
+            @foreach($personasDisponibles as $persona)
+                <option value="{{ $persona->id_persona }}" @selected(old('id_persona') == $persona->id_persona)>{{ $persona->nombre_completo }} (ID {{ $persona->id_persona }})</option>
+            @endforeach
+        </select>
+        <p class="text-muted">Selecciona una persona para conservar sus datos y sus funciones como autor o bibliotecario.</p>
+    @endisset
+    <div class="row g-3" id="datosPersonaNueva">
         <div class="col-md-4">
             <label class="form-label">Nombre(s) del usuario *</label>
             <input
@@ -36,6 +46,24 @@
         </div>
     </div>
 </div>
+
+@isset($personasDisponibles)
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const selector = document.getElementById('personaExistente');
+            const datos = document.getElementById('datosPersonaNueva');
+            function actualizarPersona() {
+                datos.hidden = selector.value !== '';
+                datos.querySelectorAll('input').forEach(input => {
+                    input.disabled = datos.hidden;
+                    input.required = !datos.hidden;
+                });
+            }
+            selector.addEventListener('change', actualizarPersona);
+            actualizarPersona();
+        });
+    </script>
+@endisset
 
 <div class="form-section">
     <h3>Datos del usuario de biblioteca</h3>

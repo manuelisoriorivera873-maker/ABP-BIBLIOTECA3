@@ -15,7 +15,7 @@ class BibliotecarioController extends Controller
         $buscar = trim((string) $request->input('buscar'));
 
         $bibliotecarios = Bibliotecario::with('persona')
-            ->withCount('prestamos')
+            ->withCount(['prestamos' => fn ($prestamos) => $prestamos->visiblesPara($request->user())])
             ->when($buscar !== '', function ($query) use ($buscar): void {
                 $query->whereHas('persona', function ($persona) use ($buscar): void {
                     $persona->where('nombre', 'like', "%{$buscar}%")
@@ -23,7 +23,7 @@ class BibliotecarioController extends Controller
                         ->orWhere('apellido_materno', 'like', "%{$buscar}%");
                 });
             })
-            ->orderByDesc('id_bibliotecario')
+            ->orderBy('id_bibliotecario')
             ->paginate(15)
             ->withQueryString();
 
@@ -32,17 +32,13 @@ class BibliotecarioController extends Controller
 
     public function create()
     {
-        return view('bibliotecarios.create');
+        return view('bibliotecarios.create', ['personas' => Persona::whereDoesntHave('bibliotecario')->orderBy('nombre')->get()]);
     }
 
     public function store(Request $request)
     {
-        $data = $this->validar($request);
-
-        DB::transaction(function () use ($data): void {
-            $persona = Persona::create($data);
-            Bibliotecario::create(['id_persona' => $persona->id_persona]);
-        });
+        $data = $request->validate(['id_persona' => ['required', 'integer', 'exists:personas,id_persona', 'unique:bibliotecarios,id_persona']]);
+        Bibliotecario::create($data);
 
         return redirect()->route('bibliotecarios.index')->with('success', 'Bibliotecario registrado correctamente.');
     }
@@ -63,8 +59,8 @@ class BibliotecarioController extends Controller
 
     public function destroy(Bibliotecario $bibliotecario)
     {
-        if ($bibliotecario->prestamos()->exists()) {
-            return back()->with('error', 'No se puede eliminar el bibliotecario porque tiene préstamos registrados.');
+        if ($bibliotecario->cuentaAcceso()->exists() || $bibliotecario->prestamos()->exists()) {
+            return back()->with('error', 'No se puede eliminar el bibliotecario porque tiene una cuenta o préstamos registrados.');
         }
 
         try {
@@ -72,9 +68,7 @@ class BibliotecarioController extends Controller
                 $persona = $bibliotecario->persona;
                 $bibliotecario->delete();
 
-                if ($persona && !$persona->usuario()->exists()) {
-                    $persona->delete();
-                }
+                // La persona puede tener otras funciones; se conserva su registro.
             });
         } catch (Throwable $e) {
             return back()->with('error', 'No fue posible eliminar el bibliotecario.');

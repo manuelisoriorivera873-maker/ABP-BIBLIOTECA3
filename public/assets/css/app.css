@@ -281,3 +281,15 @@ a { color: var(--primary); }
         display: none;
     }
 }
+/* Paginación Bootstrap compartida por los listados de SAIDE. */
+.saide-pagination { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem; margin-top: 1.25rem; }
+.saide-pagination__summary { margin: 0; color: #64748b; font-size: .875rem; }
+.saide-pagination .pagination { display: flex; flex-wrap: wrap; gap: .25rem; list-style: none; padding: 0; }
+.saide-pagination .page-link { border-radius: .5rem; color: #1d4ed8; min-width: 2.25rem; text-align: center; }
+.saide-pagination .active > .page-link { background: #1d4ed8; border-color: #1d4ed8; color: #fff; }
+.saide-pagination .disabled > .page-link { color: #64748b; background: #f1f5f9; }
+@media (max-width: 575.98px) {
+    .saide-pagination { flex-direction: column; align-items: flex-start; }
+    .saide-pagination .page-number:not(.active) { display: none; }
+    .saide-pagination .page-link { padding: .5rem .65rem; }
+}

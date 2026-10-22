@@ -24,11 +24,7 @@ class AutorController extends Controller
                         ->orWhere('apellido_materno', 'like', "%{$buscar}%");
                 });
             })
-            ->orderBy(
-                Persona::select('apellido_paterno')
-                    ->whereColumn('personas.id_persona', 'autores.id_persona')
-                    ->limit(1)
-            )
+            ->orderBy('id_autor')
             ->paginate(15)
             ->withQueryString();
 

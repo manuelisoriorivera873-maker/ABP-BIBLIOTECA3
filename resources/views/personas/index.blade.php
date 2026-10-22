@@ -35,6 +35,9 @@
                         <th>ID</th>
                         <th>Nombre completo</th>
                         <th>Relación con el sistema</th>
+                        @if(auth()->user()->rol === 'SUPERADMIN')
+                            <th>Rol de acceso</th>
+                        @endif
                         <th>Información relacionada</th>
                         <th class="text-end">Acciones</th>
                     </tr>
@@ -46,17 +49,28 @@
                             <td>{{ $persona->nombre_completo }}</td>
                             <td>
                                 @if ($persona->usuario)
-                                    <span class="badge text-bg-primary">USUARIO</span>
+                                    <span class="badge text-bg-primary">LECTOR</span>
                                 @endif
 
                                 @if ($persona->bibliotecario)
-                                    <span class="badge text-bg-warning">BIBLIOTECARIO</span>
+                                    <span class="badge text-bg-warning">PERSONAL BIBLIOTECARIO</span>
                                 @endif
 
                                 @if (!$persona->usuario && !$persona->bibliotecario)
                                     <span class="badge text-bg-secondary">SIN ASIGNAR</span>
                                 @endif
                             </td>
+                            @if(auth()->user()->rol === 'SUPERADMIN')
+                                <td>
+                                    @php($cuentasVinculadas = collect([$persona->usuario?->cuentaAcceso, $persona->bibliotecario?->cuentaAcceso])->filter()->unique('id_cuenta'))
+                                    @forelse($cuentasVinculadas as $acceso)
+                                        <div><span class="badge text-bg-primary">{{ $acceso->rol }}</span></div>
+                                        <small class="text-muted">{{ $acceso->nombre_usuario }} · {{ $acceso->activo ? 'Activa' : 'Inactiva' }}</small>
+                                    @empty
+                                        <span class="badge text-bg-secondary">SIN CUENTA</span>
+                                    @endforelse
+                                </td>
+                            @endif
                             <td>
                                 @if ($persona->usuario)
                                     <div>Teléfono: {{ $persona->usuario->telefono }}</div>
@@ -104,7 +118,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="5" class="text-center text-muted py-4">
+                            <td colspan="{{ auth()->user()->rol === 'SUPERADMIN' ? 6 : 5 }}" class="text-center text-muted py-4">
                                 No hay personas registradas.
                             </td>
                         </tr>

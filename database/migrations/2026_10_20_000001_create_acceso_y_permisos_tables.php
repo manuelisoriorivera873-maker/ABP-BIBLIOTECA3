@@ -8,6 +8,26 @@ return new class extends Migration
 {
     public function up(): void
     {
+        // La instalación histórica creó estas tablas manualmente. No repetir el DDL.
+        $existentes = [
+            'cuentas_acceso' => ['id_cuenta', 'nombre_usuario', 'password', 'rol', 'activo', 'id_usuario', 'id_bibliotecario', 'ultimo_acceso', 'created_at', 'updated_at'],
+            'cuenta_permisos' => ['id_permiso', 'id_cuenta', 'modulo', 'accion'],
+            'historial_permisos' => ['id_cambio', 'actor_id', 'cuenta_id', 'evento', 'detalle', 'created_at'],
+        ];
+        $presentes = array_filter(array_keys($existentes), fn ($tabla) => Schema::hasTable($tabla));
+        if ($presentes !== []) {
+            if (count($presentes) !== count($existentes)) {
+                throw new RuntimeException('Esquema de acceso parcial. Verifica el respaldo y completa la auditoría antes de migrar.');
+            }
+            foreach ($existentes as $tabla => $columnas) {
+                if (! Schema::hasColumns($tabla, $columnas)) {
+                    throw new RuntimeException("La tabla {$tabla} no es compatible. Se requiere revisión del esquema; no se alteraron datos.");
+                }
+            }
+
+            return;
+        }
+
         Schema::create('cuentas_acceso', function (Blueprint $table): void {
             $table->bigIncrements('id_cuenta');
             $table->string('nombre_usuario', 60)->unique();
@@ -46,9 +66,6 @@ return new class extends Migration
 
     public function down(): void
     {
-        // Los datos de seguridad son auditables; use rollback solo en el laboratorio.
-        Schema::dropIfExists('historial_permisos');
-        Schema::dropIfExists('cuenta_permisos');
-        Schema::dropIfExists('cuentas_acceso');
+        throw new RuntimeException('La migración conserva cuentas e historial. La reversión requiere un procedimiento explícito con respaldo.');
     }
 };

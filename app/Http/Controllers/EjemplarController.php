@@ -32,7 +32,7 @@ class EjemplarController extends Controller
                 });
             })
             ->when($estado, fn ($query) => $query->where('id_estado_ejemplar', $estado))
-            ->orderByDesc('id_ejemplar')
+            ->orderBy('id_ejemplar')
             ->paginate(15)
             ->withQueryString();
 
@@ -51,7 +51,7 @@ class EjemplarController extends Controller
         $data = $this->validar($request, null, true);
         $cantidad = (int) ($data['cantidad'] ?? 1);
 
-        if ($cantidad > 1 && !empty($data['codigo_inventario'])) {
+        if ($cantidad > 1 && ! empty($data['codigo_inventario'])) {
             throw ValidationException::withMessages([
                 'codigo_inventario' => 'Para registrar varios ejemplares deja vacío el código de inventario y el sistema los generará automáticamente.',
             ]);
@@ -144,11 +144,11 @@ class EjemplarController extends Controller
     private function siguienteCodigo(): string
     {
         $ultimo = (int) (Ejemplar::max('id_ejemplar') ?? 0) + 1;
-        $codigo = 'EJ-' . str_pad((string) $ultimo, 5, '0', STR_PAD_LEFT);
+        $codigo = 'EJ-'.str_pad((string) $ultimo, 5, '0', STR_PAD_LEFT);
 
         while (Ejemplar::where('codigo_inventario', $codigo)->exists()) {
             $ultimo++;
-            $codigo = 'EJ-' . str_pad((string) $ultimo, 5, '0', STR_PAD_LEFT);
+            $codigo = 'EJ-'.str_pad((string) $ultimo, 5, '0', STR_PAD_LEFT);
         }
 
         return $codigo;

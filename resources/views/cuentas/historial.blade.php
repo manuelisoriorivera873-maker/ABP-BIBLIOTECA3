@@ -5,4 +5,20 @@
 <div class="panel"><div class="table-responsive"><table class="table align-middle"><thead><tr><th>Fecha</th><th>Administrador</th><th>Cuenta afectada</th><th>Evento</th><th>Detalle</th></tr></thead><tbody>@forelse($cambios as $cambio)
 <tr><td>{{ $cambio->created_at }}</td><td>{{ $cambio->actor ?? 'Sin cuenta' }}</td><td>{{ $cambio->destino }}</td><td>{{ $cambio->evento }}</td><td><details><summary>Ver cambios</summary><pre class="small" style="white-space:pre-wrap;word-break:break-word">{{ json_encode(json_decode($cambio->detalle,true), JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE) }}</pre></details></td></tr>
 @empty<tr><td colspan="5" class="text-center text-muted">Sin cambios registrados.</td></tr>@endforelse</tbody></table></div>{{ $cambios->links() }}</div>
+<div class="panel mt-4">
+    <h2 class="h5">Historial de permisos por rol</h2>
+    <div class="table-responsive"><table class="table align-middle">
+        <thead><tr><th>ID</th><th>Fecha</th><th>Administrador</th><th>Rol</th><th>Detalle</th></tr></thead>
+        <tbody>
+            @forelse($cambiosRoles as $cambio)
+                <tr><td>{{ $cambio->id_cambio }}</td><td>{{ $cambio->created_at }}</td><td>{{ $cambio->actor ?? 'Matriz institucional inicial' }}</td><td>{{ $cambio->rol }}</td>
+                    <td><details><summary>Ver cambios</summary><pre class="small text-wrap">{{ json_encode(json_decode($cambio->detalle, true), JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE) }}</pre></details></td>
+                </tr>
+            @empty
+                <tr><td colspan="5">Sin cambios de roles registrados.</td></tr>
+            @endforelse
+        </tbody>
+    </table></div>
+    {{ $cambiosRoles->links() }}
+</div>
 @endsection

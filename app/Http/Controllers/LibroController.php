@@ -31,7 +31,7 @@ class LibroController extends Controller
                         });
                 });
             })
-            ->orderBy('titulo')
+            ->orderBy('id_libro')
             ->paginate(12)
             ->withQueryString();
 

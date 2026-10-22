@@ -12,8 +12,11 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
+        $middleware->trimStrings(except: ['acceso.password', 'acceso.password_confirmation']);
         $middleware->alias(['biblioteca' => AutorizarBiblioteca::class]);
         $middleware->redirectGuestsTo(fn () => route('login'));
+        $middleware->redirectUsersTo(fn () => route(auth()->user()?->rol === 'USUARIO' ? 'libros.index' : 'dashboard'));
     })
     ->withExceptions(function (Exceptions $exceptions): void {
+        $exceptions->dontFlash(['acceso.password', 'acceso.password_confirmation']);
     })->create();
