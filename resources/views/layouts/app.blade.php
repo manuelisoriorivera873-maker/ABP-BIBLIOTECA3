@@ -471,9 +471,11 @@
 
     <!-- JAVASCRIPT -->
 
+    @stack('modals')
+
     <script src="{{ asset('assets/vendor/bootstrap/bootstrap.bundle.min.js') }}"></script>
 
-    <script src="{{ asset('assets/js/app.js') }}?v=2"></script>
+    <script src="{{ asset('assets/js/app.js') }}?v=3"></script>
 
     @stack('scripts')
 

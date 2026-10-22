@@ -89,7 +89,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
 
                 const select = document.getElementById('autoresSelect');
-                select.add(new Option(data.texto, data.id, true, true));
+                const existente = Array.from(select.options).find(option => option.value === String(data.id));
+                if (existente) {
+                    existente.selected = true;
+                    existente.hidden = false;
+                } else {
+                    select.add(new Option(data.texto, data.id, true, true));
+                }
                 persona.querySelector(`option[value="${persona.value}"]`)?.remove();
 
                 bootstrap.Modal.getOrCreateInstance(document.getElementById('modalAutor')).hide();
