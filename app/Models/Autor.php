@@ -14,6 +14,16 @@ class Autor extends Model
 
     protected $fillable = ['id_persona'];
 
+    public function ficha()
+    {
+        return $this->hasOne(AutorFicha::class, 'id_autor', 'id_autor');
+    }
+
+    public function getNombrePublicoAttribute(): string
+    {
+        return $this->ficha?->nombre_publico ?? $this->nombre_completo;
+    }
+
     public function persona(): BelongsTo
     {
         return $this->belongsTo(Persona::class, 'id_persona', 'id_persona');

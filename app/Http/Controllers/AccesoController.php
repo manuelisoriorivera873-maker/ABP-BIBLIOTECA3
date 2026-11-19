@@ -18,7 +18,7 @@ class AccesoController extends Controller
             $cuenta = Auth::user();
 
             if ($cuenta->rol === 'USUARIO') {
-                return redirect()->route('libros.index');
+                return redirect()->route('lector.inicio');
             }
 
             return redirect()->route('dashboard');
@@ -75,7 +75,7 @@ class AccesoController extends Controller
                 return redirect()->route('dashboard');
 
             case 'USUARIO':
-                return redirect()->route('libros.index');
+                return redirect()->route('lector.inicio');
 
             default:
                 Auth::logout();

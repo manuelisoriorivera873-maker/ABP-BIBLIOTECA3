@@ -23,7 +23,7 @@ class SolicitudesPrestamoTest extends TestCase
         $this->assertSame('sqlite', DB::connection()->getDriverName());
         $this->assertSame(':memory:', DB::connection()->getDatabaseName());
         DB::unprepared(file_get_contents(__DIR__.'/../Fixtures/schema.sql'));
-        foreach (['2026_10_22_000002_create_permisos_por_rol.php', '2026_10_22_000003_create_solicitudes_prestamo.php'] as $archivo) {
+        foreach (['2026_10_22_000002_create_permisos_por_rol.php', '2026_10_22_000003_create_solicitudes_prestamo.php', '2026_10_31_000004_create_libro_fichas.php', '2026_10_31_000005_create_fichas_bibliograficas.php', '2026_10_31_000006_add_revision_bibliografica.php', '2026_10_31_000007_create_lectura_y_favoritos.php'] as $archivo) {
             (require database_path('migrations/'.$archivo))->up();
         }
         DB::table('estados_usuario')->insert([
@@ -37,6 +37,7 @@ class SolicitudesPrestamoTest extends TestCase
         DB::table('ubicaciones_libros')->insert(['id_ubicacion' => 1, 'nombre_ubicacion' => 'Estante']);
         for ($libro = 1; $libro <= 4; $libro++) {
             DB::table('libros')->insert(['id_libro' => $libro, 'titulo' => 'Título '.$libro, 'isbn' => 'isbn-'.$libro]);
+            DB::table('libro_fichas')->insert(['id_libro' => $libro, 'publico' => (string) Str::uuid()]);
             for ($copia = 1; $copia <= 4; $copia++) {
                 Ejemplar::create(['codigo_inventario' => "$libro-$copia", 'id_libro' => $libro, 'id_ubicacion' => 1, 'id_estado_ejemplar' => 1]);
             }
@@ -71,7 +72,7 @@ class SolicitudesPrestamoTest extends TestCase
     private function login(?string &$sesion, CuentaAcceso $cuenta): void
     {
         $this->navegar($sesion, 'POST', '/login', ['nombre_usuario' => $cuenta->nombre_usuario, 'password' => 'UnaClaveSegura123!'])
-            ->assertRedirect($cuenta->rol === 'USUARIO' ? '/libros' : '/');
+            ->assertRedirect($cuenta->rol === 'USUARIO' ? '/lector/inicio' : '/');
         $this->assertAuthenticatedAs($cuenta);
     }
 
@@ -85,8 +86,8 @@ class SolicitudesPrestamoTest extends TestCase
         $this->navegar($sesionPersonal, 'POST', '/solicitudes/disponibilidad', ['disponible' => 1])->assertRedirect('/solicitudes');
         $this->navegar($sesionPersonal, 'GET', '/solicitudes')->assertOk()->assertSee('disponible');
         $this->login($sesionLector, $lector);
-        $this->navegar($sesionLector, 'GET', '/libros')->assertOk()->assertSee('Catálogo de libros')->assertSee('Solicitar préstamo')->assertSee('Mis solicitudes')->assertSee('Mis préstamos');
-        $this->navegar($sesionLector, 'GET', '/solicitudes/nueva')->assertOk()->assertSee('Título 1')->assertSee('Resumen de la solicitud');
+        $this->navegar($sesionLector, 'GET', '/lector/inicio')->assertOk()->assertSee('Explorar libros')->assertSee('Solicitar préstamo')->assertSee('Mis solicitudes')->assertSee('Mis préstamos');
+        $this->navegar($sesionLector, 'GET', '/lector/explorar')->assertOk()->assertSee('Título 1');
         $this->navegar($sesionLector, 'POST', '/solicitudes', ['libros' => [1 => 3, 2 => 2], 'id_usuario' => 999])->assertRedirect('/solicitudes')->assertSessionHasNoErrors();
         $solicitud = SolicitudPrestamo::firstOrFail();
         $this->assertEquals($lector->id_usuario, $solicitud->id_usuario);
@@ -94,18 +95,14 @@ class SolicitudesPrestamoTest extends TestCase
         $this->assertSame(5, $solicitud->detalles->sum('cantidad'));
         $this->assertSame(0, Prestamo::count());
         $this->navegar($sesionPersonal, 'GET', '/solicitudes')->assertOk()->assertSee('Título 1')->assertSee('Aprobar');
-        $this->navegar($sesionPersonal, 'PUT', '/solicitudes/'.$solicitud->getKey(), ['decision' => 'aprobar'])->assertRedirect('/solicitudes')->assertSessionHasNoErrors();
+        $this->navegar($sesionPersonal, 'PUT', '/solicitudes/'.$solicitud->getKey(), ['decision' => 'aprobar', 'fecha_limite' => today()->addDays(7)->toDateString()])->assertRedirect('/solicitudes')->assertSessionHasNoErrors();
         $this->assertSame('APROBADA', $solicitud->fresh()->estado);
-        $this->assertSame(0, Prestamo::count());
-        $this->navegar($sesionLector, 'GET', '/solicitudes')->assertOk()->assertSee('APROBADA')->assertDontSee('Confirmar entrega');
-        $this->navegar($sesionPersonal, 'PUT', '/solicitudes/'.$solicitud->getKey(), ['decision' => 'entregar', 'fecha_limite' => today()->addDays(7)->toDateString()])->assertRedirect('/solicitudes')->assertSessionHasNoErrors();
-        $this->assertSame('ENTREGADA', $solicitud->fresh()->estado);
         $this->assertSame(1, Prestamo::count());
         $this->assertSame(5, Prestamo::first()->detalles()->count());
         $this->assertSame(5, Ejemplar::where('id_estado_ejemplar', 2)->count());
-        $this->navegar($sesionLector, 'GET', '/solicitudes')->assertOk()->assertSee('ENTREGADA');
-        $this->navegar($sesionLector, 'GET', '/lector/prestamos')->assertOk()->assertSee('Mis préstamos')->assertSee('Título 1')->assertViewHas('prestamos', fn ($p) => $p->total() === 1);
-        $this->navegar($sesionPersonal, 'PUT', '/solicitudes/'.$solicitud->getKey(), ['decision' => 'entregar', 'fecha_limite' => today()->toDateString()])->assertStatus(409);
+        $this->navegar($sesionLector, 'GET', '/lector/mis-solicitudes')->assertOk()->assertSee('APROBADA');
+        $this->navegar($sesionLector, 'GET', '/lector/mis-prestamos')->assertOk()->assertSee('Mis préstamos')->assertSee('Título 1')->assertViewHas('prestamos', fn ($p) => $p->total() === 1);
+        $this->navegar($sesionPersonal, 'PUT', '/solicitudes/'.$solicitud->getKey(), ['decision' => 'aprobar', 'fecha_limite' => today()->toDateString()])->assertStatus(409);
         $this->assertSame(1, Prestamo::count());
     }
 
@@ -117,7 +114,7 @@ class SolicitudesPrestamoTest extends TestCase
         $this->actingAs($lector)->post('/solicitudes', ['libros' => [1 => 1]])->assertRedirect('/solicitudes');
         $solicitud = SolicitudPrestamo::firstOrFail();
         $this->assertNull($solicitud->asignada_a);
-        $this->actingAs($otro)->get('/solicitudes')->assertOk()->assertViewHas('solicitudes', fn ($p) => $p->total() === 0);
+        $this->actingAs($otro)->get('/lector/mis-solicitudes')->assertOk()->assertViewHas('solicitudes', fn ($p) => $p->total() === 0);
         $sesion = null;
         $this->login($sesion, $personal);
         $this->navegar($sesion, 'POST', '/solicitudes/disponibilidad', ['disponible' => 1])->assertRedirect('/solicitudes');
@@ -125,8 +122,8 @@ class SolicitudesPrestamoTest extends TestCase
         $this->assertEquals($personal->getKey(), $solicitud->fresh()->asignada_a);
         $this->navegar($sesion, 'PUT', '/solicitudes/'.$solicitud->getKey(), ['decision' => 'rechazar'])->assertSessionHasErrors('motivo');
         $this->navegar($sesion, 'PUT', '/solicitudes/'.$solicitud->getKey(), ['decision' => 'rechazar', 'motivo' => 'Ejemplar pendiente de reparación'])->assertRedirect('/solicitudes');
-        $this->actingAs($lector)->get('/solicitudes')->assertOk()->assertSee('RECHAZADA')->assertSee('Ejemplar pendiente de reparación');
-        $this->actingAs($otro)->get('/solicitudes')->assertOk()->assertDontSee('Ejemplar pendiente de reparación');
+        $this->actingAs($lector)->get('/lector/mis-solicitudes')->assertOk()->assertSee('RECHAZADA')->assertSee('Ejemplar pendiente de reparación');
+        $this->actingAs($otro)->get('/lector/mis-solicitudes')->assertOk()->assertDontSee('Ejemplar pendiente de reparación');
         $this->assertSame(0, Prestamo::count());
     }
 
@@ -159,8 +156,8 @@ class SolicitudesPrestamoTest extends TestCase
         $prestamo->update(['fecha_limite' => today()->addDay()]);
         $this->post('/solicitudes', ['libros' => [1 => 3]])->assertSessionHasErrors('libros');
         $otro = $this->cuenta();
-        $this->actingAs($otro)->get('/solicitudes/nueva')->assertOk()->assertViewHas('libros', fn ($libros) => $libros->find(1)->disponibles === 3);
-        $this->get('/lector/prestamos')->assertOk()->assertViewHas('prestamos', fn ($p) => $p->total() === 0);
+        $this->actingAs($otro)->get('/lector/explorar')->assertOk()->assertViewHas('libros', fn ($libros) => $libros->firstWhere('id_libro', 1)->disponibles === 3);
+        $this->get('/lector/mis-prestamos')->assertOk()->assertViewHas('prestamos', fn ($p) => $p->total() === 0);
     }
 
     public function test_autorizacion_de_servidor_revocacion_inmediata_y_matriz_centralizada(): void
@@ -173,21 +170,21 @@ class SolicitudesPrestamoTest extends TestCase
         $this->actingAs($lector)->post('/solicitudes', ['libros' => [1 => 1]])->assertRedirect('/solicitudes');
         $id = SolicitudPrestamo::first()->getKey();
         DB::table('rol_permisos')->insert(['rol' => 'USUARIO', 'modulo' => 'solicitudes', 'accion' => 'editar']);
-        $this->put('/solicitudes/'.$id, ['decision' => 'aprobar'])->assertForbidden();
+        $this->put('/solicitudes/'.$id, ['decision' => 'aprobar', 'fecha_limite' => today()->addDays(7)->toDateString()])->assertForbidden();
         $this->post('/solicitudes/disponibilidad', ['disponible' => 1])->assertForbidden();
         $this->actingAs($personal)->post('/solicitudes', ['libros' => [1 => 1]])->assertForbidden();
         $this->get('/cuentas')->assertForbidden();
         DB::table('rol_permisos')->where(['rol' => 'USUARIO', 'modulo' => 'solicitudes', 'accion' => 'crear'])->delete();
         foreach ([$lector, $otro] as $cuenta) {
-            $this->actingAs($cuenta)->get('/solicitudes/nueva')->assertForbidden();
+            $this->actingAs($cuenta)->get('/lector/solicitar')->assertForbidden();
             $this->post('/solicitudes', ['libros' => [1 => 1]])->assertForbidden();
         }
         DB::table('rol_permisos')->where(['rol' => 'BIBLIOTECARIO', 'modulo' => 'solicitudes', 'accion' => 'editar'])->delete();
         foreach ([$personal, $personal2] as $cuenta) {
-            $this->actingAs($cuenta)->put('/solicitudes/'.$id, ['decision' => 'aprobar'])->assertForbidden();
+            $this->actingAs($cuenta)->put('/solicitudes/'.$id, ['decision' => 'aprobar', 'fecha_limite' => today()->addDays(7)->toDateString()])->assertForbidden();
         }
         $this->actingAs($this->cuenta('SUPERADMIN'))->get('/solicitudes')->assertOk();
-        $this->put('/solicitudes/'.$id, ['decision' => 'aprobar'])->assertRedirect('/solicitudes');
+        $this->put('/solicitudes/'.$id, ['decision' => 'aprobar', 'fecha_limite' => today()->addDays(7)->toDateString()])->assertForbidden();
         $this->assertSame(0, DB::table('cuenta_permisos')->count());
     }
 
@@ -209,26 +206,25 @@ class SolicitudesPrestamoTest extends TestCase
         $this->assertNull(SolicitudPrestamo::first()->asignada_a);
     }
 
-    public function test_revalidacion_al_entregar_y_rollback_sin_prestamos_parciales(): void
+    public function test_revalidacion_al_aprobar_y_rollback_sin_prestamos_parciales(): void
     {
         $lector = $this->cuenta();
         $personal = $this->cuenta('BIBLIOTECARIO');
         $this->actingAs($lector)->post('/solicitudes', ['libros' => [1 => 2, 2 => 1]])->assertRedirect('/solicitudes');
         $solicitud = SolicitudPrestamo::first();
         $url = '/solicitudes/'.$solicitud->getKey();
-        $this->actingAs($personal)->put($url, ['decision' => 'entregar', 'fecha_limite' => today()->toDateString()])->assertStatus(409);
-        $this->put($url, ['decision' => 'aprobar'])->assertRedirect('/solicitudes');
+        $this->actingAs($personal)->put($url, ['decision' => 'aprobar'])->assertSessionHasErrors('fecha_limite');
         Ejemplar::where('id_libro', 1)->update(['id_estado_ejemplar' => 2]);
-        $this->put($url, ['decision' => 'entregar', 'fecha_limite' => today()->toDateString()])->assertSessionHasErrors('libros');
+        $this->put($url, ['decision' => 'aprobar', 'fecha_limite' => today()->addDays(7)->toDateString()])->assertSessionHasErrors('libros');
         $this->assertSame(0, Prestamo::count());
-        $this->assertSame('APROBADA', $solicitud->fresh()->estado);
+        $this->assertSame('PENDIENTE', $solicitud->fresh()->estado);
         Ejemplar::where('id_libro', 1)->update(['id_estado_ejemplar' => 1]);
         DB::unprepared("CREATE TRIGGER fallo_entrega BEFORE INSERT ON detalle_prestamo BEGIN SELECT RAISE(ABORT, 'fallo deliberado'); END");
-        $this->put($url, ['decision' => 'entregar', 'fecha_limite' => today()->toDateString()])->assertStatus(500);
+        $this->put($url, ['decision' => 'aprobar', 'fecha_limite' => today()->addDays(7)->toDateString()])->assertStatus(500);
         $this->assertSame(0, Prestamo::count());
         $this->assertSame(0, DB::table('detalle_prestamo')->count());
         $this->assertSame(0, Ejemplar::where('id_estado_ejemplar', 2)->count());
-        $this->assertSame('APROBADA', $solicitud->fresh()->estado);
+        $this->assertSame('PENDIENTE', $solicitud->fresh()->estado);
     }
 
     public function test_fallo_al_guardar_detalles_revierte_toda_la_solicitud(): void
@@ -252,13 +248,13 @@ class SolicitudesPrestamoTest extends TestCase
         $this->actingAs($lector)->post('/solicitudes', ['libros' => [1 => 1]])->assertRedirect('/solicitudes');
         $solicitud = SolicitudPrestamo::firstOrFail();
         $this->assertEquals($a->getKey(), $solicitud->asignada_a);
-        $this->navegar($sesionB, 'PUT', '/solicitudes/'.$solicitud->getKey(), ['decision' => 'aprobar'])->assertForbidden();
+        $this->navegar($sesionB, 'PUT', '/solicitudes/'.$solicitud->getKey(), ['decision' => 'aprobar', 'fecha_limite' => today()->addDays(7)->toDateString()])->assertForbidden();
         $this->navegar($sesionA, 'POST', '/logout')->assertRedirect('/login');
         $this->navegar($sesionB, 'GET', '/solicitudes')->assertOk();
         $this->assertEquals($b->getKey(), $solicitud->fresh()->asignada_a);
         DB::table('rol_permisos')->where(['rol' => 'BIBLIOTECARIO', 'modulo' => 'solicitudes', 'accion' => 'editar'])->delete();
         $this->assertSame([], app(SesionesOperativas::class)->disponibles());
-        $this->navegar($sesionB, 'PUT', '/solicitudes/'.$solicitud->getKey(), ['decision' => 'aprobar'])->assertForbidden();
+        $this->navegar($sesionB, 'PUT', '/solicitudes/'.$solicitud->getKey(), ['decision' => 'aprobar', 'fecha_limite' => today()->addDays(7)->toDateString()])->assertForbidden();
         $this->assertSame('PENDIENTE', $solicitud->fresh()->estado);
     }
 
@@ -268,7 +264,7 @@ class SolicitudesPrestamoTest extends TestCase
         $lector->update(['activo' => false]);
         $this->actingAs($lector)->post('/solicitudes', ['libros' => [1 => 1]])->assertForbidden();
         $lector->update(['activo' => true, 'id_usuario' => null]);
-        $this->actingAs($lector)->get('/solicitudes/nueva')->assertForbidden();
+        $this->actingAs($lector)->get('/lector/solicitar')->assertOk();
         $this->post('/solicitudes', ['libros' => [1 => 1]])->assertForbidden();
         $this->assertSame(0, SolicitudPrestamo::count());
     }

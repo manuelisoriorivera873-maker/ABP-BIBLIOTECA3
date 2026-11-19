@@ -57,10 +57,17 @@ class CuentaAcceso extends Authenticatable
             return true;
         }
 
-        // Un permiso de matriz no convierte una solicitud del lector en un
-        // préstamo o devolución definitivos. Esos movimientos son del personal.
-        if ($this->rol === 'USUARIO' && in_array($modulo, ['prestamos', 'devoluciones'], true) && $accion !== 'ver') {
-            return false;
+        // El espacio del lector es bibliográfico y de registros propios.
+        // Una casilla histórica no lo convierte en operador administrativo.
+        if ($this->rol === 'USUARIO') {
+            $accionesLector = match ($modulo) {
+                'libros', 'autores', 'categorias', 'editoriales', 'prestamos', 'devoluciones' => ['ver'],
+                'solicitudes' => ['ver', 'crear'],
+                default => [],
+            };
+            if (! in_array($accion, $accionesLector, true)) {
+                return false;
+            }
         }
 
         return PermisosBiblioteca::concede($this->rol, $modulo, $accion);
@@ -68,7 +75,7 @@ class CuentaAcceso extends Authenticatable
 
     public function destinoInicio(): array
     {
-        return [$this->rol === 'USUARIO' ? 'libros.index' : 'dashboard', []];
+        return [$this->rol === 'USUARIO' ? 'lector.inicio' : 'dashboard', []];
     }
 
     public function getNombreVisibleAttribute(): string

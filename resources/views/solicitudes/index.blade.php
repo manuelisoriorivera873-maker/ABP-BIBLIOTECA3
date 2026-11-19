@@ -27,12 +27,8 @@
             <td>{{ $solicitud->estado }}@if ($solicitud->motivo_rechazo)<div>{{ $solicitud->motivo_rechazo }}</div>@endif @if ($solicitud->id_prestamo)<div>Préstamo #{{ $solicitud->id_prestamo }}</div>@endif</td>
             <td>{{ $solicitud->responsable?->nombre_visible ?? 'Pendiente de asignación' }}</td>
             <td>
-            @if (in_array(auth()->user()->rol, ['BIBLIOTECARIO', 'SUPERADMIN'], true) && auth()->user()->puede('solicitudes', 'editar') && in_array($solicitud->estado, ['PENDIENTE','APROBADA'], true))
-                @if ($solicitud->estado === 'PENDIENTE')
-                <form method="POST" action="{{ route('solicitudes.update', $solicitud) }}">@csrf @method('PUT')<input type="hidden" name="decision" value="aprobar"><button class="btn btn-outline-primary btn-sm" type="submit">Aprobar</button></form>
-                @else
-                <form method="POST" action="{{ route('solicitudes.update', $solicitud) }}">@csrf @method('PUT')<input type="hidden" name="decision" value="entregar"><label class="form-label" for="limite-{{ $solicitud->id_solicitud }}">Fecha límite</label><input class="form-control" id="limite-{{ $solicitud->id_solicitud }}" type="date" name="fecha_limite" min="{{ today()->toDateString() }}" required><button class="btn btn-primary btn-sm" type="submit">Confirmar entrega</button></form>
-                @endif
+            @if (auth()->user()->rol === 'BIBLIOTECARIO' && auth()->user()->puede('solicitudes', 'editar') && $solicitud->estado === 'PENDIENTE')
+                <form method="POST" action="{{ route('solicitudes.update', $solicitud) }}">@csrf @method('PUT')<input type="hidden" name="decision" value="aprobar"><label class="form-label" for="limite-{{ $solicitud->id_solicitud }}">Fecha límite</label><input class="form-control" id="limite-{{ $solicitud->id_solicitud }}" type="date" name="fecha_limite" min="{{ today()->toDateString() }}" required><button class="btn btn-outline-primary btn-sm" type="submit">Aprobar</button></form>
                 <form method="POST" action="{{ route('solicitudes.update', $solicitud) }}">@csrf @method('PUT')<input type="hidden" name="decision" value="rechazar"><label class="form-label" for="motivo-{{ $solicitud->id_solicitud }}">Motivo del rechazo</label><input class="form-control" id="motivo-{{ $solicitud->id_solicitud }}" name="motivo" maxlength="500" required><button class="btn btn-outline-danger btn-sm" type="submit">Rechazar</button></form>
             @endif
             </td>

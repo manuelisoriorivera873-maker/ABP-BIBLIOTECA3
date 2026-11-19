@@ -75,6 +75,23 @@ Route::get('/sin-permisos', function () {
 */
 
 Route::middleware(['auth', 'biblioteca'])->group(function (): void {
+    Route::prefix('lector')->name('lector.')->group(function (): void {
+        Route::get('favoritos', [\App\Http\Controllers\LecturaController::class, 'favoritos'])->name('favoritos');
+        Route::match(['put', 'delete'], 'favoritos/{publico}', [\App\Http\Controllers\LecturaController::class, 'favorito'])->whereUuid('publico')->name('favorito');
+        Route::get('leer/{publico}', [\App\Http\Controllers\LecturaController::class, 'leer'])->whereUuid('publico')->name('leer');
+        Route::get('lectura/{publico}/archivo', [\App\Http\Controllers\LecturaController::class, 'archivo'])->whereUuid('publico')->name('archivo');
+        Route::put('lectura/{publico}/progreso', [\App\Http\Controllers\LecturaController::class, 'progreso'])->whereUuid('publico')->name('progreso');
+        Route::get('autores/{publico}', [\App\Http\Controllers\LectorController::class, 'autor'])->whereUuid('publico')->name('autor');
+        Route::get('inicio', [\App\Http\Controllers\LectorController::class, 'inicio'])->name('inicio');
+        Route::get('explorar', [\App\Http\Controllers\LectorController::class, 'explorar'])->name('explorar');
+        Route::get('libros/{publico}', [\App\Http\Controllers\LectorController::class, 'ficha'])->whereUuid('publico')->name('ficha');
+        Route::get('bibliografia/{tipo}', [\App\Http\Controllers\LectorController::class, 'bibliografia'])->whereIn('tipo', ['autores','categorias','editoriales'])->name('bibliografia');
+        Route::get('solicitar', [\App\Http\Controllers\LectorController::class, 'bandeja'])->name('bandeja');
+        Route::post('seleccion/{publico}', [\App\Http\Controllers\LectorController::class, 'seleccionar'])->whereUuid('publico')->name('seleccionar');
+        Route::post('enviar', [\App\Http\Controllers\LectorController::class, 'enviar'])->name('enviar');
+        Route::get('mis-solicitudes', [\App\Http\Controllers\LectorController::class, 'solicitudes'])->name('solicitudes');
+        Route::get('mis-prestamos', [\App\Http\Controllers\LectorController::class, 'prestamos'])->name('prestamos');
+    });
     Route::get('solicitudes', [SolicitudPrestamoController::class, 'index'])->name('solicitudes.index');
     Route::get('solicitudes/nueva', [SolicitudPrestamoController::class, 'create'])->name('solicitudes.create');
     Route::post('solicitudes', [SolicitudPrestamoController::class, 'store'])->name('solicitudes.store');

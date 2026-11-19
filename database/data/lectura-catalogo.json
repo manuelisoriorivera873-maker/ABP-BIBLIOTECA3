@@ -1,0 +1,967 @@
+{
+  "libros": [
+    {
+      "titulo": "El principito",
+      "autor": "Antoine de Saint-Exupéry",
+      "isbn": "9788418797453",
+      "editorial": "Salamandra Infantil y Juvenil",
+      "anio": 2022,
+      "categoria": "Infantil",
+      "categorias": [
+        "Infantil",
+        "Fantasía"
+      ],
+      "idioma": "spa",
+      "sinopsis": "Un viajero encuentra en el desierto a un niño que llega de un pequeño planeta. Sus preguntas le hacen recordar formas de mirar que la vida adulta ha ido ocultando. En los encuentros del principito aparecen la amistad, el cuidado y la responsabilidad por los vínculos. El relato combina imaginación y reflexión sin reducir sus preguntas a una lección sencilla ni confundir lo importante con lo que puede medirse.",
+      "portada": "https://images.penguinrandomhouse.com/cover/9788418797453",
+      "fuente": "https://openlibrary.org/books/OL47134281M",
+      "portada_fuente": "https://openlibrary.org/books/OL47134281M",
+      "obra_fuente": "/works/OL34766796W",
+      "nueva_edicion": false,
+      "portada_verificada_en": "2026-10-31 00:00:00",
+      "revision_bibliografica": "Edición de Salamandra en gran formato. No se ofrece lectura completa: la traducción y la edición comercial conservan sus derechos."
+    },
+    {
+      "titulo": "Alicia en el país de las maravillas, Fantasmagoría y Un cuento enredado",
+      "autor": "Lewis Carroll",
+      "isbn": "9788484034094",
+      "editorial": "Edimat Libros",
+      "anio": 2004,
+      "categoria": "Infantil",
+      "categorias": [
+        "Infantil",
+        "Fantasía"
+      ],
+      "idioma": "spa",
+      "sinopsis": "Alicia atraviesa un mundo en el que las reglas del lenguaje y del comportamiento cambian continuamente. Animales que conversan, situaciones imposibles y juegos de lógica acompañan su búsqueda de orientación. Esta edición reúne también Fantasmagoría y Un cuento enredado. El conjunto permite explorar distintas facetas de la imaginación de Carroll, desde la aventura fantástica hasta el humor que nace de llevar las palabras demasiado lejos.",
+      "portada": "https://covers.openlibrary.org/b/id/12389741-M.jpg?default=false",
+      "fuente": "https://openlibrary.org/books/OL9145665M",
+      "portada_fuente": "https://openlibrary.org/books/OL9145665M",
+      "obra_fuente": "/works/OL14953196W",
+      "nueva_edicion": false,
+      "portada_verificada_en": "2026-10-31 00:00:00"
+    },
+    {
+      "titulo": "Pinocho",
+      "autor": "Carlo Collodi",
+      "isbn": "9788449427329",
+      "editorial": "Grupo Oceano",
+      "anio": 2004,
+      "categoria": "Infantil",
+      "categorias": [
+        "Infantil",
+        "Fantasía"
+      ],
+      "idioma": "spa",
+      "sinopsis": "Un muñeco de madera recibe la oportunidad de vivir fuera del taller de su creador. Su curiosidad y sus decisiones lo conducen a encuentros en los que promesas, engaños y afectos ponen a prueba lo que entiende por libertad. Collodi convierte el aprendizaje de Pinocho en una aventura llena de cambios, peligros y humor. La relación con Geppetto sostiene una historia sobre las consecuencias de crecer entre deseos contradictorios.",
+      "portada": "https://covers.openlibrary.org/b/id/5002411-M.jpg?default=false",
+      "fuente": "https://openlibrary.org/books/OL9683624M",
+      "portada_fuente": "https://openlibrary.org/books/OL9683624M",
+      "obra_fuente": "/works/OL1527368W",
+      "nueva_edicion": false,
+      "portada_verificada_en": "2026-10-31 00:00:00"
+    },
+    {
+      "titulo": "Peter Pan en los jardines de Kensington",
+      "autor": "J. M. Barrie",
+      "isbn": "9788439216131",
+      "editorial": "Gaviota",
+      "anio": 2005,
+      "categoria": "Infantil",
+      "categorias": [
+        "Infantil",
+        "Fantasía"
+      ],
+      "idioma": "spa",
+      "sinopsis": "Antes de las aventuras de Wendy, Peter Pan habita una versión fantástica de los jardines de Kensington. Entre aves, hadas y espacios que cambian al caer la noche, el niño ocupa un lugar incierto entre dos mundos. Barrie transforma un parque londinense en un territorio de imaginación y pérdida. Esta obra es distinta de Peter y Wendy y permite conocer otra parte de la historia del personaje.",
+      "portada": "https://covers.openlibrary.org/b/id/15118150-M.jpg?default=false",
+      "fuente": "https://openlibrary.org/books/OL39479014M",
+      "portada_fuente": "https://openlibrary.org/books/OL39479014M",
+      "obra_fuente": "/works/OL462123W",
+      "nueva_edicion": false,
+      "portada_verificada_en": "2026-10-31 00:00:00"
+    },
+    {
+      "titulo": "Cuentos de los hermanos Grimm",
+      "autor": "Jacob Grimm",
+      "isbn": "9788439216278",
+      "editorial": "Gaviota",
+      "anio": 2005,
+      "categoria": "Infantil",
+      "categorias": [
+        "Infantil",
+        "Cuento"
+      ],
+      "idioma": "spa",
+      "sinopsis": "Los hermanos Grimm reunieron relatos transmitidos y reelaborados a lo largo del tiempo. En ellos conviven bosques amenazantes, ayudas inesperadas y personajes que deben decidir cómo actuar frente al peligro o la injusticia. La fantasía abre espacio tanto al temor como al ingenio. Esta recopilación invita a reconocer motivos que han pasado a muchas versiones posteriores, sin suponer que todos los cuentos nacieron con una única forma definitiva.",
+      "portada": "https://covers.openlibrary.org/b/id/2270482-M.jpg?default=false",
+      "fuente": "https://openlibrary.org/books/OL9639280M",
+      "portada_fuente": "https://openlibrary.org/books/OL9639280M",
+      "obra_fuente": "/works/OL412154W",
+      "nueva_edicion": false,
+      "portada_verificada_en": "2026-10-31 00:00:00",
+      "autores": [
+        "Jacob Grimm",
+        "Wilhelm Grimm"
+      ]
+    },
+    {
+      "titulo": "Frankenstein",
+      "autor": "Mary Shelley",
+      "isbn": "9788445019795",
+      "editorial": "Minotauro",
+      "anio": 2025,
+      "categoria": "Terror",
+      "categorias": [
+        "Terror",
+        "Ciencia Ficcion"
+      ],
+      "idioma": "spa",
+      "sinopsis": "Victor Frankenstein consigue dar vida a un ser y descubre que su experimento no termina en el laboratorio. La criatura busca compañía y explicaciones mientras su creador intenta apartarse de las consecuencias de sus actos. La novela enfrenta ambición, abandono y responsabilidad. Sus distintas voces permiten preguntar quién merece ser escuchado y hasta dónde llega el deber de cuidar aquello que se ha hecho posible mediante el conocimiento.",
+      "portada": "https://covers.openlibrary.org/b/id/15266215-M.jpg?default=false",
+      "fuente": "https://openlibrary.org/books/OL62694929M",
+      "portada_fuente": "https://openlibrary.org/books/OL62694929M",
+      "obra_fuente": "/works/OL450063W",
+      "nueva_edicion": true,
+      "portada_verificada_en": "2026-10-31 00:00:00"
+    },
+    {
+      "titulo": "El corazón delator y otros cuentos",
+      "autor": "Edgar Allan Poe",
+      "isbn": "9789875506503",
+      "editorial": "Longseller",
+      "anio": 2006,
+      "categoria": "Terror",
+      "categorias": [
+        "Terror",
+        "Cuento"
+      ],
+      "idioma": "spa",
+      "sinopsis": "Una voz intenta convencer al lector de su lucidez mientras describe una acción cada vez más perturbadora. El miedo y la culpa alteran lo que cree percibir, convirtiendo el relato en una exploración de la conciencia. Esta recopilación reúne El corazón delator con otros cuentos de Poe. La lectura atiende tanto a los acontecimientos como al modo en que sus narradores construyen explicaciones que terminan poniendo en duda su propia certeza.",
+      "portada": "https://covers.openlibrary.org/b/id/5260304-M.jpg?default=false",
+      "fuente": "https://openlibrary.org/books/OL13201020M",
+      "portada_fuente": "https://openlibrary.org/books/OL13201020M",
+      "obra_fuente": "/works/OL9795670W",
+      "nueva_edicion": false,
+      "portada_verificada_en": "2026-10-31 00:00:00"
+    },
+    {
+      "titulo": "La caída de la casa Usher y otros cuentos",
+      "autor": "Edgar Allan Poe",
+      "isbn": "9789500396318",
+      "editorial": "Losada",
+      "anio": 2009,
+      "categoria": "Terror",
+      "categorias": [
+        "Terror",
+        "Cuento"
+      ],
+      "idioma": "spa",
+      "sinopsis": "Un visitante llega a una casa donde la enfermedad y el aislamiento parecen afectar tanto a sus habitantes como al edificio. Los indicios de una tragedia se acumulan en una atmósfera de incertidumbre. La caída de la casa Usher comparte este volumen con otros cuentos de Poe. El conjunto permite observar cómo la descripción, el ritmo y los límites de la percepción convierten espacios cotidianos en escenarios de inquietud.",
+      "portada": "https://covers.openlibrary.org/b/id/12579568-M.jpg?default=false",
+      "fuente": "https://openlibrary.org/books/OL36693582M",
+      "portada_fuente": "https://openlibrary.org/books/OL36693582M",
+      "obra_fuente": "/works/OL15645998W",
+      "nueva_edicion": false,
+      "portada_verificada_en": "2026-10-31 00:00:00"
+    },
+    {
+      "titulo": "Viaje al centro de la Tierra",
+      "autor": "Jules Verne",
+      "isbn": "9789500285971",
+      "editorial": "El Ateneo",
+      "anio": 2001,
+      "categoria": "Aventuras",
+      "categorias": [
+        "Aventuras",
+        "Ciencia Ficcion"
+      ],
+      "idioma": "spa",
+      "sinopsis": "Una pista encontrada en un antiguo escrito impulsa una expedición hacia las profundidades de la Tierra. El viaje obliga a afrontar rutas inciertas y paisajes que desafían los conocimientos de sus protagonistas. Verne combina curiosidad científica con aventura y discusión entre distintas maneras de interpretar lo desconocido. La exploración convierte cada descubrimiento en un nuevo problema y permite compartir tanto el entusiasmo como el temor de quienes se alejan de la superficie.",
+      "portada": "https://covers.openlibrary.org/b/id/3344231-M.jpg?default=false",
+      "fuente": "https://openlibrary.org/books/OL12951842M",
+      "portada_fuente": "https://openlibrary.org/books/OL12951842M",
+      "obra_fuente": "/works/OL1099979W",
+      "nueva_edicion": false,
+      "portada_verificada_en": "2026-10-31 00:00:00"
+    },
+    {
+      "titulo": "Fahrenheit 451",
+      "autor": "Ray Bradbury",
+      "isbn": "9788445006771",
+      "editorial": "MINOTAURO",
+      "anio": 2020,
+      "categoria": "Ciencia Ficcion",
+      "categorias": [
+        "Ciencia Ficcion"
+      ],
+      "idioma": "spa",
+      "sinopsis": "En una sociedad donde los bomberos destruyen libros, Guy Montag empieza a mirar de otra manera el trabajo que realiza. Ciertas conversaciones alteran una rutina sostenida por el entretenimiento y la obediencia. La novela imagina cómo puede empobrecerse una comunidad cuando renuncia a discutir sus propias ideas. Bradbury relaciona memoria, lectura y responsabilidad personal sin presentar el conocimiento como una posesión que pueda conservarse sin esfuerzo ni riesgo.",
+      "portada": "https://covers.openlibrary.org/b/id/12447990-M.jpg?default=false",
+      "fuente": "https://openlibrary.org/books/OL35713031M",
+      "portada_fuente": "https://openlibrary.org/books/OL35713031M",
+      "obra_fuente": "/works/OL103123W",
+      "nueva_edicion": false,
+      "portada_verificada_en": "2026-10-31 00:00:00"
+    },
+    {
+      "titulo": "Dune",
+      "autor": "Frank Herbert",
+      "isbn": "9788497596824",
+      "editorial": "Debolsillo",
+      "anio": 2005,
+      "categoria": "Ciencia Ficcion",
+      "categorias": [
+        "Ciencia Ficcion"
+      ],
+      "idioma": "spa",
+      "sinopsis": "La familia Atreides llega a Arrakis, un planeta cuya importancia política depende de una sustancia esencial para el imperio. Las disputas por su control se cruzan con la vida de sus habitantes y con las expectativas que rodean a Paul. Herbert construye una aventura donde ecología, religión y poder no pueden separarse. El desierto exige aprender a sobrevivir y también revisar las historias mediante las que se legitima la autoridad.",
+      "portada": "https://covers.openlibrary.org/b/id/4917636-M.jpg?default=false",
+      "fuente": "https://openlibrary.org/books/OL9154477M",
+      "portada_fuente": "https://openlibrary.org/books/OL9154477M",
+      "obra_fuente": "/works/OL893414W",
+      "nueva_edicion": false,
+      "portada_verificada_en": "2026-10-31 00:00:00"
+    },
+    {
+      "titulo": "Los tres mosqueteros, vol. I",
+      "autor": "Alexandre Dumas",
+      "isbn": "9788447148592",
+      "editorial": "Salvat",
+      "anio": 2020,
+      "categoria": "Aventuras",
+      "categorias": [
+        "Aventuras",
+        "Novela histórica"
+      ],
+      "idioma": "spa",
+      "sinopsis": "D'Artagnan llega a París con la esperanza de abrirse camino y encuentra aliados entre los mosqueteros del rey. La amistad se pone a prueba en una trama de rivalidades, secretos y encargos peligrosos. Dumas combina acción con humor y enfrentamientos políticos. Este registro corresponde al primer volumen de la edición de Salvat; no se presenta como un ejemplar que reúna por sí solo todos los volúmenes de la novela.",
+      "portada": "https://covers.openlibrary.org/b/id/12784165-M.jpg?default=false",
+      "fuente": "https://openlibrary.org/books/OL38240240M",
+      "portada_fuente": "https://openlibrary.org/books/OL38240240M",
+      "obra_fuente": "/works/OL37521858W",
+      "nueva_edicion": false,
+      "portada_verificada_en": "2026-10-31 00:00:00",
+      "revision_bibliografica": "Este ISBN identifica solamente el primer volumen; no se presenta como edición integral."
+    },
+    {
+      "titulo": "El conde de Montecristo, 1",
+      "autor": "Alexandre Dumas",
+      "isbn": "9788420739540",
+      "editorial": "Anaya Publishers",
+      "anio": 1999,
+      "categoria": "Aventuras",
+      "categorias": [
+        "Aventuras",
+        "Novela histórica"
+      ],
+      "idioma": "spa",
+      "sinopsis": "Una acusación injusta cambia el destino de Edmond Dantès y lo aparta del futuro que esperaba construir. La prisión transforma su relación con el tiempo y con quienes han intervenido en su desgracia. Dumas enlaza aventura, aprendizaje y venganza en una trama extensa de identidades y decisiones. Este libro corresponde al primer volumen de la edición de Anaya y conserva esa identificación para distinguirlo de las ediciones integrales.",
+      "portada": "https://covers.openlibrary.org/b/id/14566908-M.jpg?default=false",
+      "fuente": "https://openlibrary.org/books/OL13193502M",
+      "portada_fuente": "https://openlibrary.org/books/OL13193502M",
+      "obra_fuente": "/works/OL8996025W",
+      "nueva_edicion": false,
+      "portada_verificada_en": "2026-10-31 00:00:00",
+      "revision_bibliografica": "Este ISBN identifica solamente el primer volumen; no se presenta como edición integral."
+    },
+    {
+      "titulo": "Rimas y leyendas",
+      "autor": "Gustavo Adolfo Bécquer",
+      "isbn": "9788467021479",
+      "editorial": "Espasa-Calpe",
+      "anio": 2006,
+      "categoria": "Poesía",
+      "categorias": [
+        "Poesía",
+        "Cuento"
+      ],
+      "idioma": "spa",
+      "sinopsis": "La poesía de Bécquer aborda el amor, la memoria y la dificultad de expresar una experiencia íntima. Sus leyendas llevan esas inquietudes hacia espacios donde lo extraordinario modifica la vida de los personajes. Este volumen reúne ambas formas de escritura. Leerlas juntas permite reconocer relaciones entre el deseo y la pérdida, y observar cómo una imagen o una voz pueden sugerir más de lo que llegan a explicar de manera directa.",
+      "portada": "https://covers.openlibrary.org/b/id/13471563-M.jpg?default=false",
+      "fuente": "https://openlibrary.org/books/OL18842552M",
+      "portada_fuente": "https://openlibrary.org/books/OL18842552M",
+      "obra_fuente": "/works/OL629345W",
+      "nueva_edicion": false,
+      "portada_verificada_en": "2026-10-31 00:00:00",
+      "revision_bibliografica": "El acceso digital, cuando se ofrece, corresponde únicamente a Rimas (1885); no incluye las leyendas ni el aparato de esta edición comercial."
+    },
+    {
+      "titulo": "Don Juan Tenorio",
+      "autor": "José Zorrilla",
+      "isbn": "9788470396946",
+      "editorial": "Castalia",
+      "anio": 2000,
+      "categoria": "Teatro",
+      "categorias": [
+        "Teatro",
+        "Romance"
+      ],
+      "idioma": "spa",
+      "sinopsis": "Don Juan hace del desafío y la conquista una forma de enfrentarse a los demás. El encuentro con doña Inés introduce una tensión que altera su manera de comprender el amor y sus consecuencias. Zorrilla construye un drama en verso en el que conviven aventura, transgresión y preguntas religiosas. El paso entre espacios cotidianos y sobrenaturales acompaña una discusión sobre la responsabilidad de los actos y la posibilidad del arrepentimiento.",
+      "portada": "https://covers.openlibrary.org/b/id/4911068-M.jpg?default=false",
+      "fuente": "https://openlibrary.org/books/OL9134834M",
+      "portada_fuente": "https://openlibrary.org/books/OL9134834M",
+      "obra_fuente": "/works/OL831188W",
+      "nueva_edicion": false,
+      "portada_verificada_en": "2026-10-31 00:00:00"
+    },
+    {
+      "titulo": "La vida es sueño",
+      "autor": "Pedro Calderón de la Barca",
+      "isbn": "9788497590624",
+      "editorial": "Debolsillo",
+      "anio": 2002,
+      "categoria": "Teatro",
+      "categorias": [
+        "Teatro",
+        "Filosofía"
+      ],
+      "idioma": "spa",
+      "sinopsis": "Segismundo vive encerrado sin conocer por completo las razones de su cautiverio. Cuando accede al poder, sus decisiones ponen a prueba los temores que otros han construido sobre su destino. Calderón organiza un conflicto entre libertad, educación y apariencia. La incertidumbre acerca de lo vivido obliga a preguntarse cómo actuar cuando no puede asegurarse qué es real, y convierte el dominio de uno mismo en un problema político y moral.",
+      "portada": "https://covers.openlibrary.org/b/id/14844818-M.jpg?default=false",
+      "fuente": "https://openlibrary.org/books/OL57794157M",
+      "portada_fuente": "https://openlibrary.org/books/OL57794157M",
+      "obra_fuente": "/works/OL10341558W",
+      "nueva_edicion": false,
+      "portada_verificada_en": "2026-10-31 00:00:00"
+    },
+    {
+      "titulo": "Platero y yo",
+      "autor": "Juan Ramón Jiménez",
+      "isbn": "9788426138149",
+      "editorial": "Juventud",
+      "anio": 2010,
+      "categoria": "Poesía",
+      "categorias": [
+        "Poesía",
+        "Literatura universal"
+      ],
+      "idioma": "spa",
+      "sinopsis": "Un narrador recorre Moguer en compañía de Platero y observa escenas de su vida cotidiana. Las estaciones, los juegos y los encuentros con otros habitantes forman una secuencia de pequeñas prosas poéticas. Juan Ramón Jiménez combina cercanía afectiva con una mirada atenta a la desigualdad, la belleza y la muerte. El vínculo con el animal permite contar un mundo concreto sin perder la intensidad de lo que parece pequeño.",
+      "portada": "https://covers.openlibrary.org/b/id/12703685-M.jpg?default=false",
+      "fuente": "https://openlibrary.org/books/OL24371152M",
+      "portada_fuente": "https://openlibrary.org/books/OL24371152M",
+      "obra_fuente": "/works/OL35093658W",
+      "nueva_edicion": false,
+      "portada_verificada_en": "2026-10-31 00:00:00"
+    },
+    {
+      "titulo": "La Celestina",
+      "autor": "Fernando de Rojas",
+      "isbn": "9781589770119",
+      "editorial": "Juan de la Cuesta",
+      "anio": 2003,
+      "categoria": "Teatro",
+      "categorias": [
+        "Teatro",
+        "Literatura universal"
+      ],
+      "idioma": "spa",
+      "sinopsis": "El deseo de Calisto por Melibea pone en marcha una trama en la que intervienen criados, promesas y la habilidad de Celestina para negociar con las pasiones ajenas. La obra se desarrolla mediante diálogos que muestran intereses enfrentados y decisiones de consecuencias difíciles de contener. Fernando de Rojas presenta un mundo donde el lenguaje persuade y engaña. La intensidad de los personajes impide separar con facilidad sentimiento, conveniencia y responsabilidad.",
+      "portada": "https://covers.openlibrary.org/b/id/4855030-M.jpg?default=false",
+      "fuente": "https://openlibrary.org/books/OL8843826M",
+      "portada_fuente": "https://openlibrary.org/books/OL8843826M",
+      "obra_fuente": "/works/OL938934W",
+      "nueva_edicion": false,
+      "portada_verificada_en": "2026-10-31 00:00:00",
+      "revision_bibliografica": "Edición preparada por Patricia S. Finch, publicada por Juan de la Cuesta. Fernando de Rojas se conserva como autor de la obra."
+    },
+    {
+      "titulo": "Otra vuelta de tuerca",
+      "autor": "Henry James",
+      "isbn": "9788491043225",
+      "editorial": "Alianza Editorial",
+      "anio": 2016,
+      "categoria": "Terror",
+      "categorias": [
+        "Terror",
+        "Misterio"
+      ],
+      "idioma": "spa",
+      "sinopsis": "Una institutriz llega a una casa aislada para cuidar a dos niños y comienza a interpretar ciertas apariciones como una amenaza. Su relato obliga a decidir cuánto puede confiarse en lo que ve y en las explicaciones que ofrece. James organiza la inquietud alrededor de lo que permanece incierto. La casa y sus silencios se vuelven parte de una experiencia donde proteger a los demás puede confundirse con imponerles una interpretación.",
+      "portada": "https://covers.openlibrary.org/b/id/8988616-M.jpg?default=false",
+      "fuente": "https://openlibrary.org/books/OL27532721M",
+      "portada_fuente": "https://openlibrary.org/books/OL27532721M",
+      "obra_fuente": "/works/OL276386W",
+      "nueva_edicion": false,
+      "portada_verificada_en": "2026-10-31 00:00:00"
+    },
+    {
+      "titulo": "El extraño caso del doctor Jekyll y el señor Hyde",
+      "autor": "Robert Louis Stevenson",
+      "isbn": "9788490650615",
+      "editorial": "Alba",
+      "anio": 2015,
+      "categoria": "Terror",
+      "categorias": [
+        "Terror",
+        "Misterio"
+      ],
+      "idioma": "spa",
+      "sinopsis": "El comportamiento de un hombre inquietante despierta sospechas en el entorno del respetado doctor Jekyll. La investigación revela vínculos que alteran lo que parecía saberse sobre ambas figuras. Stevenson combina el enigma con una reflexión sobre la identidad y los límites del autocontrol. El relato desplaza el miedo hacia el interior de la vida respetable y pregunta qué ocurre cuando alguien intenta separar sus deseos de la responsabilidad por sus decisiones.",
+      "portada": "https://covers.openlibrary.org/b/id/11028848-M.jpg?default=false",
+      "fuente": "https://openlibrary.org/books/OL32372874M",
+      "portada_fuente": "https://openlibrary.org/books/OL32372874M",
+      "obra_fuente": "/works/OL24156W",
+      "nueva_edicion": false,
+      "portada_verificada_en": "2026-10-31 00:00:00"
+    },
+    {
+      "titulo": "Estudio en escarlata",
+      "autor": "Arthur Conan Doyle",
+      "isbn": "9788420665696",
+      "editorial": "Alianza Editorial",
+      "anio": 2012,
+      "categoria": "Novela detectivesca",
+      "categorias": [
+        "Novela detectivesca",
+        "Misterio"
+      ],
+      "idioma": "spa",
+      "sinopsis": "Watson conoce a Sherlock Holmes y comparte con él una investigación que parte de un asesinato desconcertante. Los detalles que parecen insignificantes se convierten en pistas para reconstruir una historia más amplia. La novela presenta la relación entre ambos personajes y el contraste de sus maneras de observar. Conan Doyle combina razonamiento y aventura para mostrar cómo un crimen puede conectar experiencias y lugares que al comienzo parecen no tener relación.",
+      "portada": "https://covers.openlibrary.org/b/id/12519014-M.jpg?default=false",
+      "fuente": "https://www.alianzaeditorial.es/libro/bibliotecas-de-autor/estudio-en-escarlata-arthur-conan-doyle-9788420665696/",
+      "portada_fuente": "https://openlibrary.org/books/OL28799733M",
+      "obra_fuente": "/works/OL262496W",
+      "nueva_edicion": false,
+      "portada_verificada_en": "2026-10-31 00:00:00"
+    },
+    {
+      "titulo": "El sabueso de los Baskerville",
+      "autor": "Arthur Conan Doyle",
+      "isbn": "9788420665689",
+      "editorial": "Alianza Editorial",
+      "anio": 2012,
+      "categoria": "Novela detectivesca",
+      "categorias": [
+        "Novela detectivesca",
+        "Misterio"
+      ],
+      "idioma": "spa",
+      "sinopsis": "Una muerte y una leyenda familiar conducen a Holmes y Watson hacia los páramos de Dartmoor. La amenaza de un sabueso sobrenatural convive con intereses y movimientos que necesitan una explicación. Conan Doyle aprovecha el paisaje para sostener la inquietud mientras sus personajes reúnen indicios. La investigación pone en tensión el miedo heredado y la observación, recordando que una historia repetida puede influir tanto en las personas como los hechos que intenta explicar.",
+      "portada": "https://covers.openlibrary.org/b/id/14563217-M.jpg?default=false",
+      "fuente": "https://openlibrary.org/books/OL50530327M",
+      "portada_fuente": "https://openlibrary.org/books/OL50530327M",
+      "obra_fuente": "/works/OL262454W",
+      "nueva_edicion": false,
+      "portada_verificada_en": "2026-10-31 00:00:00"
+    },
+    {
+      "titulo": "El asesinato de Roger Ackroyd",
+      "autor": "Agatha Christie",
+      "isbn": "9788492966660",
+      "editorial": "RBA",
+      "anio": 2011,
+      "categoria": "Novela detectivesca",
+      "categorias": [
+        "Novela detectivesca",
+        "Misterio"
+      ],
+      "idioma": "spa",
+      "sinopsis": "Hércules Poirot se encuentra ante un asesinato que altera la aparente tranquilidad de una comunidad. Las conversaciones y los silencios de sus habitantes producen una trama en la que cada dato necesita revisarse. Christie invita a observar cómo se transmite la información y qué expectativas orientan la lectura. La investigación exige distinguir entre aquello que se ha dicho, lo que se ha supuesto y lo que los personajes prefieren mantener fuera de la vista.",
+      "portada": "https://covers.openlibrary.org/b/id/12854328-M.jpg?default=false",
+      "fuente": "https://openlibrary.org/books/OL26438714M",
+      "portada_fuente": "https://openlibrary.org/books/OL26438714M",
+      "obra_fuente": "/works/OL471932W",
+      "nueva_edicion": false,
+      "portada_verificada_en": "2026-10-31 00:00:00"
+    },
+    {
+      "titulo": "Asesinato en el Orient Express",
+      "autor": "Agatha Christie",
+      "isbn": "9788478712090",
+      "editorial": "RBA",
+      "anio": 2004,
+      "categoria": "Novela detectivesca",
+      "categorias": [
+        "Novela detectivesca",
+        "Misterio"
+      ],
+      "idioma": "spa",
+      "sinopsis": "Un asesinato ocurre durante un viaje del Orient Express y Poirot debe investigar entre pasajeros que comparten un espacio del que resulta difícil salir. Las versiones de lo sucedido plantean contradicciones y coincidencias que requieren algo más que ordenar horarios. Christie convierte el tren en un escenario cerrado para examinar memoria, justicia y secreto. El lector acompaña una pesquisa en la que cada testimonio puede modificar el sentido de los anteriores.",
+      "portada": "https://covers.openlibrary.org/b/id/12996484-M.jpg?default=false",
+      "fuente": "https://openlibrary.org/books/OL9142141M",
+      "portada_fuente": "https://openlibrary.org/books/OL9142141M",
+      "obra_fuente": "/works/OL471576W",
+      "nueva_edicion": false,
+      "portada_verificada_en": "2026-10-31 00:00:00"
+    },
+    {
+      "titulo": "La guerra de los mundos",
+      "autor": "H. G. Wells",
+      "isbn": "9788413621395",
+      "editorial": "Alianza Editorial",
+      "anio": 2021,
+      "categoria": "Ciencia Ficcion",
+      "categorias": [
+        "Ciencia Ficcion"
+      ],
+      "idioma": "spa",
+      "sinopsis": "La llegada de seres procedentes de Marte transforma la vida de quienes presencian una invasión para la que no están preparados. Un narrador intenta desplazarse entre ciudades y caminos mientras las certezas sobre el poder humano se derrumban. Wells construye una aventura que también permite mirar la conquista desde la vulnerabilidad. La tecnología, el miedo colectivo y las respuestas de supervivencia forman parte de un mundo que cambia con rapidez.",
+      "portada": "https://covers.openlibrary.org/b/id/12225346-M.jpg?default=false",
+      "fuente": "https://openlibrary.org/books/OL35382486M",
+      "portada_fuente": "https://openlibrary.org/books/OL35382486M",
+      "obra_fuente": "/works/OL52114W",
+      "nueva_edicion": false,
+      "portada_verificada_en": "2026-10-31 00:00:00"
+    },
+    {
+      "titulo": "La máquina del tiempo",
+      "autor": "H. G. Wells",
+      "isbn": "9788415988762",
+      "editorial": "Sportula",
+      "anio": 2015,
+      "categoria": "Ciencia Ficcion",
+      "categorias": [
+        "Ciencia Ficcion"
+      ],
+      "idioma": "spa",
+      "sinopsis": "Un inventor reúne a sus conocidos para explicar una máquina capaz de desplazarse por el tiempo. El viaje lo enfrenta a una sociedad futura cuya primera apariencia resulta engañosa. Wells convierte la exploración en una pregunta sobre las divisiones y expectativas del presente. La aventura exige interpretar indicios antes de entender el mundo visitado, y plantea que el progreso técnico no garantiza por sí solo una vida más libre ni más justa.",
+      "portada": "https://covers.openlibrary.org/b/id/15063864-M.jpg?default=false",
+      "fuente": "https://openlibrary.org/books/OL39200420M",
+      "portada_fuente": "https://openlibrary.org/books/OL39200420M",
+      "obra_fuente": "/works/OL52267W",
+      "nueva_edicion": false,
+      "portada_verificada_en": "2026-10-31 00:00:00"
+    },
+    {
+      "titulo": "Un mundo feliz",
+      "autor": "Aldous Huxley",
+      "isbn": "9788484502418",
+      "editorial": "Debolsillo",
+      "anio": 2002,
+      "categoria": "Ciencia Ficcion",
+      "categorias": [
+        "Ciencia Ficcion"
+      ],
+      "idioma": "spa",
+      "sinopsis": "Una sociedad organiza desde el nacimiento las funciones y los deseos de sus habitantes. La estabilidad depende de formas de condicionamiento que hacen difícil imaginar otras posibilidades. Huxley sigue a personajes que perciben fisuras en ese orden y no encuentran una respuesta sencilla. La novela pregunta qué puede perderse cuando la comodidad se convierte en una obligación y cómo se relacionan libertad, sufrimiento, conocimiento y pertenencia en una comunidad aparentemente satisfecha.",
+      "portada": "https://covers.openlibrary.org/b/id/12388198-M.jpg?default=false",
+      "fuente": "https://openlibrary.org/books/OL9340298M",
+      "portada_fuente": "https://openlibrary.org/books/OL9340298M",
+      "obra_fuente": "/works/OL64365W",
+      "nueva_edicion": false,
+      "portada_verificada_en": "2026-10-31 00:00:00"
+    },
+    {
+      "titulo": "Mujercitas",
+      "autor": "Louisa May Alcott",
+      "isbn": "9788418395758",
+      "editorial": "Editorial Alma",
+      "anio": 2022,
+      "categoria": "Literatura universal",
+      "categorias": [
+        "Literatura universal",
+        "Romance"
+      ],
+      "idioma": "spa",
+      "sinopsis": "Meg, Jo, Beth y Amy March crecen en una familia que enfrenta dificultades económicas y la ausencia del padre durante la guerra. Sus aspiraciones no son iguales y cada una debe aprender a convivir con deseos, errores y responsabilidades. Alcott combina escenas domésticas con decisiones que transforman la relación entre las hermanas. La novela atiende a la formación de la autonomía y a las tensiones entre vocación, afecto y expectativas sociales.",
+      "portada": "https://covers.openlibrary.org/b/id/13197701-M.jpg?default=false",
+      "fuente": "https://openlibrary.org/books/OL37490562M",
+      "portada_fuente": "https://openlibrary.org/books/OL37490562M",
+      "obra_fuente": "/works/OL29983W",
+      "nueva_edicion": false,
+      "portada_verificada_en": "2026-10-31 00:00:00"
+    },
+    {
+      "titulo": "La isla del tesoro",
+      "autor": "Robert Louis Stevenson",
+      "isbn": "9788491050889",
+      "editorial": "Penguin Clásicos",
+      "anio": 2015,
+      "categoria": "Aventuras",
+      "categorias": [
+        "Aventuras"
+      ],
+      "idioma": "spa",
+      "sinopsis": "Un mapa conduce a Jim Hawkins hacia una expedición en busca de un tesoro. La aventura pronto revela alianzas inciertas y el peligro de confiar en las apariencias. Stevenson construye un mundo de barcos, islas y decisiones que obligan al joven a actuar sin contar con respuestas seguras. La figura de Long John Silver introduce una ambigüedad que vuelve más compleja la separación entre quienes parecen aliados y quienes representan una amenaza.",
+      "portada": "https://covers.openlibrary.org/b/id/12819095-M.jpg?default=false",
+      "fuente": "https://openlibrary.org/books/OL28807776M",
+      "portada_fuente": "https://openlibrary.org/books/OL28807776M",
+      "obra_fuente": "/works/OL24034W",
+      "nueva_edicion": false,
+      "portada_verificada_en": "2026-10-31 00:00:00"
+    },
+    {
+      "titulo": "El mago de Oz",
+      "autor": "L. Frank Baum",
+      "isbn": "9788420608563",
+      "editorial": "Alianza Editorial",
+      "anio": 2012,
+      "categoria": "Infantil",
+      "categorias": [
+        "Infantil",
+        "Fantasía"
+      ],
+      "idioma": "spa",
+      "sinopsis": "Dorothy y su perro Toto llegan a un lugar desconocido y emprenden el camino hacia la Ciudad Esmeralda. En la travesía encuentran compañeros que creen carecer de aquello que más desean. Baum desarrolla una aventura en la que la ayuda mutua permite enfrentar obstáculos y revisar esas creencias. La fantasía abre una pregunta sobre el valor de las capacidades propias y sobre las distintas formas de entender el regreso al hogar.",
+      "portada": "https://covers.openlibrary.org/b/id/13983548-M.jpg?default=false",
+      "fuente": "https://www.alianzaeditorial.es/libro/literatura/el-mago-de-oz-l-frank-baum-9788420608563/",
+      "portada_fuente": "https://www.alianzaeditorial.es/libro/literatura/el-mago-de-oz-l-frank-baum-9788420608563/",
+      "obra_fuente": "/works/OL18417W",
+      "nueva_edicion": false,
+      "portada_verificada_en": "2026-10-31 00:00:00"
+    },
+    {
+      "titulo": "Drácula",
+      "autor": "Bram Stoker",
+      "isbn": "9788491819103",
+      "editorial": "Alianza Editorial",
+      "anio": 2020,
+      "categoria": "Terror",
+      "categorias": [
+        "Terror"
+      ],
+      "idioma": "spa",
+      "sinopsis": "Una serie de diarios, cartas y testimonios reconstruye el avance de una amenaza que une Transilvania con la Inglaterra victoriana. Quienes intentan detener al conde Drácula deben relacionar conocimientos modernos con temores que parecían pertenecer al pasado. Stoker distribuye la información entre distintas voces para sostener la incertidumbre. La novela combina persecución, enfermedad y deseo, mostrando cómo una comunidad se organiza cuando sus explicaciones habituales dejan de resultar suficientes.",
+      "portada": "https://covers.openlibrary.org/b/id/14051906-M.jpg?default=false",
+      "fuente": "https://www.alianzaeditorial.es/libro/literatura/dracula-bram-stoker-9788491819103/",
+      "portada_fuente": "https://www.alianzaeditorial.es/libro/literatura/dracula-bram-stoker-9788491819103/",
+      "obra_fuente": "/works/OL85875W",
+      "nueva_edicion": false,
+      "portada_verificada_en": "2026-10-31 00:00:00"
+    },
+    {
+      "titulo": "Don Quijote de la Mancha",
+      "autor": "Miguel de Cervantes",
+      "isbn": "9788420412146",
+      "editorial": "Alfaguara",
+      "anio": 2015,
+      "categoria": "Literatura universal",
+      "categorias": [
+        "Literatura universal",
+        "Aventuras"
+      ],
+      "idioma": "spa",
+      "sinopsis": "Un hidalgo decide convertirse en caballero andante y sale a recorrer caminos junto a Sancho Panza. Las aventuras enfrentan sus lecturas con un mundo que responde de formas inesperadas. Cervantes combina humor, diálogo y reflexión sobre la manera en que se cuentan las historias. La relación entre ambos protagonistas permite explorar aspiraciones y contradicciones sin reducirlos a una sola idea, mientras la novela pregunta por los límites entre experiencia e imaginación.",
+      "portada": "https://images.penguinrandomhouse.com/cover/9788420412146",
+      "fuente": "https://openlibrary.org/books/OL27203733M",
+      "portada_fuente": "https://openlibrary.org/books/OL27203733M",
+      "obra_fuente": "/works/OL20023680W",
+      "nueva_edicion": false,
+      "portada_verificada_en": "2026-10-31 00:00:00",
+      "fuentes_adicionales": [
+        "https://penguinrandomhouselibrary.com/book/?isbn=9788420412146"
+      ],
+      "revision_bibliografica": "Edición impresa conmemorativa de Alfaguara/RAE. El recurso digital es la transcripción independiente de Project Gutenberg; no reproduce las notas modernas de Francisco Rico ni los estudios de esta edición."
+    }
+  ],
+  "vinculos_obras_existentes": [
+    {
+      "isbn": "9780141439471",
+      "obra_fuente": "/works/OL450063W"
+    },
+    {
+      "isbn": "9780141439976",
+      "obra_fuente": "/works/OL52267W"
+    }
+  ],
+  "autores": [
+    {
+      "nombre": "Antoine de",
+      "apellido_paterno": "Saint-Exupéry",
+      "apellido_materno": "",
+      "nombre_publico": "Antoine de Saint-Exupéry",
+      "nacionalidad": "Francia",
+      "biografia": "Escritor y aviador francés cuya experiencia de vuelo atraviesa una parte importante de su obra. En sus relatos aparecen la responsabilidad, el encuentro con los otros y la fragilidad de la vida. El principito convirtió esas preguntas en una fábula de alcance internacional. Su escritura relaciona la aventura con la reflexión sobre los vínculos humanos.",
+      "fuente_url": "https://openlibrary.org/authors/OL31901A"
+    },
+    {
+      "nombre": "Lewis",
+      "apellido_paterno": "Carroll",
+      "apellido_materno": "",
+      "nombre_publico": "Lewis Carroll",
+      "nacionalidad": "Reino Unido",
+      "biografia": "Seudónimo literario de Charles Lutwidge Dodgson, escritor y matemático inglés. Su interés por la lógica y los juegos del lenguaje se reconoce en las aventuras de Alicia. La aparente sencillez de sus situaciones fantásticas permite preguntas sobre identidad, reglas y comunicación. Sus libros han circulado tanto entre lectores infantiles como entre quienes estudian las posibilidades del absurdo.",
+      "fuente_url": "https://openlibrary.org/authors/OL22098A"
+    },
+    {
+      "nombre": "Carlo",
+      "apellido_paterno": "Collodi",
+      "apellido_materno": "",
+      "nombre_publico": "Carlo Collodi",
+      "nacionalidad": "Italia",
+      "biografia": "Nombre literario de Carlo Lorenzini, escritor y periodista italiano recordado especialmente por Las aventuras de Pinocho. Su personaje surgió en publicaciones por entregas y alcanzó una amplia circulación internacional. La combinación de humor, aventura y aprendizaje conserva tensiones que muchas adaptaciones han reinterpretado. Su obra forma parte de la historia de la literatura infantil italiana.",
+      "fuente_url": "https://openlibrary.org/authors/OL162098A"
+    },
+    {
+      "nombre": "J. M.",
+      "apellido_paterno": "Barrie",
+      "apellido_materno": "",
+      "nombre_publico": "J. M. Barrie",
+      "nacionalidad": "Reino Unido",
+      "biografia": "Escritor y dramaturgo escocés, creador de Peter Pan. Desarrolló al personaje en obras vinculadas entre sí pero distintas, entre ellas Peter Pan en los jardines de Kensington y Peter y Wendy. Su imaginación relaciona el juego con la memoria y con la dificultad de abandonar la infancia. El teatro ocupa un lugar central en su trayectoria literaria.",
+      "fuente_url": "https://openlibrary.org/authors/OL26997A"
+    },
+    {
+      "nombre": "Jacob",
+      "apellido_paterno": "Grimm",
+      "apellido_materno": "",
+      "nombre_publico": "Jacob Grimm",
+      "nacionalidad": "Alemania",
+      "biografia": "Filólogo y estudioso alemán que trabajó junto a su hermano Wilhelm en la recopilación de cuentos y en investigaciones sobre la lengua. Sus publicaciones relacionaron la tradición narrativa con el estudio histórico. Los cuentos reunidos por ambos tuvieron una difusión internacional y múltiples reelaboraciones. Participó también en el proyecto del diccionario alemán que continuaría después de su muerte.",
+      "fuente_url": "https://staatsbibliothek-berlin.de/die-staatsbibliothek/abteilungen/kinder-und-jugendbuecher/aktuelles/ausstellung/aus-den-biographien"
+    },
+    {
+      "nombre": "Wilhelm",
+      "apellido_paterno": "Grimm",
+      "apellido_materno": "",
+      "nombre_publico": "Wilhelm Grimm",
+      "nacionalidad": "Alemania",
+      "biografia": "Investigador y escritor alemán que colaboró con su hermano Jacob en la recopilación y edición de cuentos tradicionales. Su trabajo contribuyó a dar forma literaria a relatos que circularían ampliamente en versiones posteriores. Los hermanos compartieron además intereses filológicos y el proyecto de un diccionario alemán. Su legado permite estudiar relaciones entre transmisión oral, edición y lectura.",
+      "fuente_url": "https://staatsbibliothek-berlin.de/die-staatsbibliothek/abteilungen/kinder-und-jugendbuecher/aktuelles/ausstellung/aus-den-biographien"
+    },
+    {
+      "nombre": "Edgar Allan",
+      "apellido_paterno": "Poe",
+      "apellido_materno": "",
+      "nombre_publico": "Edgar Allan Poe",
+      "nacionalidad": "Estados Unidos",
+      "biografia": "Escritor, poeta y crítico estadounidense cuya obra ocupa un lugar importante en la historia del cuento moderno. Exploró el terror psicológico y las posibilidades de narradores poco fiables. También contribuyó al desarrollo del relato detectivesco. En sus textos, el razonamiento y la obsesión pueden acercarse hasta volver incierta la diferencia entre una explicación y una forma de engaño.",
+      "fuente_url": "https://openlibrary.org/authors/OL28127A"
+    },
+    {
+      "nombre": "Jules",
+      "apellido_paterno": "Verne",
+      "apellido_materno": "",
+      "nombre_publico": "Jules Verne",
+      "nacionalidad": "Francia",
+      "biografia": "Novelista francés vinculado a la aventura y a la imaginación científica. Sus Viajes extraordinarios llevaron a los lectores hacia regiones remotas y tecnologías posibles. El interés por explorar convive en sus novelas con conflictos humanos y políticos. Viaje al centro de la Tierra y Veinte mil leguas de viaje submarino se cuentan entre sus obras de mayor difusión.",
+      "fuente_url": "https://openlibrary.org/authors/OL113611A"
+    },
+    {
+      "nombre": "Ray",
+      "apellido_paterno": "Bradbury",
+      "apellido_materno": "",
+      "nombre_publico": "Ray Bradbury",
+      "nacionalidad": "Estados Unidos",
+      "biografia": "Escritor estadounidense conocido por sus relatos y novelas de imaginación fantástica y ciencia ficción. En obras como Crónicas marcianas y Fahrenheit 451 utilizó escenarios extraordinarios para examinar memoria, temor y vida cotidiana. Su escritura concede importancia a la experiencia de leer y a la responsabilidad de conservar el pensamiento crítico frente a las formas de conformismo.",
+      "fuente_url": "https://openlibrary.org/authors/OL24137A"
+    },
+    {
+      "nombre": "Frank",
+      "apellido_paterno": "Herbert",
+      "apellido_materno": "",
+      "nombre_publico": "Frank Herbert",
+      "nacionalidad": "Estados Unidos",
+      "biografia": "Escritor estadounidense asociado principalmente a la ciencia ficción y al universo de Dune. Su narrativa relaciona ecología, religión y organización política mediante mundos que exigen interpretar sus condiciones materiales. Más que un simple fondo de aventura, el ambiente influye en las decisiones de los personajes. Sus novelas exploran también la construcción de liderazgos y sus consecuencias.",
+      "fuente_url": "https://openlibrary.org/authors/OL79034A"
+    },
+    {
+      "nombre": "Alexandre",
+      "apellido_paterno": "Dumas",
+      "apellido_materno": "",
+      "nombre_publico": "Alexandre Dumas",
+      "nacionalidad": "Francia",
+      "biografia": "Novelista y dramaturgo francés del siglo XIX, reconocido por sus relatos de aventuras e intriga histórica. Los tres mosqueteros y El conde de Montecristo alcanzaron una extensa difusión mediante ediciones y adaptaciones. Su escritura combina acción, diálogo y conflictos de lealtad. La publicación por entregas fue importante para el desarrollo y la circulación de sus grandes novelas.",
+      "fuente_url": "https://openlibrary.org/authors/OL18236A"
+    },
+    {
+      "nombre": "Gustavo Adolfo",
+      "apellido_paterno": "Bécquer",
+      "apellido_materno": "",
+      "nombre_publico": "Gustavo Adolfo Bécquer",
+      "nacionalidad": "España",
+      "biografia": "Poeta y narrador español relacionado con el romanticismo. Sus Rimas exploran la experiencia amorosa y los límites de la expresión mediante una escritura concentrada. En sus Leyendas, lo extraordinario dialoga con la memoria y el deseo. La difusión póstuma de su obra contribuyó a su influencia sobre generaciones posteriores de poetas y lectores de lengua española.",
+      "fuente_url": "https://openlibrary.org/authors/OL3792450A"
+    },
+    {
+      "nombre": "José",
+      "apellido_paterno": "Zorrilla",
+      "apellido_materno": "",
+      "nombre_publico": "José Zorrilla",
+      "nacionalidad": "España",
+      "biografia": "Poeta y dramaturgo español del romanticismo, especialmente recordado por Don Juan Tenorio. Su escritura teatral combina el verso con tramas de aventura, leyenda y conflicto religioso. La permanencia de esta obra en los escenarios favoreció su amplia circulación cultural. Sus personajes plantean tensiones entre transgresión y arrepentimiento que han recibido distintas interpretaciones a lo largo del tiempo.",
+      "fuente_url": "https://openlibrary.org/authors/OL70943A"
+    },
+    {
+      "nombre": "Pedro Calderón de la",
+      "apellido_paterno": "Barca",
+      "apellido_materno": "",
+      "nombre_publico": "Pedro Calderón de la Barca",
+      "nacionalidad": "España",
+      "biografia": "Dramaturgo español del Siglo de Oro cuya obra comprende comedias, dramas y autos sacramentales. En La vida es sueño planteó conflictos entre libertad, educación y poder a través de una construcción teatral rigurosa. El honor y la responsabilidad aparecen de distintas maneras en su producción. Sus textos siguen siendo objeto de representación, estudio y nuevas interpretaciones.",
+      "fuente_url": "https://openlibrary.org/authors/OL4280652A"
+    },
+    {
+      "nombre": "Juan Ramón",
+      "apellido_paterno": "Jiménez",
+      "apellido_materno": "",
+      "nombre_publico": "Juan Ramón Jiménez",
+      "nacionalidad": "España",
+      "biografia": "Poeta español galardonado con el Premio Nobel de Literatura en 1956. Su trayectoria se caracteriza por una búsqueda constante de precisión en la escritura poética. Platero y yo reúne prosas relacionadas con el paisaje y la vida de Moguer. El libro combina observación cotidiana e intensidad lírica y ha acercado su obra a lectores de distintas edades.",
+      "fuente_url": "https://openlibrary.org/authors/OL82891A"
+    },
+    {
+      "nombre": "Fernando de",
+      "apellido_paterno": "Rojas",
+      "apellido_materno": "",
+      "nombre_publico": "Fernando de Rojas",
+      "nacionalidad": "España",
+      "biografia": "Escritor español al que se atribuye la parte principal de La Celestina. Su vida se desarrolló entre finales del siglo XV y la primera mitad del XVI. La obra ocupa un lugar central en la transición hacia nuevas formas de representar la vida social. Sus diálogos muestran intereses enfrentados y una atención singular a la capacidad persuasiva del lenguaje.",
+      "fuente_url": "https://openlibrary.org/authors/OL82893A"
+    },
+    {
+      "nombre": "Henry",
+      "apellido_paterno": "James",
+      "apellido_materno": "",
+      "nombre_publico": "Henry James",
+      "nacionalidad": "Estados Unidos / Reino Unido",
+      "biografia": "Narrador nacido en Estados Unidos cuya trayectoria estuvo estrechamente relacionada con Europa. Sus novelas y cuentos exploran la conciencia, las relaciones sociales y las diferencias de perspectiva. En Otra vuelta de tuerca aprovechó la incertidumbre para construir una experiencia de inquietud. Su obra invita a distinguir entre los hechos y las interpretaciones que cada personaje elabora sobre ellos.",
+      "fuente_url": "https://openlibrary.org/authors/OL21001A"
+    },
+    {
+      "nombre": "Robert Louis",
+      "apellido_paterno": "Stevenson",
+      "apellido_materno": "",
+      "nombre_publico": "Robert Louis Stevenson",
+      "nacionalidad": "Reino Unido",
+      "biografia": "Escritor escocés cuya obra incluye novelas, relatos y libros de viajes. La isla del tesoro convirtió la aventura marítima en una historia marcada por lealtades inciertas. En El extraño caso del doctor Jekyll y el señor Hyde exploró conflictos de identidad y responsabilidad. Sus personajes suelen enfrentarse a decisiones que vuelven insuficiente una división sencilla entre el bien y el mal.",
+      "fuente_url": "https://openlibrary.org/authors/OL25963A"
+    },
+    {
+      "nombre": "Arthur Conan",
+      "apellido_paterno": "Doyle",
+      "apellido_materno": "",
+      "nombre_publico": "Arthur Conan Doyle",
+      "nacionalidad": "Reino Unido",
+      "biografia": "Escritor y médico británico, creador de Sherlock Holmes y del doctor Watson. A partir de Estudio en escarlata desarrolló una serie que contribuyó de manera decisiva a la popularidad de la investigación detectivesca. Su producción incluye además aventuras, ficción histórica y otros géneros. La observación de indicios y la relación entre los protagonistas sostienen muchas de sus narraciones más conocidas.",
+      "fuente_url": "https://openlibrary.org/authors/OL161167A"
+    },
+    {
+      "nombre": "Agatha",
+      "apellido_paterno": "Christie",
+      "apellido_materno": "",
+      "nombre_publico": "Agatha Christie",
+      "nacionalidad": "Reino Unido",
+      "biografia": "Escritora británica de novelas, cuentos y teatro, reconocida por su contribución al género detectivesco. Creó personajes como Hércules Poirot y Miss Marple. Sus tramas organizan la información de manera que los testimonios y las suposiciones necesiten revisarse. El asesinato de Roger Ackroyd y Asesinato en el Orient Express muestran distintos recursos de esa construcción del enigma.",
+      "fuente_url": "https://openlibrary.org/authors/OL27695A"
+    },
+    {
+      "nombre": "Aldous",
+      "apellido_paterno": "Huxley",
+      "apellido_materno": "",
+      "nombre_publico": "Aldous Huxley",
+      "nacionalidad": "Reino Unido",
+      "biografia": "Escritor y ensayista británico cuya obra aborda las relaciones entre cultura, conocimiento y organización social. Un mundo feliz imagina una sociedad sostenida por el condicionamiento y la búsqueda obligatoria de estabilidad. La novela adquirió un lugar destacado entre las distopías del siglo XX. Su producción permite discutir las promesas del progreso y los límites de una felicidad administrada.",
+      "fuente_url": "https://openlibrary.org/authors/OL19767A"
+    },
+    {
+      "nombre": "Louisa May",
+      "apellido_paterno": "Alcott",
+      "apellido_materno": "",
+      "nombre_publico": "Louisa May Alcott",
+      "nacionalidad": "Estados Unidos",
+      "biografia": "Escritora estadounidense conocida especialmente por Mujercitas y por su atención a la formación de las jóvenes. La experiencia familiar y las condiciones sociales de su tiempo alimentaron parte de su narrativa. Sus personajes afrontan tensiones entre autonomía y deberes afectivos. También escribió relatos y otras novelas, dentro de una trayectoria más amplia que el éxito de la familia March.",
+      "fuente_url": "https://openlibrary.org/authors/OL26680A"
+    },
+    {
+      "nombre": "L. Frank",
+      "apellido_paterno": "Baum",
+      "apellido_materno": "",
+      "nombre_publico": "L. Frank Baum",
+      "nacionalidad": "Estados Unidos",
+      "biografia": "Escritor estadounidense que alcanzó una amplia difusión con El mago de Oz. El éxito del libro dio lugar a nuevas historias situadas en ese mundo fantástico. Su narrativa infantil combina aventura y humor con personajes que descubren capacidades que no reconocían en sí mismos. La obra ha circulado también a través de ilustraciones, teatro y adaptaciones cinematográficas.",
+      "fuente_url": "https://openlibrary.org/authors/OL23431A"
+    },
+    {
+      "nombre": "Bram",
+      "apellido_paterno": "Stoker",
+      "apellido_materno": "",
+      "nombre_publico": "Bram Stoker",
+      "nacionalidad": "Irlanda",
+      "biografia": "Escritor irlandés vinculado al mundo del teatro y recordado principalmente por Drácula. La novela reúne cartas, diarios y otros testimonios para construir una amenaza que los personajes intentan comprender de manera conjunta. Su figura del vampiro tuvo una extensa influencia literaria y cinematográfica. Escribió asimismo otros relatos y novelas que exploran distintas formas de inquietud.",
+      "fuente_url": "https://openlibrary.org/authors/OL31727A"
+    },
+    {
+      "nombre": "Miguel de",
+      "apellido_paterno": "Cervantes",
+      "apellido_materno": "",
+      "nombre_publico": "Miguel de Cervantes",
+      "nacionalidad": "España",
+      "biografia": "Novelista, dramaturgo y poeta español del Siglo de Oro. Don Quijote de la Mancha transformó las posibilidades de la novela mediante el diálogo entre aventura, lectura y experiencia. Su obra incluye también las Novelas ejemplares y una producción teatral diversa. La relación entre sus personajes y las historias que interpretan continúa generando lecturas e investigaciones en distintas lenguas.",
+      "fuente_url": "https://openlibrary.org/authors/OL66452A"
+    }
+  ],
+  "categorias": {
+    "Infantil": "Relatos y libros dirigidos a lectores jóvenes, con distintas formas de imaginación, aventura y descubrimiento.",
+    "Terror": "Obras que construyen inquietud y temor mediante lo sobrenatural, lo desconocido o los conflictos de la percepción.",
+    "Misterio": "Narraciones organizadas alrededor de preguntas, secretos e indicios cuya interpretación conduce la lectura.",
+    "Novela detectivesca": "Investigaciones de crímenes y enigmas mediante observación, testimonios y razonamiento.",
+    "Aventuras": "Viajes, exploraciones y conflictos que exigen actuar ante el peligro y lo inesperado.",
+    "Teatro": "Obras escritas para la representación, donde las voces y acciones de los personajes construyen el conflicto.",
+    "Romance": "Relatos en los que las relaciones afectivas y sus tensiones ocupan un lugar importante.",
+    "Literatura universal": "Obras de diversas tradiciones literarias con amplia circulación y distintas historias de lectura."
+  },
+  "editoriales": {},
+  "pendientes": [
+    {
+      "titulo": "Veinte mil leguas de viaje submarino",
+      "motivo": "Las imágenes de las ediciones cotejadas son una contraportada y una página interior; no se importó como edición con portada verificada."
+    },
+    {
+      "titulo": "Pulgarcito (Charles Perrault)",
+      "motivo": "El registro localizado acredita también a Natalia Molero; requiere determinar la adaptación y obtener una portada de edición inequívoca."
+    }
+  ],
+  "recursos": [
+    {
+      "isbn": "9788420412146",
+      "tipo": "integrado",
+      "idioma": "spa",
+      "formato": "epub",
+      "edicion": "Don Quijote · Project Gutenberg, eBook 2000 (texto original español; sin notas de la RAE)",
+      "ruta_privada": "don-quijote-gutenberg-2000.epub",
+      "sha256": "8ee8c3650d397da45097214f21cff57d2ce8d035dfcd6585e0096e3bb74989fa",
+      "fuente": "https://www.gutenberg.org/ebooks/2000",
+      "licencia": "Texto original de Cervantes (fallecido en 1616), de dominio público. Se conserva íntegra la licencia y la atribución de Project Gutenberg. Revisión para México: artículo 29 de la LFDA; sin traducción moderna.",
+      "licencia_url": "https://www.gutenberg.org/policy/license.html"
+    },
+    {
+      "isbn": "9788467021479",
+      "tipo": "externo",
+      "idioma": "spa",
+      "formato": "html",
+      "edicion": "Rimas (1885) · Wikisource; solo el poemario, sin las leyendas de esta edición",
+      "url": "https://es.wikisource.org/wiki/Rimas_(B%C3%A9cquer,_1885)",
+      "fuente": "https://es.wikisource.org/wiki/Rimas_(B%C3%A9cquer,_1885)",
+      "licencia": "Obra original española de Bécquer (1836–1870), edición de 1885. Acceso a la transcripción en su fuente; se respetan sus atribuciones y condiciones. No se aloja la edición comercial.",
+      "licencia_url": "https://es.wikisource.org/wiki/Wikisource:Derechos_de_autor"
+    },
+    {
+      "isbn": "9788470396946",
+      "tipo": "externo",
+      "idioma": "spa",
+      "formato": "html",
+      "edicion": "Don Juan Tenorio · transcripción de Wikisource, independiente de las notas de Castalia",
+      "url": "https://es.wikisource.org/wiki/Don_Juan_Tenorio",
+      "fuente": "https://es.wikisource.org/wiki/Don_Juan_Tenorio",
+      "licencia": "Texto original español de José Zorrilla (1817–1893), de dominio público. Solo enlace a la fuente; no se redistribuyen notas modernas.",
+      "licencia_url": "https://es.wikisource.org/wiki/Wikisource:Derechos_de_autor"
+    },
+    {
+      "isbn": "9788497590624",
+      "tipo": "externo",
+      "idioma": "spa",
+      "formato": "html",
+      "edicion": "La vida es sueño · transcripción de Wikisource, sin el aparato de Debolsillo",
+      "url": "https://es.wikisource.org/wiki/La_vida_es_sue%C3%B1o",
+      "fuente": "https://es.wikisource.org/wiki/La_vida_es_sue%C3%B1o",
+      "licencia": "Obra original española de Calderón de la Barca (1600–1681), de dominio público. Acceso externo a la fuente con sus condiciones y atribución.",
+      "licencia_url": "https://es.wikisource.org/wiki/Wikisource:Derechos_de_autor"
+    },
+    {
+      "isbn": "9788420608563",
+      "tipo": "previa",
+      "idioma": "spa",
+      "formato": "pdf",
+      "edicion": "El mago de Oz · primeras páginas oficiales de Alianza (fragmento)",
+      "url": "https://www.alianzaeditorial.es/primer_capitulo/el-mago-de-oz.pdf",
+      "fuente": "https://www.alianzaeditorial.es/libro/literatura/el-mago-de-oz-l-frank-baum-9788420608563/",
+      "licencia": "Vista previa publicada por la editorial. Traducción de Verónica Fernández-Muro protegida; únicamente enlace al fragmento oficial. No se aloja ni se anuncia lectura completa.",
+      "licencia_url": "https://www.alianzaeditorial.es/primer_capitulo/el-mago-de-oz.pdf"
+    }
+  ],
+  "preservar_fichas_existentes": true
+}

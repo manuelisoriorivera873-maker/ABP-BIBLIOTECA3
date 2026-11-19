@@ -1,0 +1,12 @@
+{
+  "private": true,
+  "description": "Dependencias locales del lector; no modifica el dise\u00f1o ni requiere un servidor Node.",
+  "dependencies": {
+    "epubjs": "0.3.93",
+    "jszip": "3.10.1",
+    "pdfjs-dist": "5.4.394"
+  },
+  "overrides": {
+    "@xmldom/xmldom": "0.9.12"
+  }
+}

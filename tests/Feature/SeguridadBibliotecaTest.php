@@ -22,6 +22,11 @@ class SeguridadBibliotecaTest extends TestCase
         DB::unprepared(file_get_contents(__DIR__.'/../Fixtures/schema.sql'));
         $rbac = require database_path('migrations/2026_10_22_000002_create_permisos_por_rol.php');
         $rbac->up();
+        (require database_path('migrations/2026_10_22_000003_create_solicitudes_prestamo.php'))->up();
+        (require database_path('migrations/2026_10_31_000004_create_libro_fichas.php'))->up();
+        (require database_path('migrations/2026_10_31_000005_create_fichas_bibliograficas.php'))->up();
+        (require database_path('migrations/2026_10_31_000006_add_revision_bibliografica.php'))->up();
+        (require database_path('migrations/2026_10_31_000007_create_lectura_y_favoritos.php'))->up();
         DB::table('estados_usuario')->insert(['id_estado_usuario' => 1, 'nombre_estado_usuario' => 'ACTIVO']);
     }
 
@@ -47,7 +52,7 @@ class SeguridadBibliotecaTest extends TestCase
 
     public function test_login_destinos_estado_y_logout(): void
     {
-        foreach (['SUPERADMIN' => '/', 'BIBLIOTECARIO' => '/', 'USUARIO' => '/libros'] as $rol => $destino) {
+        foreach (['SUPERADMIN' => '/', 'BIBLIOTECARIO' => '/', 'USUARIO' => '/lector/inicio'] as $rol => $destino) {
             $cuenta = $this->cuenta($rol);
             $this->withSession(['url.intended' => url('/registro')])->post('/login', ['nombre_usuario' => $cuenta->nombre_usuario, 'password' => 'UnaClaveSegura123!'])->assertRedirect($destino);
             $this->assertAuthenticatedAs($cuenta);
@@ -65,15 +70,15 @@ class SeguridadBibliotecaTest extends TestCase
     {
         $this->get('/login')->assertOk()->assertSee('registro');
         $this->get('/registro')->assertOk()->assertSee('Datos personales');
-        $this->post('/registro', $this->registro() + ['rol' => 'SUPERADMIN', 'permisos' => ['libros:eliminar']])->assertRedirect('/libros');
+        $this->post('/registro', $this->registro() + ['rol' => 'SUPERADMIN', 'permisos' => ['libros:eliminar']])->assertRedirect('/lector/inicio');
         $cuenta = CuentaAcceso::firstOrFail();
         $this->assertSame('USUARIO', $cuenta->rol);
         $this->assertTrue(Hash::check('UnaClaveSegura123!', $cuenta->password));
         $this->assertSame('Lector', $cuenta->lector->persona->nombre);
         $this->assertCount(0, $cuenta->permisos);
-        $this->assertCount(4, PermisosBiblioteca::vigentes('USUARIO'));
+        $this->assertCount(6, PermisosBiblioteca::vigentes('USUARIO'));
         $this->assertSame(1, DB::table('historial_permisos')->count());
-        $this->get('/libros')->assertOk()->assertDontSee('Registrar libro');
+        $this->get('/lector/explorar')->assertOk()->assertDontSee('Registrar libro');
         $this->get('/cuentas')->assertForbidden();
         $this->post('/libros', [])->assertForbidden();
         $this->put('/cuentas/'.$cuenta->id_cuenta, ['rol' => 'SUPERADMIN'])->assertForbidden();
@@ -211,7 +216,7 @@ class SeguridadBibliotecaTest extends TestCase
 
     public function test_promocion_superadmin_y_desactivacion_de_sesion_existente(): void
     {
-        $this->post('/registro', $this->registro())->assertRedirect('/libros');
+        $this->post('/registro', $this->registro())->assertRedirect('/lector/inicio');
         $lector = CuentaAcceso::firstOrFail();
         $admin = $this->cuenta();
         $datos = ['nombre_usuario' => $lector->nombre_usuario, 'activo' => 1];
@@ -257,7 +262,7 @@ class SeguridadBibliotecaTest extends TestCase
 
     public function test_cambio_de_rol_conserva_prestamos_y_relaciones_historicas(): void
     {
-        $this->post('/registro', $this->registro())->assertRedirect('/libros');
+        $this->post('/registro', $this->registro())->assertRedirect('/lector/inicio');
         $lector = CuentaAcceso::firstOrFail();
         $idLector = $lector->id_usuario;
         $persona = Persona::create(['nombre' => 'Empleado', 'apellido_paterno' => 'Con', 'apellido_materno' => 'Historia']);
@@ -294,7 +299,7 @@ class SeguridadBibliotecaTest extends TestCase
     public function test_editar_persona_crea_cuentas_con_credenciales_y_login_para_cada_rol(): void
     {
         $admin = $this->cuenta();
-        foreach (['USUARIO' => '/libros', 'BIBLIOTECARIO' => '/', 'SUPERADMIN' => '/'] as $rol => $destino) {
+        foreach (['USUARIO' => '/lector/inicio', 'BIBLIOTECARIO' => '/', 'SUPERADMIN' => '/'] as $rol => $destino) {
             $persona = Persona::create(['nombre' => $rol, 'apellido_paterno' => 'Prueba', 'apellido_materno' => 'Acceso']);
             $this->actingAs($admin)->get('/personas/'.$persona->id_persona.'/edit')->assertOk()->assertSee('Asignación de rol')->assertSee('Crear cuenta con credenciales');
             $clave = '  UnaClaveConEspacios123!  ';
@@ -316,7 +321,7 @@ class SeguridadBibliotecaTest extends TestCase
             $this->post('/logout');
             $this->post('/login', ['nombre_usuario' => $cuenta->nombre_usuario, 'password' => $clave])->assertRedirect($destino);
             $this->assertAuthenticatedAs($cuenta);
-            $this->get('/libros')->assertOk();
+            $this->get($rol === 'USUARIO' ? '/lector/explorar' : '/libros')->assertOk();
             if ($rol !== 'SUPERADMIN') {
                 $this->get('/cuentas')->assertForbidden();
                 $this->assertFalse($cuenta->fresh()->puede('libros', 'eliminar'));
@@ -336,7 +341,7 @@ class SeguridadBibliotecaTest extends TestCase
         $persona = $cuenta->lector->persona;
         $admin = $this->cuenta();
         $datos = $persona->only(['nombre', 'apellido_paterno', 'apellido_materno']);
-        foreach (['BIBLIOTECARIO' => '/', 'SUPERADMIN' => '/', 'USUARIO' => '/libros'] as $rol => $destino) {
+        foreach (['BIBLIOTECARIO' => '/', 'SUPERADMIN' => '/', 'USUARIO' => '/lector/inicio'] as $rol => $destino) {
             $anterior = $cuenta->fresh()->rol;
             $this->actingAs($admin)->put('/personas/'.$persona->id_persona, $datos + ['acceso' => ['gestionar' => 1, 'cuenta_id' => $cuenta->id_cuenta, 'rol' => $rol, 'activo' => 1]])->assertRedirect();
             $this->assertSame($rol, $cuenta->fresh()->rol);
@@ -352,7 +357,7 @@ class SeguridadBibliotecaTest extends TestCase
             $this->assertSame($rol, $detalle['rol_nuevo']);
             $this->post('/logout');
             $this->post('/login', ['nombre_usuario' => $cuenta->nombre_usuario, 'password' => 'UnaClaveSegura123!'])->assertRedirect($destino);
-            $this->get('/libros')->assertOk();
+            $this->get($rol === 'USUARIO' ? '/lector/explorar' : '/libros')->assertOk();
             if ($rol !== 'SUPERADMIN') {
                 $this->get('/cuentas')->assertForbidden();
             }
@@ -438,7 +443,7 @@ class SeguridadBibliotecaTest extends TestCase
         $this->assertSame($hash, $lector->fresh()->password);
         $this->assertSame(0, $lector->permisos()->count());
         $this->post('/logout');
-        $this->post('/login', ['nombre_usuario' => $lector->nombre_usuario, 'password' => 'UnaClaveSegura123!'])->assertRedirect('/libros');
+        $this->post('/login', ['nombre_usuario' => $lector->nombre_usuario, 'password' => 'UnaClaveSegura123!'])->assertRedirect('/lector/inicio');
     }
 
     public function test_persona_con_varias_cuentas_modifica_solo_la_seleccionada(): void
@@ -500,7 +505,7 @@ class SeguridadBibliotecaTest extends TestCase
         $this->assertSame(0, $lector->permisos()->count());
         $this->assertTrue(Hash::check('NuevaClaveSegura123!', $lector->fresh()->password));
         $this->post('/logout');
-        $this->post('/login', ['nombre_usuario' => 'lector.renombrado', 'password' => 'NuevaClaveSegura123!'])->assertRedirect('/libros');
+        $this->post('/login', ['nombre_usuario' => 'lector.renombrado', 'password' => 'NuevaClaveSegura123!'])->assertRedirect('/lector/inicio');
     }
 
     public function test_listado_personas_distingue_relaciones_y_rol_real_de_acceso(): void

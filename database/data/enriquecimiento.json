@@ -1,0 +1,355 @@
+{
+  "libros": [
+    {
+      "titulo": "El llano en llamas",
+      "autor": "Juan Rulfo",
+      "isbn": "9788493442613",
+      "editorial": "RM",
+      "anio": 2006,
+      "portada": "https://covers.openlibrary.org/b/id/14784545-M.jpg?default=false",
+      "fuente": "https://openlibrary.org/books/OL13353863M",
+      "categoria": "Cuento",
+      "sinopsis": "En los pueblos y caminos del campo mexicano, distintas voces cuentan experiencias marcadas por la pobreza, la violencia y la búsqueda de un lugar donde vivir. Estos relatos convierten conversaciones, silencios y recuerdos en una mirada intensa sobre la vida rural. La escritura precisa de Rulfo invita a escuchar a personajes que enfrentan el abandono, los conflictos familiares y las consecuencias del poder.",
+      "portada_fuente": "https://openlibrary.org/books/OL13353863M",
+      "fuentes_adicionales": [
+        "https://editorialrm.com/catalogos/2021.pdf"
+      ],
+      "nota_verificacion": "El sello rm es visible en la cubierta; el ISBN y la editorial se corroboran en el catálogo de RM. El año 2006 procede del registro de Open Library. Se corrige la interpretación previa que confundía el sello con FCE."
+    },
+    {
+      "titulo": "El gallo de oro",
+      "autor": "Juan Rulfo",
+      "isbn": "9788492480180",
+      "editorial": "RM",
+      "anio": 2010,
+      "portada": "https://covers.openlibrary.org/b/id/14826115-M.jpg?default=false",
+      "fuente": "https://openlibrary.org/books/OL26221248M",
+      "categoria": "Novela",
+      "sinopsis": "Dionisio Pinzón se acerca al mundo de las peleas de gallos y descubre un ambiente donde la suerte parece decidir el destino de las personas. Entre ferias, apuestas y encuentros con personajes de fuerte carácter, la narración explora la ambición y el deseo de cambiar de vida. Rulfo construye una historia de pasiones y dependencias que combina el movimiento de la fiesta con una inquietante sensación de fatalidad.",
+      "portada_fuente": "https://openlibrary.org/books/OL26221248M"
+    },
+    {
+      "titulo": "Bestiario",
+      "autor": "Julio Cortázar",
+      "isbn": "9788466331845",
+      "editorial": "Debolsillo",
+      "anio": 2016,
+      "portada": "https://images.penguinrandomhouse.com/cover/9788466331845",
+      "fuente": "https://www.penguinrandomhouse.com/books/579132/bestiario--bestiary-by-julio-cortazar/",
+      "categoria": "Cuento",
+      "sinopsis": "Una casa, un viaje en autobús o una relación familiar pueden convertirse en escenarios donde lo cotidiano deja de ofrecer seguridad. En estos ocho cuentos, Cortázar introduce lo extraño con una naturalidad que obliga a mirar de nuevo los objetos y las costumbres. La colección propone una lectura atenta a los detalles, a los silencios y a las fronteras inciertas entre la realidad y la imaginación.",
+      "portada_fuente": "https://www.penguinrandomhouse.com/books/579132/bestiario--bestiary-by-julio-cortazar/",
+      "nota_verificacion": "Se descartó la fecha 1951 y la atribución Sudamericana del registro de Open Library. ISBN, Debolsillo, año 2016 y portada contrastados directamente con Penguin Random House."
+    },
+    {
+      "titulo": "Final del juego",
+      "autor": "Julio Cortázar",
+      "isbn": "9789871106578",
+      "editorial": "Suma",
+      "anio": 2004,
+      "portada": "https://covers.openlibrary.org/b/id/4933371-M.jpg?default=false",
+      "fuente": "https://openlibrary.org/books/OL9199407M",
+      "categoria": "Cuento",
+      "sinopsis": "Los juegos de la infancia, las imágenes y los encuentros aparentemente comunes abren puertas hacia experiencias difíciles de explicar. Cortázar reúne relatos que alteran la percepción del tiempo y ponen en duda la posición del observador. Cada historia exige participar en sus cambios de perspectiva y descubrir cómo un gesto mínimo puede transformar lo conocido. Una invitación a leer con curiosidad y aceptar la incertidumbre.",
+      "portada_fuente": "https://openlibrary.org/books/OL9199407M"
+    },
+    {
+      "titulo": "Historias de cronopios y de famas",
+      "autor": "Julio Cortázar",
+      "isbn": "9789505111893",
+      "editorial": "Aguilar",
+      "anio": 1995,
+      "portada": "https://covers.openlibrary.org/b/id/2291057-M.jpg?default=false",
+      "fuente": "https://openlibrary.org/books/OL9592664M",
+      "categoria": "Cuento",
+      "sinopsis": "Las instrucciones para realizar acciones sencillas se vuelven ejercicios de imaginación, mientras unos personajes singulares ensayan maneras opuestas de habitar el mundo. El humor de Cortázar transforma hábitos y objetos en pequeñas aventuras del pensamiento. Entre textos breves, juegos y situaciones absurdas, este libro invita a cuestionar la obediencia a la rutina y a reconocer las posibilidades poéticas que se esconden en la vida diaria.",
+      "portada_fuente": "https://openlibrary.org/books/OL9592664M"
+    },
+    {
+      "titulo": "Ficciones",
+      "autor": "Jorge Luis Borges",
+      "isbn": "9789500428446",
+      "editorial": "Emecé",
+      "anio": 2006,
+      "portada": "https://covers.openlibrary.org/b/id/14553265-M.jpg?default=false",
+      "fuente": "https://openlibrary.org/books/OL47800257M",
+      "categoria": "Cuento",
+      "sinopsis": "Bibliotecas, libros imaginarios y laberintos organizan un conjunto de relatos donde una idea puede cambiar por completo la forma del mundo. Borges combina el gusto por la investigación con la libertad de la fantasía y convierte al lector en explorador de posibilidades. Sus cuentos plantean preguntas sobre el conocimiento, la identidad y el tiempo, sin renunciar al misterio ni al placer de una narración precisa.",
+      "portada_fuente": "https://openlibrary.org/books/OL47800257M"
+    },
+    {
+      "titulo": "El libro de arena",
+      "autor": "Jorge Luis Borges",
+      "isbn": "9788423338719",
+      "editorial": "Destino",
+      "anio": 2006,
+      "portada": "https://covers.openlibrary.org/b/id/12774154-M.jpg?default=false",
+      "fuente": "https://openlibrary.org/books/OL9808124M",
+      "categoria": "Cuento",
+      "sinopsis": "Un encuentro inesperado, un objeto imposible o una conversación pueden abrir una grieta en las certezas de la realidad. Borges vuelve a los temas del infinito, la memoria y la identidad mediante relatos de apariencia sencilla y resonancias filosóficas. El libro invita a seguir pistas, aceptar paradojas y pensar en los límites del conocimiento, con una escritura que une la sobriedad narrativa y la imaginación fantástica.",
+      "portada_fuente": "https://openlibrary.org/books/OL9808124M"
+    },
+    {
+      "titulo": "De amor y de sombra",
+      "autor": "Isabel Allende",
+      "isbn": "9788484507895",
+      "editorial": "Plaza & Janés",
+      "anio": 2001,
+      "portada": "https://covers.openlibrary.org/b/id/15222439-M.jpg?default=false",
+      "fuente": "https://openlibrary.org/books/OL9146128M",
+      "categoria": "Novela",
+      "sinopsis": "Irene y Francisco se acercan a una realidad que otros prefieren mantener oculta. Su trabajo y su relación personal los llevan a enfrentar el miedo y las consecuencias de la represión. Allende enlaza una historia de amor con la búsqueda de verdad y dignidad en una sociedad amenazada por la violencia política. La novela pregunta qué significa comprometerse cuando guardar silencio parece la opción más segura.",
+      "portada_fuente": "https://openlibrary.org/books/OL9146128M",
+      "nota_verificacion": "La cubierta muestra Ave Fénix/Debolsillo; el registro del ISBN consigna Plaza & Janés como empresa editora. No se identifica con ella ningún ejemplar físico de SAIDE."
+    },
+    {
+      "titulo": "La fiesta del Chivo",
+      "autor": "Mario Vargas Llosa",
+      "isbn": "9788466303316",
+      "editorial": "Suma de Letras",
+      "anio": 2003,
+      "portada": "https://covers.openlibrary.org/b/id/12560782-M.jpg?default=false",
+      "fuente": "https://openlibrary.org/books/OL9133932M",
+      "categoria": "Novela",
+      "sinopsis": "El regreso de Urania Cabral a la República Dominicana abre un recorrido por recuerdos personales y por el clima de la dictadura de Rafael Trujillo. Varias líneas narrativas muestran cómo el poder autoritario alcanza las relaciones familiares y la vida íntima. Vargas Llosa combina investigación histórica e imaginación para explorar el miedo, la obediencia y las heridas que persisten mucho después de los acontecimientos políticos.",
+      "portada_fuente": "https://openlibrary.org/books/OL9133932M"
+    },
+    {
+      "titulo": "La casa verde",
+      "autor": "Mario Vargas Llosa",
+      "isbn": "9789707702493",
+      "editorial": "Alfaguara",
+      "anio": 2005,
+      "portada": "https://covers.openlibrary.org/b/id/4927546-M.jpg?default=false",
+      "fuente": "https://openlibrary.org/books/OL9179837M",
+      "categoria": "Novela",
+      "sinopsis": "Entre Piura y la Amazonía peruana se cruzan vidas que pertenecen a espacios sociales muy diferentes. Una casa se convierte en punto de encuentro de historias atravesadas por el deseo, la violencia y las desigualdades. La narración reúne voces y tiempos que el lector va relacionando poco a poco. Vargas Llosa propone así un recorrido exigente por una sociedad donde las decisiones individuales chocan con fuerzas colectivas.",
+      "portada_fuente": "https://openlibrary.org/books/OL9179837M"
+    },
+    {
+      "titulo": "La muerte de Artemio Cruz",
+      "autor": "Carlos Fuentes",
+      "isbn": "9789875780361",
+      "editorial": "Suma",
+      "anio": 2006,
+      "portada": "https://covers.openlibrary.org/b/id/1055924-M.jpg?default=false",
+      "fuente": "https://openlibrary.org/books/OL9200450M",
+      "categoria": "Novela",
+      "sinopsis": "Desde una situación de enfermedad, Artemio Cruz revisita momentos decisivos de su vida y de un México transformado por la Revolución. Los recuerdos revelan tensiones entre los ideales, los afectos y las oportunidades de ejercer poder. Fuentes alterna voces y tiempos para construir un retrato incómodo de la memoria personal. La novela invita a preguntarse cómo se cuentan las propias decisiones y qué queda fuera de esa versión.",
+      "portada_fuente": "https://openlibrary.org/books/OL9200450M"
+    },
+    {
+      "titulo": "Cien años de soledad",
+      "autor": "Gabriel García Márquez",
+      "isbn": "9786070714863",
+      "editorial": "Diana",
+      "anio": 2012,
+      "portada": "https://imagessl0.casadellibro.com/a/l/t7/63/9786070714863.jpg",
+      "fuente": "https://openlibrary.org/books/OL38570141M",
+      "categoria": "Novela",
+      "sinopsis": "La historia de la familia Buendía acompaña el nacimiento y las transformaciones de Macondo, un lugar donde lo extraordinario convive con la vida diaria. Generaciones sucesivas enfrentan amores, conflictos y recuerdos que parecen repetirse bajo nuevas formas. García Márquez entrelaza intimidad e historia colectiva en una narración poblada de imágenes memorables. La novela explora la soledad, la memoria y la dificultad de comprender el propio pasado.",
+      "portada_fuente": "https://imagessl0.casadellibro.com/a/l/t7/63/9786070714863.jpg",
+      "nota_verificacion": "Se sustituyó una imagen de página de título por la cubierta de Diana vinculada al ISBN 9786070714863 en el catálogo consultado."
+    },
+    {
+      "titulo": "El amor en los tiempos del cólera",
+      "autor": "Gabriel García Márquez",
+      "isbn": "9788497592451",
+      "editorial": "Debolsillo",
+      "anio": 2003,
+      "portada": "https://covers.openlibrary.org/b/id/15203761-M.jpg?default=false",
+      "fuente": "https://openlibrary.org/books/OL22132438M",
+      "categoria": "Novela",
+      "sinopsis": "Florentino Ariza y Fermina Daza viven una relación cuya memoria atraviesa las edades y las convenciones sociales. En una ciudad caribeña, sus trayectorias permiten observar cómo cambian el deseo, las expectativas y la idea del amor con el paso del tiempo. García Márquez reúne humor, sensibilidad y atención a los detalles cotidianos en una novela que examina las promesas, la espera y las distintas maneras de compartir la vida.",
+      "portada_fuente": "https://openlibrary.org/books/OL22132438M"
+    },
+    {
+      "titulo": "Oficio de tinieblas",
+      "autor": "Rosario Castellanos",
+      "isbn": "9788493755904",
+      "editorial": "Libros del Silencio",
+      "anio": 2009,
+      "portada": "https://covers.openlibrary.org/b/id/13545412-M.jpg?default=false",
+      "fuente": "https://openlibrary.org/books/OL47145136M",
+      "categoria": "Novela",
+      "sinopsis": "En Chiapas, las relaciones entre comunidades indígenas y grupos dominantes están atravesadas por una desigualdad profunda. Castellanos reúne distintas perspectivas para mostrar cómo la religión, la propiedad y el poder participan en un conflicto que alcanza la vida cotidiana. La novela examina las dificultades de buscar justicia en una sociedad dividida. Su atención a las voces y a las tensiones colectivas evita una explicación sencilla de la violencia.",
+      "portada_fuente": "https://openlibrary.org/books/OL47145136M",
+      "nota_verificacion": "La cubierta con el sello S y la mención al prólogo de Jordi Soler coincide con el catálogo por ISBN de Libros del Silencio. Se corrige su atribución previa errónea a FCE."
+    },
+    {
+      "titulo": "Orgullo y prejuicio",
+      "autor": "Jane Austen",
+      "isbn": "9788415083696",
+      "editorial": "Albor Libros",
+      "anio": 2017,
+      "portada": "https://covers.openlibrary.org/b/id/13745414-M.jpg?default=false",
+      "fuente": "https://openlibrary.org/books/OL47286332M",
+      "categoria": "Novela",
+      "sinopsis": "Elizabeth Bennet observa con espíritu crítico las expectativas matrimoniales de su entorno y las primeras impresiones que provocan sus conocidos. Su relación con el señor Darcy pone a prueba juicios personales, diferencias sociales y formas de entender la independencia. Austen combina conversaciones agudas y situaciones familiares para explorar la relación entre afecto, reputación y dinero. La novela invita a reconocer cuánto influyen los prejuicios en la interpretación de los demás.",
+      "portada_fuente": "https://openlibrary.org/books/OL47286332M"
+    }
+  ],
+  "autores": [
+    {
+      "nombre_publico": "Juan Rulfo",
+      "nombre": "Juan",
+      "apellido_paterno": "Rulfo",
+      "apellido_materno": "Vizcaino",
+      "nacionalidad": "Mexicana",
+      "nacimiento": "1917-05-16",
+      "fallecimiento": "1986-01-07",
+      "biografia": "Juan Rulfo fue un escritor mexicano cuya narrativa dio una voz singular a los habitantes del campo y a sus recuerdos. Su lenguaje conciso combina la conversación cotidiana con una construcción literaria muy cuidada. La violencia, la ausencia y la relación con la tierra atraviesan sus historias. El llano en llamas y Pedro Páramo son obras fundamentales para conocer su universo narrativo; El gallo de oro permite acercarse a otra vertiente de su escritura.",
+      "fuente_url": "https://openlibrary.org/authors/OL199285A"
+    },
+    {
+      "nombre_publico": "Julio Cortázar",
+      "nombre": "Julio",
+      "apellido_paterno": "Cortazar",
+      "apellido_materno": "Descotte",
+      "nacionalidad": "Argentina y francesa",
+      "nacimiento": "1914-08-26",
+      "fallecimiento": "1984-02-12",
+      "biografia": "Julio Cortázar fue un narrador argentino que desarrolló buena parte de su vida literaria en Francia. Sus cuentos exploran la aparición de lo extraño dentro de situaciones corrientes, y sus novelas proponen formas activas de lectura. El juego, la música y las posibilidades del lenguaje ocupan un lugar central en su obra. Entre sus libros destacan Rayuela, Bestiario, Final del juego e Historias de cronopios y de famas, muestras de una imaginación siempre atenta a las sorpresas.",
+      "fuente_url": "https://openlibrary.org/authors/OL2631008A"
+    },
+    {
+      "nombre_publico": "Jorge Luis Borges",
+      "nombre": "Jorge Luis",
+      "apellido_paterno": "Borges",
+      "apellido_materno": "Acevedo",
+      "nacionalidad": "Argentina",
+      "nacimiento": "1899-08-24",
+      "fallecimiento": "1986-06-14",
+      "biografia": "Jorge Luis Borges fue un escritor argentino que cultivó el cuento, la poesía y el ensayo. Su obra transforma problemas filosóficos y referencias literarias en relatos de notable precisión. Los laberintos, las bibliotecas, los espejos y el tiempo aparecen como maneras de interrogar la identidad y el conocimiento. Ficciones, El Aleph y El libro de arena reúnen algunas de sus narraciones más conocidas y permiten descubrir una literatura que hace de la lectura una aventura intelectual.",
+      "fuente_url": "https://openlibrary.org/authors/OL18928A"
+    },
+    {
+      "nombre_publico": "Isabel Allende",
+      "nombre": "Isabel",
+      "apellido_paterno": "Allende",
+      "apellido_materno": "Llona",
+      "nacionalidad": "Chilena y estadounidense",
+      "nacimiento": "1942-08-02",
+      "fallecimiento": null,
+      "biografia": "Isabel Allende es una escritora chilena y estadounidense cuya narrativa vincula historias familiares con procesos sociales y políticos. Sus personajes, especialmente las mujeres, enfrentan pérdidas, desplazamientos y la búsqueda de autonomía. La memoria y los vínculos entre generaciones ocupan un lugar importante en sus novelas. La casa de los espíritus, De amor y de sombra y Eva Luna permiten conocer distintas facetas de una obra que combina la intimidad con una amplia mirada sobre la historia.",
+      "fuente_url": "https://openlibrary.org/authors/OL228079A"
+    },
+    {
+      "nombre_publico": "Laura Esquivel",
+      "nombre": "Laura",
+      "apellido_paterno": "Esquivel",
+      "apellido_materno": "Valdes",
+      "nacionalidad": "Mexicana",
+      "nacimiento": null,
+      "fallecimiento": null,
+      "biografia": "Laura Esquivel es una escritora mexicana que también ha trabajado como guionista. Su novela Como agua para chocolate relaciona la cocina con los afectos, las normas familiares y el deseo de decidir sobre la propia vida. En su escritura, los elementos cotidianos pueden adquirir una dimensión simbólica o extraordinaria. La conexión entre las emociones, la memoria y la transmisión de experiencias ocupa un lugar destacado en una obra que ha llegado a lectores de numerosos países.",
+      "fuente_url": "https://openlibrary.org/authors/OL85306A"
+    },
+    {
+      "nombre_publico": "Octavio Paz",
+      "nombre": "Octavio",
+      "apellido_paterno": "Paz",
+      "apellido_materno": "Lozano",
+      "nacionalidad": "Mexicana",
+      "nacimiento": "1914-03-31",
+      "fallecimiento": "1998-04-19",
+      "biografia": "Octavio Paz fue un poeta y ensayista mexicano cuya obra mantuvo un diálogo constante entre literatura, arte e historia. Su poesía explora el tiempo, el amor y las posibilidades de la palabra, mientras sus ensayos examinan la cultura y la identidad. Recibió el Premio Nobel de Literatura en 1990. El laberinto de la soledad y El arco y la lira son dos libros destacados para acercarse a sus preguntas sobre la sociedad y la creación poética.",
+      "fuente_url": "https://openlibrary.org/authors/OL60534A"
+    },
+    {
+      "nombre_publico": "Mario Vargas Llosa",
+      "nombre": "Mario",
+      "apellido_paterno": "Vargas",
+      "apellido_materno": "Llosa",
+      "nacionalidad": "Peruana y española",
+      "nacimiento": "1936-03-28",
+      "fallecimiento": "2025-04-13",
+      "biografia": "Mario Vargas Llosa fue un escritor peruano y español reconocido por novelas que examinan las relaciones entre individuos, instituciones y poder. Sus narraciones suelen combinar voces y tiempos para mostrar las contradicciones de una sociedad. La violencia, la libertad y las formas de autoridad son temas persistentes en su trabajo. La ciudad y los perros, La casa verde y La fiesta del Chivo ofrecen recorridos diferentes por una obra de gran importancia para la narrativa latinoamericana.",
+      "fuente_url": "https://openlibrary.org/authors/OL74490A"
+    },
+    {
+      "nombre_publico": "Carlos Fuentes",
+      "nombre": "Carlos",
+      "apellido_paterno": "Fuentes",
+      "apellido_materno": "Macias",
+      "nacionalidad": "Mexicana",
+      "nacimiento": "1928-11-11",
+      "fallecimiento": "2012-05-15",
+      "biografia": "Carlos Fuentes fue un escritor mexicano nacido en Panamá, autor de novelas, cuentos y ensayos. Su narrativa investigó la historia de México y sus transformaciones mediante estructuras que combinan perspectivas y épocas. La identidad, la memoria y el ejercicio del poder son algunos de sus temas recurrentes. La muerte de Artemio Cruz y Aura muestran dos vertientes de su escritura: la exploración de la experiencia histórica y la construcción de atmósferas donde la percepción se vuelve incierta.",
+      "fuente_url": "https://openlibrary.org/authors/OL4333664A"
+    },
+    {
+      "nombre_publico": "Gabriel García Márquez",
+      "nombre": "Gabriel",
+      "apellido_paterno": "Garcia",
+      "apellido_materno": "Marquez",
+      "nacionalidad": "Colombiana",
+      "nacimiento": "1927-03-06",
+      "fallecimiento": "2014-04-17",
+      "biografia": "Gabriel García Márquez fue un escritor y periodista colombiano cuya narrativa relaciona la memoria del Caribe con una imaginación extraordinaria. En sus historias, los conflictos familiares y políticos conviven con acontecimientos que los personajes aceptan con naturalidad. La soledad, la espera y el paso del tiempo recorren su obra. Cien años de soledad, El coronel no tiene quien le escriba y El amor en los tiempos del cólera permiten descubrir la variedad de sus registros y personajes.",
+      "fuente_url": "https://openlibrary.org/authors/OL27363A"
+    },
+    {
+      "nombre_publico": "Rosario Castellanos",
+      "nombre": "Rosario",
+      "apellido_paterno": "Castellanos",
+      "apellido_materno": "Figueroa",
+      "nacionalidad": "Mexicana",
+      "nacimiento": "1925-05-25",
+      "fallecimiento": "1974-08-07",
+      "biografia": "Rosario Castellanos fue una escritora mexicana que cultivó poesía, narrativa y ensayo. Su obra examina las desigualdades sociales y la posición de las mujeres, con especial atención a los vínculos entre las comunidades indígenas y los grupos dominantes de Chiapas. La precisión crítica y el análisis de las relaciones de poder caracterizan muchos de sus textos. Balún Canán y Oficio de tinieblas son novelas esenciales para acercarse a una mirada que cuestiona los silencios de la sociedad.",
+      "fuente_url": "https://openlibrary.org/authors/OL203132A"
+    },
+    {
+      "nombre_publico": "Adolfo Bioy Casares",
+      "nombre": "Adolfo",
+      "apellido_paterno": "Bioy",
+      "apellido_materno": "Casares",
+      "nacionalidad": "Argentina",
+      "nacimiento": "1914-09-15",
+      "fallecimiento": "1999-03-08",
+      "biografia": "Adolfo Bioy Casares fue un escritor argentino especialmente conocido por su narrativa fantástica. Sus historias construyen situaciones rigurosas donde una posibilidad extraordinaria pone a prueba los deseos y las certezas de los personajes. El amor, la percepción y los límites de la realidad reaparecen en su obra. La invención de Morel es uno de sus libros más reconocidos. También mantuvo una extensa colaboración literaria con Jorge Luis Borges y desarrolló una producción de cuentos, novelas y diarios.",
+      "fuente_url": "https://openlibrary.org/authors/OL67141A"
+    },
+    {
+      "nombre_publico": "Jane Austen",
+      "nombre": "Jane",
+      "apellido_paterno": "Austen",
+      "apellido_materno": null,
+      "nacionalidad": "Inglesa",
+      "nacimiento": "1775-12-16",
+      "fallecimiento": "1817-07-18",
+      "biografia": "Jane Austen fue una novelista inglesa que observó con agudeza las relaciones familiares y sociales de su entorno. Sus novelas examinan las decisiones afectivas dentro de una sociedad donde la propiedad, la reputación y el matrimonio condicionaban las posibilidades de las mujeres. La ironía y los diálogos permiten mostrar las distancias entre apariencia y juicio personal. Orgullo y prejuicio, Sentido y sensibilidad y Emma son obras destacadas de una narrativa que convierte la vida cotidiana en materia de análisis.",
+      "fuente_url": "https://openlibrary.org/authors/OL21594A"
+    }
+  ],
+  "categorias": {
+    "Novela": "Narraciones extensas que desarrollan personajes, conflictos y mundos a través de una historia sostenida.",
+    "Cuento": "Relatos breves que concentran una experiencia, un conflicto o una transformación en pocas páginas.",
+    "Poesia": "Obras que exploran el ritmo, las imágenes y las posibilidades expresivas de la palabra.",
+    "Ensayo": "Textos de reflexión que presentan una mirada argumentada sobre ideas, cultura o sociedad.",
+    "Historia": "Obras dedicadas a comprender acontecimientos, procesos y sociedades del pasado.",
+    "Ciencia": "Publicaciones que exploran fenómenos naturales y formas de construir conocimiento verificable.",
+    "Tecnologia": "Obras sobre herramientas, procesos y aplicaciones del conocimiento técnico.",
+    "Infantil": "Lecturas destinadas a la infancia, con historias y lenguajes adecuados a sus distintas etapas.",
+    "Juvenil": "Obras orientadas a lectores jóvenes y a sus experiencias, inquietudes y descubrimientos.",
+    "Literatura": "Obras que trabajan el lenguaje y la imaginación para explorar la experiencia humana.",
+    "Biografia": "Relatos sobre la vida de personas, su contexto y las experiencias que marcaron su trayectoria.",
+    "Ciencia Ficcion": "Historias que imaginan sociedades, tecnologías y posibilidades científicas para explorar sus consecuencias humanas.",
+    "Fantasia": "Narraciones donde lo extraordinario, lo mágico o lo imposible forman parte del mundo de la historia.",
+    "Tecnico": "Publicaciones que explican procedimientos, herramientas y conocimientos especializados para su aplicación práctica.",
+    "Terror": "Historias que exploran el miedo y la inquietud mediante amenazas, atmósferas y situaciones perturbadoras."
+  },
+  "editoriales": {
+    "Debolsillo": {
+      "descripcion": "Sello dedicado al formato de bolsillo, con clásicos contemporáneos, literatura clásica, ensayo y narrativa actual. Su catálogo reúne autores de distintas editoriales y generaciones.",
+      "pais": null,
+      "fuente_url": "https://www.penguinlibros.com/es/11338-debolsillo?frame=0"
+    },
+    "Destino": {
+      "descripcion": "Editorial vinculada a la vida literaria de Barcelona. Mantiene su nombre como sello tras su incorporación al Grupo Planeta. En esta biblioteca puedes explorar sus ediciones de narrativa.",
+      "pais": "España",
+      "fuente_url": "https://www.bnc.cat/esl/layout/set/print/Editors-i-Editats-de-Catalunya/Editorials/Edicions-Destino"
+    }
+  }
+}

@@ -11,6 +11,11 @@ class Editorial extends Model
     public $timestamps = false;
     protected $fillable = ['nombre'];
 
+    public function ficha()
+    {
+        return $this->hasOne(EditorialFicha::class, 'id_editorial', 'id_editorial');
+    }
+
     public function libros()
     {
         return $this->belongsToMany(Libro::class, 'asigna_editoriales', 'id_editorial', 'id_libro');

@@ -46,15 +46,15 @@ final class PermisosBiblioteca
     {
         $resultado = [];
         if ($rol === 'USUARIO') {
-            return array_map(fn ($modulo) => $modulo.':ver', self::LECTURA_USUARIO);
+            return [...array_map(fn ($modulo) => $modulo.':ver', self::LECTURA_USUARIO), 'solicitudes:ver', 'solicitudes:crear'];
         }
         if ($rol !== 'BIBLIOTECARIO') {
             return [];
         }
         foreach (array_keys(self::MODULOS) as $modulo) {
             $acciones = match ($modulo) {
-                // Se habilita mediante su migración incremental, sin alterar las matrices existentes.
-                'solicitudes' => [],
+                // Permisos iniciales; las matrices existentes se consultan desde la base.
+                'solicitudes' => ['ver', 'editar'],
                 'bibliotecarios', 'estados-ejemplar', 'estados-usuario' => ['ver'],
                 'devoluciones' => ['ver', 'crear'],
                 default => ['ver', 'crear', 'editar'],

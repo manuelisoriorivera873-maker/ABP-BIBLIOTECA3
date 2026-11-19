@@ -14,7 +14,7 @@ class PermisosBibliotecaTest extends TestCase
                 $this->assertTrue(PermisosBiblioteca::permiteRol('USUARIO', $modulo, $accion), "$modulo/$accion");
             }
         }
-        $this->assertSame(['libros:ver', 'autores:ver', 'categorias:ver', 'editoriales:ver'], PermisosBiblioteca::iniciales('USUARIO'));
+        $this->assertSame(['libros:ver', 'autores:ver', 'categorias:ver', 'editoriales:ver', 'solicitudes:ver', 'solicitudes:crear'], PermisosBiblioteca::iniciales('USUARIO'));
         $this->assertFalse(PermisosBiblioteca::permiteRol('USUARIO', 'cuentas', 'editar'));
     }
 

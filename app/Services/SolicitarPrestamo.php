@@ -36,7 +36,7 @@ class SolicitarPrestamo
             $this->error('Tienes préstamos vencidos pendientes de devolución.');
         }
         $otras = SolicitudPrestamo::with('detalles')->where('id_usuario', $idUsuario)
-            ->whereIn('estado', ['PENDIENTE', 'APROBADA'])->when($excluir, fn ($q) => $q->where('id_solicitud', '!=', $excluir))->get();
+            ->where(fn ($q) => $q->where('estado', 'PENDIENTE')->orWhere(fn ($a) => $a->where('estado', 'APROBADA')->whereNull('id_prestamo')))->when($excluir, fn ($q) => $q->where('id_solicitud', '!=', $excluir))->get();
         $ocupados = $activos->groupBy('ejemplar.id_libro')->map->count()->all();
         foreach ($otras->flatMap->detalles as $detalle) {
             $ocupados[$detalle->id_libro] = ($ocupados[$detalle->id_libro] ?? 0) + $detalle->cantidad;

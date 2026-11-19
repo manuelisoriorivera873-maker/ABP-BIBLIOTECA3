@@ -21,7 +21,7 @@ class RegistroPublicoController extends Controller
             $cuenta = Auth::user();
 
             if ($cuenta->rol === 'USUARIO') {
-                return redirect()->route('libros.index');
+                return redirect()->route('lector.inicio');
             }
 
             return redirect()->route('dashboard');
@@ -171,7 +171,7 @@ class RegistroPublicoController extends Controller
 
         // 7. Enviar al nuevo lector al catalogo
         return redirect()
-            ->route('libros.index')
+            ->route('lector.inicio')
             ->with(
                 'success',
                 'Tu cuenta de lector fue creada correctamente.'

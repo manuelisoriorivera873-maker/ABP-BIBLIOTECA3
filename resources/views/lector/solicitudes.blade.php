@@ -1,0 +1,7 @@
+@extends('layouts.lector')
+@section('title','Mis solicitudes')
+@section('content')
+<header class="pagina-titulo"><span class="sobrelinea">ACOMPAÑAMOS TU LECTURA</span><h1>Mis solicitudes</h1><p>Consulta la respuesta de tu biblioteca y el estado de tus libros.</p></header>
+@if($cambios)<div class="alert alert-info" role="status">Hay cambios en el seguimiento de tus solicitudes. Consulta los estados actualizados.</div>@endif
+@forelse($solicitudes as $solicitud)<article class="seguimiento"><div class="seguimiento-cabecera"><span>Solicitada el {{ $solicitud->created_at->format('d/m/Y H:i') }}</span><strong class="estado">{{ $solicitud->estado }}</strong></div><ul>@foreach($solicitud->detalles as $detalle)<li>{{ $detalle->libro->titulo_publico }} · {{ $detalle->cantidad }} ejemplares</li>@endforeach</ul>@if($solicitud->atendida_en)<p>Respuesta: {{ \Illuminate\Support\Carbon::parse($solicitud->atendida_en)->format('d/m/Y H:i') }}</p>@endif @if($solicitud->motivo_rechazo)<p>Motivo: {{ $solicitud->motivo_rechazo }}</p>@endif @if($solicitud->id_prestamo)<a href="{{ route('lector.prestamos') }}">Consultar mi préstamo →</a>@elseif($solicitud->estado==='APROBADA')<p>La biblioteca debe revisar el registro de esta aprobación anterior. No se ha creado un préstamo retroactivo.</p>@endif</article>@empty<div class="vacio"><h2>Aún no has enviado solicitudes</h2><a href="{{ route('lector.explorar') }}">Encuentra un libro para comenzar</a></div>@endforelse{{ $solicitudes->links() }}
+@endsection

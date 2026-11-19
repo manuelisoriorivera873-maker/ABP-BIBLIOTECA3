@@ -83,7 +83,7 @@ foreach ($rutas as $ruta) {
     }
 }
 $lector = CuentaAcceso::where('rol', 'USUARIO')->where('activo', true)->whereNotNull('id_usuario')->firstOrFail();
-foreach (['/libros', '/solicitudes/nueva', '/solicitudes', '/lector/prestamos'] as $ruta) {
+foreach (['/lector/inicio', '/lector/explorar', '/lector/solicitar', '/lector/mis-solicitudes', '/lector/mis-prestamos', '/lector/bibliografia/autores', '/lector/bibliografia/categorias', '/lector/bibliografia/editoriales'] as $ruta) {
     Auth::forgetGuards();
     Auth::guard()->setUser($lector);
     $respuesta = $kernel->handle(Request::create($ruta, 'GET'));
@@ -91,8 +91,8 @@ foreach (['/libros', '/solicitudes/nueva', '/solicitudes', '/lector/prestamos'] 
     if ($respuesta->getStatusCode() !== 200) {
         $errores++;
     }
-    if ($ruta === '/libros') {
-        foreach (['Catálogo de libros', 'Solicitar préstamo', 'Mis solicitudes', 'Mis préstamos'] as $enlace) {
+    if ($ruta === '/lector/inicio') {
+        foreach (['Explorar libros', 'Solicitar préstamo', 'Mis solicitudes', 'Mis préstamos'] as $enlace) {
             if (! str_contains($respuesta->getContent(), $enlace)) {
                 echo 'ERROR: falta enlace '.$enlace.PHP_EOL;
                 $errores++;
@@ -101,12 +101,30 @@ foreach (['/libros', '/solicitudes/nueva', '/solicitudes', '/lector/prestamos'] 
     }
 }
 $personal = CuentaAcceso::where('rol', 'BIBLIOTECARIO')->where('activo', true)->firstOrFail();
+foreach (DB::table('libro_fichas')->pluck('publico') as $publico) {
+    Auth::forgetGuards();
+    Auth::guard()->setUser($lector);
+    $respuesta = $kernel->handle(Request::create('/lector/libros/'.$publico, 'GET'));
+    echo 'GET ficha pública '.$respuesta->getStatusCode().PHP_EOL;
+    if ($respuesta->getStatusCode() !== 200 || str_contains($respuesta->getContent(), 'id_libro')) {
+        $errores++;
+    }
+}
 Auth::forgetGuards();
 Auth::guard()->setUser($personal);
 $respuesta = $kernel->handle(Request::create('/', 'GET'));
 echo 'GET escritorio bibliotecario '.$respuesta->getStatusCode().PHP_EOL;
 if ($respuesta->getStatusCode() !== 200 || ! str_contains($respuesta->getContent(), 'Solicitudes de préstamo')) {
     $errores++;
+}
+foreach (DB::table('autor_fichas')->pluck('publico') as $publico) {
+    Auth::forgetGuards();
+    Auth::guard()->setUser($lector);
+    $respuesta = $kernel->handle(Request::create('/lector/autores/'.$publico, 'GET'));
+    echo 'GET biografía pública '.$respuesta->getStatusCode().PHP_EOL;
+    if ($respuesta->getStatusCode() !== 200 || str_contains($respuesta->getContent(), 'id_autor')) {
+        $errores++;
+    }
 }
 foreach ($conteos as $tabla => $cantidad) {
     if (DB::table($tabla)->count() !== $cantidad) {

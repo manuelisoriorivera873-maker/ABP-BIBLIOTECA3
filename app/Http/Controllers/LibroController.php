@@ -93,7 +93,10 @@ class LibroController extends Controller
         }
 
         try {
-            $libro->delete();
+            DB::transaction(function () use ($libro): void {
+                $libro->ficha()->delete();
+                $libro->delete();
+            });
         } catch (Throwable $e) {
             return back()->with('error', 'No fue posible eliminar el libro porque está relacionado con otros registros.');
         }

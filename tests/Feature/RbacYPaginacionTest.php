@@ -18,6 +18,11 @@ class RbacYPaginacionTest extends TestCase
         DB::unprepared(file_get_contents(__DIR__.'/../Fixtures/schema.sql'));
         $migracion = require database_path('migrations/2026_10_22_000002_create_permisos_por_rol.php');
         $migracion->up();
+        (require database_path('migrations/2026_10_22_000003_create_solicitudes_prestamo.php'))->up();
+        (require database_path('migrations/2026_10_31_000004_create_libro_fichas.php'))->up();
+        (require database_path('migrations/2026_10_31_000005_create_fichas_bibliograficas.php'))->up();
+        (require database_path('migrations/2026_10_31_000006_add_revision_bibliografica.php'))->up();
+        (require database_path('migrations/2026_10_31_000007_create_lectura_y_favoritos.php'))->up();
         DB::table('estados_usuario')->insert(['id_estado_usuario' => 1, 'nombre_estado_usuario' => 'ACTIVO']);
     }
 
@@ -105,7 +110,7 @@ class RbacYPaginacionTest extends TestCase
         $bibliotecario = $this->cuenta('BIBLIOTECARIO');
         $url = '/cuentas/roles/USUARIO/permisos';
         $bibliotecarioAntes = PermisosBiblioteca::vigentes('BIBLIOTECARIO');
-        $rutas = ['libros' => '/libros', 'autores' => '/autores', 'categorias' => '/catalogos/categorias', 'editoriales' => '/catalogos/editoriales'];
+        $rutas = ['libros' => '/lector/explorar', 'autores' => '/lector/bibliografia/autores', 'categorias' => '/lector/bibliografia/categorias', 'editoriales' => '/lector/bibliografia/editoriales'];
 
         foreach ($rutas as $modulo => $ruta) {
             $this->actingAs($admin)->put($url, ['permisos' => [$modulo.':ver']])->assertRedirect($url);
@@ -164,17 +169,17 @@ class RbacYPaginacionTest extends TestCase
             $this->assertSame(in_array($valor, $almacenados, true), $estado['checked'], $valor);
         }
         foreach ([$a, $b] as $lector) {
-            $this->assertTrue($lector->puede('libros', 'crear'));
-            $this->assertTrue($lector->puede('libros', 'editar'));
-            $this->assertTrue($lector->puede('libros', 'eliminar'));
-            $this->actingAs($lector)->get('/libros/create')->assertOk();
+            $this->assertFalse($lector->puede('libros', 'crear'));
+            $this->assertFalse($lector->puede('libros', 'editar'));
+            $this->assertFalse($lector->puede('libros', 'eliminar'));
+            $this->actingAs($lector)->get('/libros/create')->assertForbidden();
             $this->get('/cuentas')->assertForbidden();
             $this->put($url, ['permisos' => []])->assertForbidden();
             $persona = Persona::create(['nombre' => 'Prueba', 'apellido_paterno' => 'Sin', 'apellido_materno' => 'Escalada']);
             $this->put('/personas/'.$persona->id_persona, ['nombre' => 'Prueba', 'apellido_paterno' => 'Sin', 'apellido_materno' => 'Escalada', 'acceso' => ['gestionar' => 1, 'rol' => 'SUPERADMIN']])->assertForbidden();
         }
         $nuevo = $this->cuenta('USUARIO');
-        $this->assertTrue($nuevo->puede('libros', 'crear'));
+        $this->assertFalse($nuevo->puede('libros', 'crear'));
         $this->actingAs($admin)->put('/cuentas/roles/BIBLIOTECARIO/permisos', ['permisos' => ['autores:ver']])->assertRedirect();
         $this->assertSame($almacenados, PermisosBiblioteca::vigentes('USUARIO'));
         $this->put($url, ['permisos' => ['libros:ver']])->assertRedirect();
@@ -193,25 +198,14 @@ class RbacYPaginacionTest extends TestCase
     {
         $admin = $this->cuenta('SUPERADMIN');
         $this->datosParaListados($admin);
-        $this->actingAs($admin)->put('/cuentas/roles/USUARIO/permisos', ['permisos' => ['prestamos:ver', 'prestamos:crear', 'prestamos:editar', 'prestamos:eliminar', 'devoluciones:ver', 'devoluciones:crear', 'devoluciones:editar', 'devoluciones:eliminar', 'personas:ver', 'usuarios:ver', 'bibliotecarios:ver']])->assertRedirect();
         $lector = CuentaAcceso::where('id_usuario', 1)->firstOrFail();
         $this->actingAs($lector);
-        $prestamos = $this->get('/prestamos')->assertOk()->viewData('prestamos');
+        $prestamos = $this->get('/lector/mis-prestamos')->assertOk()->viewData('prestamos');
         $this->assertSame([1], $prestamos->pluck('id_usuario')->all());
         $this->assertSame(1, $prestamos->total());
-        $respuesta = $this->get('/devoluciones')->assertOk();
-        $this->assertSame(1, $respuesta->viewData('devoluciones')->total());
-        $this->assertSame(1, $respuesta->viewData('devoluciones')->first()->id_prestamo);
-        $this->assertSame(0, $respuesta->viewData('pendientes')->total());
-        $usuarios = $this->get('/usuarios')->assertOk()->viewData('usuarios');
-        $this->assertSame(1, $usuarios->firstWhere('id_usuario', 1)->prestamos_count);
-        $this->assertSame(0, $usuarios->firstWhere('id_usuario', 2)->prestamos_count);
-        $personal = $this->get('/bibliotecarios')->assertOk()->viewData('bibliotecarios');
-        $this->assertSame(0, $personal->firstWhere('id_bibliotecario', 2)->prestamos_count);
-        $otraPersona = $this->get('/personas/2')->assertOk()->viewData('persona');
-        $this->assertCount(0, $otraPersona->usuario->prestamos);
-        $this->assertCount(0, $otraPersona->bibliotecario->prestamos);
-        $this->get('/prestamos?buscar=Registro-32')->assertOk()->assertViewHas('prestamos', fn ($p) => $p->total() === 0);
+        foreach (['/usuarios', '/bibliotecarios', '/personas/2', '/prestamos/create'] as $ruta) {
+            $this->get($ruta)->assertForbidden();
+        }
         $this->post('/prestamos', [])->assertForbidden();
         $this->put('/prestamos/1', [])->assertForbidden();
         $this->delete('/prestamos/1')->assertForbidden();
@@ -219,8 +213,7 @@ class RbacYPaginacionTest extends TestCase
         $this->put('/devoluciones/1', [])->assertForbidden();
         $this->delete('/devoluciones/1')->assertForbidden();
         $sinLector = $this->cuenta('USUARIO');
-        $this->actingAs($sinLector)->get('/prestamos')->assertOk()->assertViewHas('prestamos', fn ($p) => $p->total() === 0);
-        $this->get('/devoluciones')->assertOk()->assertViewHas('devoluciones', fn ($p) => $p->total() === 0);
+        $this->actingAs($sinLector)->get('/lector/mis-prestamos')->assertOk()->assertViewHas('prestamos', fn ($p) => $p->total() === 0);
     }
 
     public function test_matriz_institucional_se_comparte_y_archivo_individual_no_autoriza(): void

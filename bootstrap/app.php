@@ -15,7 +15,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->trimStrings(except: ['acceso.password', 'acceso.password_confirmation']);
         $middleware->alias(['biblioteca' => AutorizarBiblioteca::class]);
         $middleware->redirectGuestsTo(fn () => route('login'));
-        $middleware->redirectUsersTo(fn () => route(auth()->user()?->rol === 'USUARIO' ? 'libros.index' : 'dashboard'));
+        $middleware->redirectUsersTo(fn () => route(auth()->user()?->rol === 'USUARIO' ? 'lector.inicio' : 'dashboard'));
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         $exceptions->dontFlash(['acceso.password', 'acceso.password_confirmation']);

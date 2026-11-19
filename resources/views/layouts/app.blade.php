@@ -118,7 +118,7 @@
     @stack('styles')
 </head>
 
-<body>
+<body @if(auth()->user()?->rol === 'USUARIO') class="lector" @endif>
     @php
         $cuentaActual = auth()->user();
 
@@ -189,6 +189,10 @@
             <!-- NAVEGACION -->
 
             <nav class="nav-menu">
+                @if ($rolActual === 'USUARIO')
+                    @include('lector.menu')
+                @else
+
 
                 @if ($rolActual !== 'USUARIO')
                     <a
@@ -374,6 +378,7 @@
                     </a>
                 @endif
 
+                @endif
             </nav>
 
             <div class="sidebar-footer">
@@ -449,9 +454,10 @@
 
             <!-- CONTENIDO DE CADA MODULO -->
 
-            <div class="content-wrap">
+            <div class="content-wrap" @if($rolActual === 'USUARIO') id="contenido" @endif>
 
                 @include('partials.alerts')
+                @if($rolActual === 'USUARIO' && session('info'))<div class="alert alert-info" role="status">{{ session('info') }}</div>@endif
 
                 @yield('content')
 

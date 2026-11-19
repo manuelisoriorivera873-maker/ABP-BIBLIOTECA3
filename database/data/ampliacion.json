@@ -1,0 +1,833 @@
+{
+  "libros": [
+    {
+      "titulo": "La tregua",
+      "autor": "Mario Benedetti",
+      "isbn": "9788466322874",
+      "editorial": "Santillana",
+      "anio": 2009,
+      "categoria": "Novela",
+      "idioma": "spa",
+      "sinopsis": "Un empleado viudo se aproxima a la jubilación mientras observa su rutina, sus vínculos familiares y las pequeñas expectativas de cada día. La llegada de una relación inesperada modifica su manera de mirar el tiempo que le queda por delante. A través de una escritura íntima, Benedetti explora el deseo de compañía, la dificultad de comunicarse y la posibilidad de encontrar una pausa luminosa dentro de una vida organizada por la costumbre.",
+      "portada": "https://covers.openlibrary.org/b/id/7993929-M.jpg?default=false",
+      "fuente": "https://openlibrary.org/books/OL26319445M",
+      "portada_fuente": "https://openlibrary.org/books/OL26319445M",
+      "fuentes_adicionales": [],
+      "revision_bibliografica": null,
+      "portada_verificada": true
+    },
+    {
+      "titulo": "El túnel",
+      "autor": "Ernesto Sábato",
+      "isbn": "9788432250026",
+      "editorial": "Seix Barral",
+      "anio": 1980,
+      "categoria": "Novela",
+      "idioma": "spa",
+      "sinopsis": "El pintor Juan Pablo Castel reconstruye una relación marcada por su necesidad de sentirse comprendido. Desde una mirada cerrada y obsesiva, interpreta gestos y conversaciones como señales de una verdad que siempre parece escapársele. Sábato convierte esa búsqueda en una exploración de la soledad y de los límites de la comunicación. La novela exige atender tanto a lo que el narrador cuenta como a las dudas que provoca su manera de explicarlo.",
+      "portada": "https://covers.openlibrary.org/b/id/13303500-M.jpg?default=false",
+      "fuente": "https://openlibrary.org/books/OL9121174M",
+      "portada_fuente": "https://openlibrary.org/books/OL9121174M",
+      "fuentes_adicionales": [],
+      "revision_bibliografica": null,
+      "portada_verificada": true
+    },
+    {
+      "titulo": "Los detectives salvajes",
+      "autor": "Roberto Bolaño",
+      "isbn": "9788433966636",
+      "editorial": "Anagrama",
+      "anio": 2011,
+      "categoria": "Novela",
+      "idioma": "spa",
+      "sinopsis": "Un grupo de jóvenes poetas se mueve entre lecturas, amistades y búsquedas literarias en el México de los años setenta. La pista de una escritora desaparecida abre un recorrido que se extiende por lugares y testimonios muy diferentes. Bolaño organiza voces que se acercan y se contradicen, dejando al lector reconstruir los vínculos entre ellas. La novela explora la juventud, la imaginación y la persistencia de una búsqueda compartida a través del tiempo.",
+      "portada": "https://covers.openlibrary.org/b/id/15215334-M.jpg?default=false",
+      "fuente": "https://openlibrary.org/books/OL61669380M",
+      "portada_fuente": "https://openlibrary.org/books/OL61669380M",
+      "fuentes_adicionales": [
+        "https://www.anagrama-ed.es/libro/narrativas-hispanicas/los-detectives-salvajes/9788433910868/NH_256"
+      ],
+      "revision_bibliografica": null,
+      "portada_verificada": true
+    },
+    {
+      "titulo": "Las batallas en el desierto",
+      "autor": "José Emilio Pacheco",
+      "isbn": "9789684114739",
+      "editorial": "Era",
+      "anio": 2005,
+      "categoria": "Novela",
+      "idioma": "spa",
+      "sinopsis": "El recuerdo de una experiencia infantil conduce a un recorrido por una Ciudad de México que está cambiando. Carlos intenta comprender sentimientos para los que su entorno solo parece ofrecer prohibiciones y juicios. Pacheco enlaza la memoria individual con diferencias sociales, prejuicios y nuevas formas de consumo. La brevedad del relato permite observar cómo un episodio íntimo puede revelar las contradicciones de una época y la distancia entre lo vivido y lo recordado.",
+      "portada": "https://covers.openlibrary.org/b/id/4924277-M.jpg?default=false",
+      "fuente": "https://openlibrary.org/books/OL9174364M",
+      "portada_fuente": "https://openlibrary.org/books/OL9174364M",
+      "fuentes_adicionales": [
+        "https://peisa.com.pe/producto/las-batallas-en-el-desierto"
+      ],
+      "revision_bibliografica": null,
+      "portada_verificada": true
+    },
+    {
+      "titulo": "Los recuerdos del porvenir",
+      "autor": "Elena Garro",
+      "isbn": "9788492891146",
+      "editorial": "451 Editores",
+      "anio": 2011,
+      "categoria": "Novela",
+      "idioma": "spa",
+      "sinopsis": "Ixtepec cuenta su propia historia y reúne las voces de quienes habitan un pueblo marcado por la presencia militar y por las tensiones posteriores a la Revolución mexicana. Los recuerdos de la comunidad permiten acercarse a deseos, temores y relaciones de poder. Garro construye una narración donde el tiempo no avanza de manera sencilla y donde lo íntimo se entrelaza con la violencia colectiva. Una lectura sobre la memoria y las posibilidades de contar el pasado.",
+      "portada": "https://covers.openlibrary.org/b/id/12887163-M.jpg?default=false",
+      "fuente": "https://openlibrary.org/books/OL39482895M",
+      "portada_fuente": "https://openlibrary.org/books/OL39482895M",
+      "fuentes_adicionales": [
+        "https://www.elem.mx/obra/datos/3408"
+      ],
+      "revision_bibliografica": null,
+      "portada_verificada": true
+    },
+    {
+      "titulo": "Cosmos",
+      "autor": "Carl Sagan",
+      "isbn": "9780394502946",
+      "editorial": "Random House",
+      "anio": 1980,
+      "categoria": "Divulgación científica",
+      "idioma": "eng",
+      "sinopsis": "El universo aparece aquí como una oportunidad para comprender tanto los fenómenos naturales como la historia de nuestra curiosidad. Sagan relaciona preguntas sobre los planetas, las estrellas y la vida con las personas y las ideas que impulsaron la investigación científica. El recorrido invita a observar las pruebas, reconocer la incertidumbre y situar a la humanidad dentro de una escala mucho más amplia. Una obra de divulgación que conecta conocimiento, imaginación y responsabilidad.",
+      "portada": "https://covers.openlibrary.org/b/id/10601318-M.jpg?default=false",
+      "fuente": "https://openlibrary.org/books/OL24740450M",
+      "portada_fuente": "https://openlibrary.org/books/OL24740450M",
+      "fuentes_adicionales": [],
+      "revision_bibliografica": "Edición en inglés.",
+      "portada_verificada": true
+    },
+    {
+      "titulo": "The Selfish Gene",
+      "autor": "Richard Dawkins",
+      "isbn": "9780198788607",
+      "editorial": "Oxford University Press",
+      "anio": 2016,
+      "categoria": "Divulgación científica",
+      "idioma": "eng",
+      "sinopsis": "La evolución se examina desde la perspectiva de los genes y de su transmisión entre generaciones. Dawkins utiliza ejemplos y argumentos para explicar cómo la selección natural puede producir comportamientos que parecen difíciles de conciliar, como la competencia y la cooperación. El libro propone cambiar el punto de observación para comprender procesos biológicos. Su lectura invita a distinguir las metáforas explicativas de las intenciones humanas y a discutir las consecuencias de una idea influyente.",
+      "portada": "https://covers.openlibrary.org/b/id/15179535-M.jpg?default=false",
+      "fuente": "https://openlibrary.org/books/OL28000467M",
+      "portada_fuente": "https://openlibrary.org/books/OL28000467M",
+      "fuentes_adicionales": [],
+      "revision_bibliografica": "Edición en inglés.",
+      "portada_verificada": true
+    },
+    {
+      "titulo": "Silent Spring",
+      "autor": "Rachel Carson",
+      "isbn": "9780395166116",
+      "editorial": "Houghton Mifflin",
+      "anio": 1994,
+      "categoria": "Divulgación científica",
+      "idioma": "eng",
+      "sinopsis": "El uso de pesticidas se convierte en el punto de partida de una investigación sobre sus efectos en los seres vivos y en el entorno. Carson relaciona observaciones concretas con preguntas sobre las decisiones humanas y las consecuencias que pueden extenderse más allá de lo previsto. La obra invita a considerar los ecosistemas como conjuntos de relaciones y a pedir pruebas antes de aceptar soluciones presentadas como inocuas para la salud ambiental.",
+      "portada": "https://covers.openlibrary.org/b/id/15199104-M.jpg?default=false",
+      "fuente": "https://openlibrary.org/books/OL39460744M",
+      "portada_fuente": "https://openlibrary.org/books/OL39460744M",
+      "fuentes_adicionales": [],
+      "revision_bibliografica": "Edición en inglés.",
+      "portada_verificada": true
+    },
+    {
+      "titulo": "The Man Who Mistook His Wife for a Hat: And Other Clinical Tales",
+      "autor": "Oliver Sacks",
+      "isbn": "9781101908310",
+      "editorial": "Everyman's Library",
+      "anio": 2023,
+      "categoria": "Divulgación científica",
+      "idioma": "eng",
+      "sinopsis": "Experiencias de personas con alteraciones neurológicas permiten explorar la relación entre percepción, memoria e identidad. Sacks presenta situaciones clínicas atendiendo también a las vidas y a las formas de adaptación de sus protagonistas. Las preguntas médicas se convierten así en preguntas sobre la experiencia humana. El libro invita a reconocer las capacidades de cada persona y a mirar con atención aquello que suele quedar oculto cuando un diagnóstico se reduce a una etiqueta.",
+      "portada": "https://covers.openlibrary.org/b/id/13663010-M.jpg?default=false",
+      "fuente": "https://openlibrary.org/books/OL46626867M",
+      "portada_fuente": "https://openlibrary.org/books/OL46626867M",
+      "fuentes_adicionales": [],
+      "revision_bibliografica": "Edición en inglés.",
+      "portada_verificada": true
+    },
+    {
+      "titulo": "Code: The Hidden Language of Computer Hardware and Software",
+      "autor": "Charles Petzold",
+      "isbn": "9780735611313",
+      "editorial": "Microsoft Press",
+      "anio": 2000,
+      "categoria": "Tecnico",
+      "idioma": "eng",
+      "sinopsis": "¿Cómo puede una serie de señales llegar a formar una computadora? Petzold comienza con formas sencillas de comunicación y avanza hacia la representación de información, los circuitos y las operaciones lógicas. Los ejemplos conectan objetos cotidianos con ideas que a menudo parecen reservadas a especialistas. El libro permite construir una comprensión gradual de los fundamentos del hardware y del software, sin presentar la tecnología como una caja cuyo interior deba permanecer inaccesible.",
+      "portada": "https://covers.openlibrary.org/b/id/461152-M.jpg?default=false",
+      "fuente": "https://openlibrary.org/books/OL7890773M",
+      "portada_fuente": "https://openlibrary.org/books/OL7890773M",
+      "fuentes_adicionales": [
+        "https://www.charlespetzold.com/code/"
+      ],
+      "revision_bibliografica": "Edición en inglés.",
+      "portada_verificada": true
+    },
+    {
+      "titulo": "Automate the Boring Stuff with Python: Practical Programming for Total Beginners",
+      "autor": "Al Sweigart",
+      "isbn": "9781593279929",
+      "editorial": "No Starch Press",
+      "anio": 2019,
+      "categoria": "Tecnico",
+      "idioma": "eng",
+      "sinopsis": "Las tareas repetitivas con archivos, documentos y datos pueden convertirse en pequeños proyectos de programación. Sweigart introduce Python mediante ejemplos prácticos que muestran cómo dividir un problema y automatizar sus pasos. El libro está dirigido a quienes quieren empezar a escribir programas con una finalidad concreta. La edición registrada permite explorar ese enfoque de aprendizaje, combinando explicaciones del lenguaje con ejercicios y aplicaciones que ayudan a relacionar el código con necesidades cotidianas.",
+      "portada": "https://covers.openlibrary.org/b/id/10355256-M.jpg?default=false",
+      "fuente": "https://openlibrary.org/books/OL28749300M",
+      "portada_fuente": "https://openlibrary.org/books/OL28749300M",
+      "fuentes_adicionales": [],
+      "revision_bibliografica": "Edición en inglés.",
+      "portada_verificada": true
+    },
+    {
+      "titulo": "The Linux Command Line: A Complete Introduction",
+      "autor": "William Shotts",
+      "isbn": "9781593273897",
+      "editorial": "No Starch Press",
+      "anio": 2012,
+      "categoria": "Tecnico",
+      "idioma": "eng",
+      "sinopsis": "La terminal de Linux se presenta como un entorno para comprender y controlar el trabajo con archivos, procesos y programas. Shotts avanza desde los primeros comandos hasta la construcción de guiones que combinan operaciones. Los ejemplos explican qué hace cada instrucción y cómo se relaciona con las demás. El recorrido permite descubrir una forma de interactuar con el sistema que favorece la precisión y la automatización, manteniendo un aprendizaje gradual de sus herramientas.",
+      "portada": "https://covers.openlibrary.org/b/id/7087755-M.jpg?default=false",
+      "fuente": "https://nostarch.com/releases/linuxcommandline_release.html",
+      "portada_fuente": "https://openlibrary.org/books/OL25004747M",
+      "fuentes_adicionales": [
+        "https://openlibrary.org/books/OL25004747M"
+      ],
+      "revision_bibliografica": "Edición en inglés.",
+      "portada_verificada": true
+    },
+    {
+      "titulo": "A Short History of Nearly Everything",
+      "autor": "Bill Bryson",
+      "isbn": "9780552997041",
+      "editorial": "Black Swan",
+      "anio": 2004,
+      "categoria": "Divulgación científica",
+      "idioma": "eng",
+      "sinopsis": "Las grandes preguntas sobre el universo, la Tierra y la vida se recorren mediante historias de descubrimientos y de quienes intentaron explicarlas. Bryson conecta conocimientos de distintas disciplinas con episodios que muestran la dificultad de investigar. El libro propone una aproximación accesible a ideas complejas y recuerda cuánto queda por comprender. Su interés no está solo en las respuestas, sino también en los errores, las dudas y la curiosidad que acompañan la construcción del conocimiento.",
+      "portada": "https://covers.openlibrary.org/b/id/15214565-M.jpg?default=false",
+      "fuente": "https://openlibrary.org/books/OL49829494M",
+      "portada_fuente": "https://openlibrary.org/books/OL49829494M",
+      "fuentes_adicionales": [],
+      "revision_bibliografica": "Edición en inglés.",
+      "portada_verificada": true
+    },
+    {
+      "titulo": "El infinito en un junco: La invención de los libros en el mundo antiguo",
+      "autor": "Irene Vallejo",
+      "isbn": "9788417860790",
+      "editorial": "Siruela",
+      "anio": 2020,
+      "categoria": "Ensayo",
+      "idioma": "spa",
+      "sinopsis": "La historia de los libros reúne materiales, viajes y personas que han permitido conservar y compartir las palabras. Vallejo recorre el mundo antiguo y lo conecta con experiencias de lectura cercanas al presente. Bibliotecas, copistas, lectores y cambios en los soportes aparecen como partes de una misma aventura cultural. El ensayo invita a mirar el libro como un objeto frágil y persistente, cuya existencia depende de muchas manos y de una larga memoria colectiva.",
+      "portada": "https://covers.openlibrary.org/b/id/9689877-M.jpg?default=false",
+      "fuente": "https://openlibrary.org/books/OL28108908M",
+      "portada_fuente": "https://openlibrary.org/books/OL28108908M",
+      "fuentes_adicionales": [],
+      "revision_bibliografica": null,
+      "portada_verificada": true
+    },
+    {
+      "titulo": "Frankenstein",
+      "autor": "Mary Shelley",
+      "isbn": "9780141439471",
+      "editorial": "Penguin Books",
+      "anio": 2003,
+      "categoria": "Novela",
+      "idioma": "eng",
+      "sinopsis": "El deseo de ampliar los límites del conocimiento lleva a Victor Frankenstein a emprender un experimento cuyas consecuencias no sabe afrontar. La narración reúne distintas voces para explorar la creación, la responsabilidad y la necesidad de reconocimiento. Shelley plantea preguntas sobre los vínculos entre quien actúa y quienes reciben los efectos de sus decisiones. La novela permite leer el conflicto tanto desde la tradición gótica como desde una reflexión sobre los alcances de la ciencia.",
+      "portada": "https://covers.openlibrary.org/b/id/109033-M.jpg?default=false",
+      "fuente": "https://openlibrary.org/books/OL3701481M",
+      "portada_fuente": "https://openlibrary.org/books/OL3701481M",
+      "fuentes_adicionales": [],
+      "revision_bibliografica": "Edición en inglés.",
+      "portada_verificada": true
+    },
+    {
+      "titulo": "Jane Eyre",
+      "autor": "Charlotte Brontë",
+      "isbn": "9780141441146",
+      "editorial": "Penguin Classics",
+      "anio": 2006,
+      "categoria": "Novela",
+      "idioma": "eng",
+      "sinopsis": "Jane busca una vida propia en un entorno que le exige obediencia y limita sus oportunidades. Desde la infancia hasta su trabajo como institutriz, la protagonista enfrenta preguntas sobre independencia, afecto y dignidad. La novela combina una voz íntima con escenarios donde los secretos y las diferencias sociales tienen un peso decisivo. Brontë construye una historia que invita a pensar qué significa elegir sin renunciar a las convicciones y al respeto por una misma.",
+      "portada": "https://covers.openlibrary.org/b/id/109090-M.jpg?default=false",
+      "fuente": "https://openlibrary.org/books/OL7359947M",
+      "portada_fuente": "https://openlibrary.org/books/OL7359947M",
+      "fuentes_adicionales": [],
+      "revision_bibliografica": "Edición en inglés.",
+      "portada_verificada": true
+    },
+    {
+      "titulo": "Wuthering Heights",
+      "autor": "Emily Brontë",
+      "isbn": "9780141439556",
+      "editorial": "Penguin Classics",
+      "anio": 2002,
+      "categoria": "Novela",
+      "idioma": "eng",
+      "sinopsis": "Las relaciones entre dos familias se desarrollan en un paisaje de páramos donde los afectos y los agravios atraviesan generaciones. Distintas voces reconstruyen una historia difícil de ordenar desde una sola perspectiva. Brontë explora la intensidad de los vínculos, las diferencias sociales y las consecuencias de los deseos que buscan imponerse a los demás. La atmósfera de la novela acompaña una lectura sobre la memoria, la pertenencia y las huellas que dejan las decisiones familiares.",
+      "portada": "https://covers.openlibrary.org/b/id/109038-M.jpg?default=false",
+      "fuente": "https://openlibrary.org/books/OL7359924M",
+      "portada_fuente": "https://openlibrary.org/books/OL7359924M",
+      "fuentes_adicionales": [
+        "https://prhinternationalsales.com/book/?isbn=9780141439556"
+      ],
+      "revision_bibliografica": "Edición en inglés.",
+      "portada_verificada": true
+    },
+    {
+      "titulo": "The Time Machine",
+      "autor": "H. G. Wells",
+      "isbn": "9780141439976",
+      "editorial": "Penguin Classics",
+      "anio": 2005,
+      "categoria": "Ciencia Ficcion",
+      "idioma": "eng",
+      "sinopsis": "Un inventor presenta una máquina que parece hacer posible viajar por el tiempo y se aventura hacia un futuro remoto. El encuentro con formas de vida y de organización desconocidas obliga a revisar sus primeras impresiones. Wells utiliza el desplazamiento temporal para preguntar por el destino de las sociedades y por las consecuencias de sus divisiones. La narración combina aventura e imaginación científica, sin separar el asombro ante lo desconocido de la reflexión social.",
+      "portada": "https://covers.openlibrary.org/b/id/109075-M.jpg?default=false",
+      "fuente": "https://openlibrary.org/books/OL7359933M",
+      "portada_fuente": "https://openlibrary.org/books/OL7359933M",
+      "fuentes_adicionales": [],
+      "revision_bibliografica": "Edición en inglés.",
+      "portada_verificada": true
+    },
+    {
+      "titulo": "The Picture of Dorian Gray",
+      "autor": "Oscar Wilde",
+      "isbn": "9780141439570",
+      "editorial": "Penguin Books",
+      "anio": 2003,
+      "categoria": "Novela",
+      "idioma": "eng",
+      "sinopsis": "La juventud y la belleza se convierten en el centro de la atención de Dorian Gray cuando un retrato fija su imagen. Su relación con el arte y con las influencias de su entorno abre preguntas sobre el deseo y la responsabilidad. Wilde construye una historia donde la conversación elegante convive con una inquietud creciente. La novela invita a considerar la distancia entre la apariencia que se ofrece a los demás y las consecuencias de las propias decisiones.",
+      "portada": "https://covers.openlibrary.org/b/id/15259210-M.jpg?default=false",
+      "fuente": "https://openlibrary.org/books/OL3701357M",
+      "portada_fuente": "https://openlibrary.org/books/OL3701357M",
+      "fuentes_adicionales": [],
+      "revision_bibliografica": "Edición en inglés.",
+      "portada_verificada": true
+    },
+    {
+      "titulo": "A Brief History of Time",
+      "autor": "Stephen Hawking",
+      "isbn": "9780553380163",
+      "editorial": "Bantam",
+      "anio": 1998,
+      "categoria": "Divulgación científica",
+      "idioma": "eng",
+      "sinopsis": "Las preguntas sobre el origen del universo, el tiempo y los agujeros negros se presentan para lectores que desean acercarse a la cosmología. Hawking explica cómo las ideas físicas han cambiado la manera de comprender el espacio y los límites de lo observable. El libro relaciona teorías y problemas abiertos sin exigir una formación matemática extensa. Su recorrido invita a distinguir entre las intuiciones cotidianas y los modelos necesarios para investigar fenómenos que superan nuestra experiencia directa.",
+      "portada": "https://covers.openlibrary.org/b/id/14589690-M.jpg?default=false",
+      "fuente": "https://www.penguinrandomhouseretail.com/book/?isbn=9780553380163",
+      "portada_fuente": "https://openlibrary.org/books/OL51162205M",
+      "fuentes_adicionales": [
+        "https://openlibrary.org/books/OL51162205M"
+      ],
+      "revision_bibliografica": "Edición en inglés.",
+      "portada_verificada": true
+    },
+    {
+      "titulo": "On the Origin of Species",
+      "autor": "Charles Darwin",
+      "isbn": "9780140439120",
+      "editorial": "Penguin Books",
+      "anio": 2008,
+      "categoria": "Divulgación científica",
+      "idioma": "eng",
+      "sinopsis": "La diversidad de los seres vivos se examina a partir de variaciones, relaciones con el ambiente y procesos que actúan a lo largo de muchas generaciones. Darwin organiza observaciones y argumentos para explicar cómo pueden surgir diferencias entre poblaciones. La obra permite seguir una formulación histórica de la evolución por selección natural. Leerla también significa observar cómo una explicación científica reúne ejemplos, responde a objeciones y construye conexiones entre fenómenos que parecían separados.",
+      "portada": "https://covers.openlibrary.org/b/id/12808077-M.jpg?default=false",
+      "fuente": "https://openlibrary.org/books/OL7354999M",
+      "portada_fuente": "https://openlibrary.org/books/OL7354999M",
+      "fuentes_adicionales": [],
+      "revision_bibliografica": "Edición en inglés.",
+      "portada_verificada": true
+    },
+    {
+      "titulo": "Clean Code: A Handbook of Agile Software Craftsmanship",
+      "autor": "Robert C. Martin",
+      "isbn": "9780132350884",
+      "editorial": "Prentice Hall",
+      "anio": 2008,
+      "categoria": "Tecnico",
+      "idioma": "eng",
+      "sinopsis": "La calidad de un programa también depende de que otras personas puedan leerlo, comprenderlo y modificarlo. Martin examina decisiones sobre nombres, funciones, organización y revisión del código mediante ejemplos y criterios de trabajo. El libro propone mirar el mantenimiento como parte del desarrollo y discutir cómo se expresa una intención en un programa. Esta edición permite conocer un enfoque influyente sobre la práctica de la programación y contrastarlo con las necesidades de cada proyecto.",
+      "portada": "https://covers.openlibrary.org/b/id/15126503-M.jpg?default=false",
+      "fuente": "https://openlibrary.org/books/OL26222911M",
+      "portada_fuente": "https://openlibrary.org/books/OL26222911M",
+      "fuentes_adicionales": [],
+      "revision_bibliografica": "Edición en inglés.",
+      "portada_verificada": true
+    },
+    {
+      "titulo": "Think Python: How to Think Like a Computer Scientist",
+      "autor": "Allen B. Downey",
+      "isbn": "9781449330729",
+      "editorial": "O'Reilly Media",
+      "anio": 2012,
+      "categoria": "Tecnico",
+      "idioma": "eng",
+      "sinopsis": "Aprender a programar implica construir una manera de razonar sobre problemas y soluciones. Downey presenta conceptos de Python de forma gradual, desde instrucciones sencillas hasta funciones, estructuras de datos y organización de programas. Los ejercicios invitan a probar ideas y a observar los errores como parte del aprendizaje. La edición de 2012 ofrece un recorrido introductorio que relaciona el uso del lenguaje con hábitos de pensamiento, análisis y comprobación de los resultados obtenidos.",
+      "portada": "https://covers.openlibrary.org/b/id/7363360-M.jpg?default=false",
+      "fuente": "https://openlibrary.org/books/OL25763659M",
+      "portada_fuente": "https://openlibrary.org/books/OL25763659M",
+      "fuentes_adicionales": [],
+      "revision_bibliografica": "Edición de 2012: el contenido refleja las herramientas y convenciones de esa época.",
+      "portada_verificada": true
+    },
+    {
+      "titulo": "Sapiens: A Brief History of Humankind",
+      "autor": "Yuval Noah Harari",
+      "isbn": "9780062316097",
+      "editorial": "Harper",
+      "anio": 2015,
+      "categoria": "Historia",
+      "idioma": "eng",
+      "sinopsis": "La historia de nuestra especie se recorre desde sus formas de vida más antiguas hasta sociedades organizadas mediante instituciones complejas. Harari relaciona cambios biológicos, relatos compartidos, agricultura y transformaciones económicas para proponer una interpretación de gran escala. El libro invita a discutir cómo construimos explicaciones sobre la humanidad y qué consecuencias tienen esas ideas. Su amplitud permite conectar asuntos que a menudo se estudian por separado, manteniendo abierta la posibilidad de contrastar sus argumentos.",
+      "portada": "https://covers.openlibrary.org/b/id/8594920-M.jpg?default=false",
+      "fuente": "https://openlibrary.org/books/OL27000666M",
+      "portada_fuente": "https://openlibrary.org/books/OL27000666M",
+      "fuentes_adicionales": [],
+      "revision_bibliografica": "Edición en inglés.",
+      "portada_verificada": true
+    },
+    {
+      "titulo": "Meditations",
+      "autor": "Marco Aurelio",
+      "isbn": "9780140449334",
+      "editorial": "Penguin Books",
+      "anio": 2006,
+      "categoria": "Filosofía",
+      "idioma": "eng",
+      "sinopsis": "Una serie de reflexiones personales permite acercarse a la práctica cotidiana de la filosofía estoica. El autor examina las reacciones ante la dificultad, la relación con los demás y la diferencia entre lo que depende de nosotros y aquello que no podemos controlar. Los textos conservan el carácter de un ejercicio dirigido a uno mismo. La lectura invita a detenerse en hábitos de juicio y de conducta, más que a buscar un sistema presentado como tratado.",
+      "portada": "https://covers.openlibrary.org/b/id/15256763-M.jpg?default=false",
+      "fuente": "https://openlibrary.org/books/OL62588651M",
+      "portada_fuente": "https://openlibrary.org/books/OL62588651M",
+      "fuentes_adicionales": [],
+      "revision_bibliografica": "Edición en inglés.",
+      "portada_verificada": true
+    },
+    {
+      "titulo": "The Design of Everyday Things",
+      "autor": "Donald A. Norman",
+      "isbn": "9780465050659",
+      "editorial": "Basic Books",
+      "anio": 2013,
+      "categoria": "Tecnico",
+      "idioma": "eng",
+      "sinopsis": "Los objetos cotidianos pueden facilitar una acción o volverla innecesariamente confusa. Norman examina cómo las señales, los controles y la información de respuesta influyen en nuestra comprensión de lo que podemos hacer. Los ejemplos permiten reconocer problemas de diseño que suelen atribuirse por error a quien utiliza un producto. El libro propone prestar atención a las necesidades humanas y a la manera en que un objeto comunica su funcionamiento antes, durante y después de una acción.",
+      "portada": "https://covers.openlibrary.org/b/id/14428212-M.jpg?default=false",
+      "fuente": "https://openlibrary.org/books/OL25726927M",
+      "portada_fuente": "https://openlibrary.org/books/OL25726927M",
+      "fuentes_adicionales": [],
+      "revision_bibliografica": "Edición en inglés.",
+      "portada_verificada": true
+    },
+    {
+      "titulo": "The Republic",
+      "autor": "Platón",
+      "isbn": "9780140455113",
+      "editorial": "Penguin Classics",
+      "anio": 2007,
+      "categoria": "Filosofía",
+      "idioma": "eng",
+      "sinopsis": "El diálogo sobre la justicia lleva a examinar la educación, la organización de la ciudad y la relación entre conocimiento y poder. Las distintas intervenciones proponen argumentos que se ponen a prueba mediante preguntas y ejemplos. Platón convierte la investigación filosófica en una conversación sobre cómo vivir y cómo convivir. La obra permite seguir ideas que han marcado el pensamiento político occidental y discutir tanto sus posibilidades como las tensiones que contienen sus propuestas.",
+      "portada": "https://covers.openlibrary.org/b/id/2324117-M.jpg?default=false",
+      "fuente": "https://openlibrary.org/books/OL10097386M",
+      "portada_fuente": "https://openlibrary.org/books/OL10097386M",
+      "fuentes_adicionales": [],
+      "revision_bibliografica": "Edición en inglés.",
+      "portada_verificada": true
+    }
+  ],
+  "autores": [
+    {
+      "nombre_publico": "Mario Benedetti",
+      "nombre": "Mario",
+      "apellido_paterno": "Benedetti",
+      "apellido_materno": "",
+      "nacionalidad": "Uruguaya",
+      "nacimiento": "1920-09-14",
+      "fallecimiento": "2009-05-17",
+      "biografia": "Mario Benedetti fue un escritor uruguayo que cultivó la poesía, el cuento, la novela y el ensayo. Su obra se acerca a las relaciones afectivas y a la experiencia cotidiana con un lenguaje reconocible y una mirada crítica sobre la sociedad. La tregua permite conocer su atención a los conflictos íntimos y a las vidas comunes. Su trayectoria, vinculada a la Generación del 45, ocupa un lugar destacado en la literatura latinoamericana del siglo veinte.",
+      "fuente_url": "https://openlibrary.org/authors/OL60411A",
+      "fuentes_adicionales": [
+        "https://www.wikidata.org/wiki/Q16285"
+      ]
+    },
+    {
+      "nombre_publico": "Ernesto Sábato",
+      "nombre": "Ernesto",
+      "apellido_paterno": "Sabato",
+      "apellido_materno": "",
+      "nacionalidad": "Argentina",
+      "nacimiento": "1911-06-24",
+      "fallecimiento": "2011-04-30",
+      "biografia": "Ernesto Sábato fue un escritor argentino que también se formó en física y practicó la pintura. Sus novelas examinan la soledad, la incomunicación y las tensiones de la conciencia individual. El túnel es una de sus obras más conocidas y concentra esas preocupaciones en una voz narrativa intensa. Su producción incluye también Sobre héroes y tumbas, Abaddón el exterminador y ensayos donde reflexionó sobre la condición humana, la cultura y la responsabilidad del escritor.",
+      "fuente_url": "https://openlibrary.org/authors/OL2748652A",
+      "fuentes_adicionales": [
+        "https://www.wikidata.org/wiki/Q186630"
+      ]
+    },
+    {
+      "nombre_publico": "Roberto Bolaño",
+      "nombre": "Roberto",
+      "apellido_paterno": "Bolaño",
+      "apellido_materno": "",
+      "nacionalidad": "Chilena",
+      "nacimiento": "1953-04-28",
+      "fallecimiento": "2003-07-15",
+      "biografia": "Roberto Bolaño fue un escritor y poeta chileno cuya narrativa relaciona la vida literaria con los viajes, la memoria y la incertidumbre. Sus personajes suelen buscar personas o textos cuyas huellas permanecen incompletas. Los detectives salvajes muestra esa combinación de voces, recorridos y preguntas sobre la escritura. Su obra incluye también 2666 y numerosos relatos. La relación entre experiencia personal, invención y violencia histórica ocupa un lugar importante en su universo narrativo.",
+      "fuente_url": "https://openlibrary.org/authors/OL56795A",
+      "fuentes_adicionales": [
+        "https://www.wikidata.org/wiki/Q297532"
+      ]
+    },
+    {
+      "nombre_publico": "José Emilio Pacheco",
+      "nombre": "José Emilio",
+      "apellido_paterno": "Pacheco",
+      "apellido_materno": "Berny",
+      "nacionalidad": "Mexicana",
+      "nacimiento": null,
+      "fallecimiento": null,
+      "biografia": "José Emilio Pacheco fue un escritor mexicano que trabajó en poesía, narrativa, ensayo, crítica y traducción. Su escritura combina una gran atención al lenguaje con preguntas sobre el tiempo, la memoria y las transformaciones sociales. Las batallas en el desierto permite reconocer esa mirada en una historia breve sobre la infancia y la ciudad. Recibió el Premio Cervantes en 2009. Su trayectoria une la creación literaria con una extensa labor de lectura y difusión cultural.",
+      "fuente_url": "https://openlibrary.org/authors/OL4185408A",
+      "fuentes_adicionales": [
+        "https://www.cervantes.es/imagenes/File/Nota%20de%20prensa.pdf",
+        "https://icau.mec.gub.uy/innovaportal/v/46292/70/mecweb/fallecio-jose-emilio-pacheco?parentid=44548"
+      ]
+    },
+    {
+      "nombre_publico": "Elena Garro",
+      "nombre": "Elena",
+      "apellido_paterno": "Garro",
+      "apellido_materno": "",
+      "nacionalidad": "Mexicana",
+      "nacimiento": null,
+      "fallecimiento": null,
+      "biografia": "Elena Garro fue una escritora mexicana que desarrolló una obra narrativa y teatral de gran originalidad. Sus textos cuestionan la organización habitual del tiempo y dan importancia a las voces de quienes viven situaciones de desigualdad o violencia. Los recuerdos del porvenir convierte a un pueblo en narrador y relaciona la memoria con la historia colectiva. También escribió cuentos y piezas teatrales, entre ellas Un hogar sólido, que muestran su interés por las posibilidades de la imaginación literaria.",
+      "fuente_url": "https://openlibrary.org/authors/OL53103A",
+      "fuentes_adicionales": []
+    },
+    {
+      "nombre_publico": "Carl Sagan",
+      "nombre": "Carl",
+      "apellido_paterno": "Sagan",
+      "apellido_materno": "",
+      "nacionalidad": "Estadounidense",
+      "nacimiento": "1934-11-09",
+      "fallecimiento": "1996-12-20",
+      "biografia": "Carl Sagan fue un astrónomo y divulgador estadounidense conocido por acercar las preguntas científicas a públicos amplios. Su trabajo relacionó el estudio del universo con la curiosidad por la vida y con una reflexión sobre el lugar de la humanidad. Cosmos es una de sus obras de divulgación más reconocidas. Su escritura combina explicaciones accesibles, historia de la ciencia y atención a las pruebas, invitando a distinguir la imaginación fecunda de las afirmaciones que requieren comprobación.",
+      "fuente_url": "https://openlibrary.org/authors/OL450295A",
+      "fuentes_adicionales": [
+        "https://www.wikidata.org/wiki/Q410"
+      ]
+    },
+    {
+      "nombre_publico": "Richard Dawkins",
+      "nombre": "Clinton Richard",
+      "apellido_paterno": "Dawkins",
+      "apellido_materno": "",
+      "nacionalidad": "Británica",
+      "nacimiento": "1941-03-26",
+      "fallecimiento": null,
+      "biografia": "Richard Dawkins es un biólogo evolutivo y divulgador británico. Su escritura se ocupa de explicar la selección natural y las formas en que los organismos transmiten información biológica. The Selfish Gene propone una perspectiva centrada en los genes que ha tenido amplia influencia en la divulgación y en el debate sobre la evolución. Sus libros recurren a ejemplos y metáforas para discutir ideas científicas, procurando que el lector pueda seguir el razonamiento y examinar sus implicaciones.",
+      "fuente_url": "https://openlibrary.org/authors/OL236174A",
+      "fuentes_adicionales": [
+        "https://www.wikidata.org/wiki/Q44461"
+      ]
+    },
+    {
+      "nombre_publico": "Rachel Carson",
+      "nombre": "Rachel Louise",
+      "apellido_paterno": "Carson",
+      "apellido_materno": "",
+      "nacionalidad": "Estadounidense",
+      "nacimiento": "1907-05-27",
+      "fallecimiento": "1964-04-14",
+      "biografia": "Rachel Carson fue una bióloga y escritora estadounidense cuya divulgación acercó a los lectores a la vida natural y a los problemas ambientales. Silent Spring examinó los efectos de los pesticidas y contribuyó a ampliar el debate público sobre su utilización. Su obra combina información científica con una atención cuidadosa a las relaciones entre organismos y ambientes. También escribió sobre el mar, manteniendo una mirada que relaciona la observación, la claridad expresiva y la responsabilidad frente a la naturaleza.",
+      "fuente_url": "https://openlibrary.org/authors/OL225621A",
+      "fuentes_adicionales": [
+        "https://www.wikidata.org/wiki/Q100948"
+      ]
+    },
+    {
+      "nombre_publico": "Oliver Sacks",
+      "nombre": "Oliver",
+      "apellido_paterno": "Sacks",
+      "apellido_materno": "",
+      "nacionalidad": "Británica",
+      "nacimiento": "1933-07-09",
+      "fallecimiento": "2015-08-30",
+      "biografia": "Oliver Sacks fue un neurólogo y escritor británico que desarrolló buena parte de su trabajo en Estados Unidos. Sus libros acercan la experiencia clínica a la narración, prestando atención a las personas y a sus maneras de vivir con condiciones neurológicas. The Man Who Mistook His Wife for a Hat reúne historias que interrogan la memoria, la percepción y la identidad. Su escritura combina curiosidad científica, observación cuidadosa y respeto por la singularidad de los pacientes.",
+      "fuente_url": "https://openlibrary.org/authors/OL217344A",
+      "fuentes_adicionales": [
+        "https://www.wikidata.org/wiki/Q258662"
+      ]
+    },
+    {
+      "nombre_publico": "Charles Petzold",
+      "nombre": "Charles",
+      "apellido_paterno": "Petzold",
+      "apellido_materno": "",
+      "nacionalidad": "Estadounidense",
+      "nacimiento": "1953-02-02",
+      "fallecimiento": null,
+      "biografia": "Charles Petzold es un escritor de libros sobre programación y funcionamiento de computadoras. En Code utiliza formas conocidas de comunicación para introducir conceptos de lógica, circuitos y representación de información. También es autor de Programming Windows y otras obras técnicas publicadas por Microsoft Press. Su manera de explicar avanza desde ejemplos concretos hacia estructuras más complejas, buscando que el lector comprenda los fundamentos que sostienen las herramientas informáticas y no solo memorice instrucciones de uso.",
+      "fuente_url": "https://openlibrary.org/authors/OL236999A",
+      "fuentes_adicionales": [
+        "https://www.wikidata.org/wiki/Q93023",
+        "https://www.microsoftpressstore.com/authors/bio.aspx?a=e0ed0f06-5274-471e-82e2-a09bd14e1640"
+      ]
+    },
+    {
+      "nombre_publico": "Al Sweigart",
+      "nombre": "Albert",
+      "apellido_paterno": "Sweigart",
+      "apellido_materno": "",
+      "nacionalidad": null,
+      "nacimiento": null,
+      "fallecimiento": null,
+      "biografia": "Al Sweigart es un desarrollador y autor de libros de programación para lectores de distintas edades. Su trabajo busca facilitar el acceso al código mediante proyectos comprensibles y ejemplos que producen resultados concretos. Automate the Boring Stuff with Python relaciona el aprendizaje del lenguaje con tareas repetitivas del trabajo diario. Sus explicaciones invitan a experimentar, dividir problemas en pasos y ganar autonomía, mostrando que la programación también puede ser una herramienta para resolver necesidades personales.",
+      "fuente_url": "https://openlibrary.org/authors/OL7244458A",
+      "fuentes_adicionales": [
+        "https://www.wikidata.org/wiki/Q125994279"
+      ]
+    },
+    {
+      "nombre_publico": "William Shotts",
+      "nombre": "William E.",
+      "apellido_paterno": "Shotts",
+      "apellido_materno": "",
+      "nacionalidad": null,
+      "nacimiento": null,
+      "fallecimiento": null,
+      "biografia": "William Shotts es autor de The Linux Command Line y creador del sitio educativo LinuxCommand.org. Su trabajo está orientado a explicar el uso de la terminal y de las herramientas habituales de los sistemas Linux. Presenta las instrucciones dentro de un recorrido que parte de operaciones básicas y avanza hacia la escritura de guiones. Su enfoque procura reducir la dificultad inicial y ofrecer al lector una comprensión práctica de las posibilidades de la línea de comandos.",
+      "fuente_url": "https://openlibrary.org/authors/OL6984243A",
+      "fuentes_adicionales": [
+        "https://nostarch.com/node/820"
+      ]
+    },
+    {
+      "nombre_publico": "Bill Bryson",
+      "nombre": "William McGuire",
+      "apellido_paterno": "Bryson",
+      "apellido_materno": "",
+      "nacionalidad": "Estadounidense",
+      "nacimiento": "1951-12-08",
+      "fallecimiento": null,
+      "biografia": "Bill Bryson es un escritor estadounidense conocido por obras de viajes, lenguaje y divulgación. Su escritura utiliza el humor y la curiosidad para acercarse a asuntos diversos sin perder el interés por sus detalles. A Short History of Nearly Everything reúne preguntas científicas con historias de investigadores y descubrimientos. Su perspectiva favorece una lectura accesible para personas no especializadas, conectando explicaciones amplias con episodios concretos que muestran cómo se construye y se revisa el conocimiento.",
+      "fuente_url": "https://openlibrary.org/authors/OL21718A",
+      "fuentes_adicionales": [
+        "https://www.wikidata.org/wiki/Q310155"
+      ]
+    },
+    {
+      "nombre_publico": "Irene Vallejo",
+      "nombre": "Irene",
+      "apellido_paterno": "Vallejo",
+      "apellido_materno": "Moreu",
+      "nacionalidad": "Española",
+      "nacimiento": null,
+      "fallecimiento": null,
+      "biografia": "Irene Vallejo es una filóloga y escritora española dedicada a la divulgación del mundo clásico. Su trabajo acerca textos y experiencias de la Antigüedad a preguntas de los lectores actuales. El infinito en un junco recorre la historia de los libros y de las personas que los hicieron posibles. Su escritura combina investigación, narración y reflexión personal, destacando los vínculos entre la conservación de las palabras, la transmisión cultural y las distintas maneras de ejercer la lectura.",
+      "fuente_url": "https://openlibrary.org/authors/OL5980983A",
+      "fuentes_adicionales": [
+        "https://www.wikidata.org/wiki/Q42897117"
+      ]
+    },
+    {
+      "nombre_publico": "Mary Shelley",
+      "nombre": "Mary Wollstonecraft",
+      "apellido_paterno": "Shelley",
+      "apellido_materno": "",
+      "nacionalidad": "Británica",
+      "nacimiento": "1797-08-30",
+      "fallecimiento": "1851-02-01",
+      "biografia": "Mary Shelley fue una escritora británica que cultivó la novela y otros géneros literarios. Frankenstein es su obra más conocida y una referencia importante para la narrativa gótica y la imaginación científica. El libro relaciona la creación de vida con preguntas sobre responsabilidad, soledad y reconocimiento. Su producción incluye también relatos, ensayos y escritos biográficos. La atención a las consecuencias humanas de las ideas y de los actos da profundidad a su exploración de lo extraordinario.",
+      "fuente_url": "https://openlibrary.org/authors/OL25342A",
+      "fuentes_adicionales": [
+        "https://www.wikidata.org/wiki/Q47152"
+      ]
+    },
+    {
+      "nombre_publico": "Charlotte Brontë",
+      "nombre": "Charlotte",
+      "apellido_paterno": "Brontë",
+      "apellido_materno": "",
+      "nacionalidad": "Inglesa",
+      "nacimiento": "1816-04-21",
+      "fallecimiento": "1855-03-31",
+      "biografia": "Charlotte Brontë fue una novelista inglesa que publicó Jane Eyre con el seudónimo Currer Bell. Su narrativa presta atención a la formación personal, a las desigualdades y al deseo de independencia de sus protagonistas. La voz interior y la construcción de ambientes intensos son rasgos destacados de su escritura. Formó parte de una familia de escritoras junto con Emily y Anne Brontë. Su obra permite acercarse a los conflictos entre aspiraciones individuales, afectos y convenciones sociales.",
+      "fuente_url": "https://openlibrary.org/authors/OL113362A",
+      "fuentes_adicionales": [
+        "https://www.wikidata.org/wiki/Q127332"
+      ]
+    },
+    {
+      "nombre_publico": "Emily Brontë",
+      "nombre": "Emily",
+      "apellido_paterno": "Brontë",
+      "apellido_materno": "",
+      "nacionalidad": "Inglesa",
+      "nacimiento": "1818-07-30",
+      "fallecimiento": "1848-12-19",
+      "biografia": "Emily Brontë fue una novelista y poeta inglesa, hermana de Charlotte y Anne Brontë. Wuthering Heights es su única novela y una obra central para conocer su imaginación narrativa. El paisaje, la intensidad afectiva y las relaciones entre generaciones ocupan un lugar destacado en ella. Publicó con el seudónimo Ellis Bell y también escribió poesía. Su manera de combinar voces y tiempos invita a considerar cómo las historias familiares se transforman cuando pasan de un narrador a otro.",
+      "fuente_url": "https://openlibrary.org/authors/OL24529A",
+      "fuentes_adicionales": [
+        "https://www.wikidata.org/wiki/Q80137"
+      ]
+    },
+    {
+      "nombre_publico": "H. G. Wells",
+      "nombre": "Herbert George",
+      "apellido_paterno": "Wells",
+      "apellido_materno": "",
+      "nacionalidad": "Británica",
+      "nacimiento": "1866-09-21",
+      "fallecimiento": "1946-08-13",
+      "biografia": "Herbert George Wells, conocido como H. G. Wells, fue un escritor británico que trabajó en narrativa, historia y reflexión social. Sus obras de imaginación científica exploran posibilidades extraordinarias para examinar cuestiones de su tiempo. The Time Machine convierte un viaje hacia el futuro en una mirada sobre la organización de la sociedad. Su escritura contribuyó al desarrollo de la ciencia ficción y mantiene una relación estrecha entre aventura, curiosidad intelectual y preguntas sobre el cambio histórico.",
+      "fuente_url": "https://openlibrary.org/authors/OL13066A",
+      "fuentes_adicionales": [
+        "https://www.wikidata.org/wiki/Q42511"
+      ]
+    },
+    {
+      "nombre_publico": "Oscar Wilde",
+      "nombre": "Oscar",
+      "apellido_paterno": "Wilde",
+      "apellido_materno": "",
+      "nacionalidad": "Irlandesa",
+      "nacimiento": "1854-10-16",
+      "fallecimiento": "1900-11-30",
+      "biografia": "Oscar Wilde fue un escritor irlandés que cultivó teatro, poesía, cuento y novela. Su ingenio verbal y su interés por las relaciones entre arte y vida atraviesan una obra atenta a las convenciones sociales. The Picture of Dorian Gray, su única novela, explora la belleza, la influencia y la responsabilidad moral. Sus diálogos y paradojas muestran una forma de observar las apariencias que combina el placer del lenguaje con preguntas incómodas sobre el juicio de los demás.",
+      "fuente_url": "https://openlibrary.org/authors/OL20646A",
+      "fuentes_adicionales": [
+        "https://www.wikidata.org/wiki/Q30875"
+      ]
+    },
+    {
+      "nombre_publico": "Stephen Hawking",
+      "nombre": "Stephen",
+      "apellido_paterno": "Hawking",
+      "apellido_materno": "",
+      "nacionalidad": "Británica",
+      "nacimiento": "1942-01-08",
+      "fallecimiento": "2018-03-14",
+      "biografia": "Stephen Hawking fue un físico teórico y divulgador británico dedicado a problemas de cosmología y gravitación. Su investigación y su escritura se relacionan con los agujeros negros, el espacio y el tiempo. A Brief History of Time acercó esas preguntas a lectores sin formación especializada. En sus libros buscó explicar por qué los modelos científicos pueden desafiar la intuición cotidiana, manteniendo el interés por las pruebas y por las cuestiones que continúan abiertas en la investigación.",
+      "fuente_url": "https://openlibrary.org/authors/OL2675573A",
+      "fuentes_adicionales": [
+        "https://www.wikidata.org/wiki/Q17714"
+      ]
+    },
+    {
+      "nombre_publico": "Charles Darwin",
+      "nombre": "Charles",
+      "apellido_paterno": "Darwin",
+      "apellido_materno": "",
+      "nacionalidad": "Británica",
+      "nacimiento": "1809-02-12",
+      "fallecimiento": "1882-04-19",
+      "biografia": "Charles Darwin fue un naturalista británico cuya obra transformó el estudio de los seres vivos. On the Origin of Species presentó una explicación de la evolución mediante selección natural apoyada en observaciones y argumentos. Su trabajo relaciona la variación entre organismos con los ambientes y con el paso de las generaciones. La lectura de sus escritos permite conocer tanto una idea decisiva para la biología como una manera de formular preguntas, comparar evidencias y responder a las dificultades.",
+      "fuente_url": "https://openlibrary.org/authors/OL35839A",
+      "fuentes_adicionales": [
+        "https://www.wikidata.org/wiki/Q1035"
+      ]
+    },
+    {
+      "nombre_publico": "Robert C. Martin",
+      "nombre": "Robert C.",
+      "apellido_paterno": "Martin",
+      "apellido_materno": "",
+      "nacionalidad": "Estadounidense",
+      "nacimiento": "1952-12-05",
+      "fallecimiento": null,
+      "biografia": "Robert C. Martin es un profesional del desarrollo de software y autor de libros sobre programación y diseño. Su trabajo se relaciona con las prácticas ágiles, la organización del código y la responsabilidad de quienes construyen sistemas. Clean Code presenta criterios y ejemplos para discutir la legibilidad y el mantenimiento de los programas. Sus propuestas forman parte de un debate amplio sobre la calidad del software y resultan útiles para examinar decisiones concretas dentro de los equipos de desarrollo.",
+      "fuente_url": "https://openlibrary.org/authors/OL2653686A",
+      "fuentes_adicionales": [
+        "https://www.wikidata.org/wiki/Q93010"
+      ]
+    },
+    {
+      "nombre_publico": "Allen B. Downey",
+      "nombre": "Allen B.",
+      "apellido_paterno": "Downey",
+      "apellido_materno": "",
+      "nacionalidad": null,
+      "nacimiento": "1967-05-11",
+      "fallecimiento": null,
+      "biografia": "Allen B. Downey es un profesor de informática y autor de materiales educativos sobre programación. Su escritura busca desarrollar la capacidad de pensar problemas y construir soluciones mediante ejemplos y ejercicios. Think Python presenta conceptos del lenguaje dentro de un aprendizaje gradual que incluye la experimentación y la revisión de errores. Su trayectoria docente se relaciona con instituciones universitarias y con la elaboración de libros que procuran hacer accesibles ideas de la ciencia de la computación.",
+      "fuente_url": "https://openlibrary.org/authors/OL6815485A",
+      "fuentes_adicionales": []
+    },
+    {
+      "nombre_publico": "Yuval Noah Harari",
+      "nombre": "Yuval Noah",
+      "apellido_paterno": "Harari",
+      "apellido_materno": "",
+      "nacionalidad": "Israelí",
+      "nacimiento": "1976-02-24",
+      "fallecimiento": null,
+      "biografia": "Yuval Noah Harari es un historiador y escritor israelí conocido por obras de interpretación amplia sobre la experiencia humana. En Sapiens relaciona procesos históricos con preguntas sobre las instituciones, las creencias y las formas de cooperación. Su escritura se dirige a lectores no especializados y propone conexiones entre disciplinas. Sus libros invitan a discutir los relatos con los que explicamos nuestro pasado y a examinar cómo esas interpretaciones participan en la comprensión del presente.",
+      "fuente_url": "https://openlibrary.org/authors/OL3778242A",
+      "fuentes_adicionales": [
+        "https://www.wikidata.org/wiki/Q2484404"
+      ]
+    },
+    {
+      "nombre_publico": "Marco Aurelio",
+      "nombre": "Marco",
+      "apellido_paterno": "Aurelio",
+      "apellido_materno": "",
+      "nacionalidad": "Romana",
+      "nacimiento": null,
+      "fallecimiento": null,
+      "biografia": "Marco Aurelio fue un emperador romano y una figura destacada de la tradición estoica. Sus Meditaciones reúnen reflexiones personales sobre la conducta, el juicio y la relación con las circunstancias. La obra permite observar la filosofía como una práctica de examen cotidiano, vinculada a responsabilidades y dificultades concretas. Su escritura se dirige a sí mismo, por lo que conserva un tono de recordatorio y ejercicio. Esa forma íntima ha permitido que lectores de épocas diferentes encuentren preguntas compartidas.",
+      "fuente_url": "https://openlibrary.org/authors/OL133986A",
+      "fuentes_adicionales": [
+        "https://www.wikidata.org/wiki/Q1430"
+      ]
+    },
+    {
+      "nombre_publico": "Donald A. Norman",
+      "nombre": "Donald Arthur",
+      "apellido_paterno": "Norman",
+      "apellido_materno": "",
+      "nacionalidad": "Estadounidense",
+      "nacimiento": "1935-12-25",
+      "fallecimiento": null,
+      "biografia": "Donald Arthur Norman es un investigador y autor vinculado a la ciencia cognitiva y al diseño centrado en las personas. The Design of Everyday Things examina cómo los objetos comunican sus posibilidades y cómo surgen dificultades de uso. Su trabajo relaciona la comprensión del comportamiento humano con decisiones de diseño concretas. A través de ejemplos cotidianos, propone observar las señales, las expectativas y la información de respuesta para construir productos que resulten comprensibles y adecuados a sus usuarios.",
+      "fuente_url": "https://openlibrary.org/authors/OL224976A",
+      "fuentes_adicionales": [
+        "https://www.wikidata.org/wiki/Q92804"
+      ]
+    },
+    {
+      "nombre_publico": "Platón",
+      "nombre": "Platón",
+      "apellido_paterno": "",
+      "apellido_materno": "",
+      "nacionalidad": "Griega",
+      "nacimiento": null,
+      "fallecimiento": null,
+      "biografia": "Platón fue un filósofo griego de la Antigüedad cuya obra conservó gran parte de su pensamiento mediante diálogos. Sus textos presentan preguntas sobre el conocimiento, la justicia y la vida en comunidad a través de conversaciones entre personajes. The Republic es una de sus obras más influyentes y relaciona educación, política y filosofía. Su escritura invita a examinar argumentos en lugar de recibir únicamente conclusiones, mostrando el pensamiento como una actividad que se construye mediante preguntas y respuestas.",
+      "fuente_url": "https://openlibrary.org/authors/OL12823A",
+      "fuentes_adicionales": [
+        "https://www.wikidata.org/wiki/Q859"
+      ]
+    }
+  ],
+  "categorias": {
+    "Divulgación científica": "Obras que explican conceptos, investigaciones y preguntas de la ciencia para lectores no especializados.",
+    "Filosofía": "Textos que examinan preguntas sobre el conocimiento, la conducta, la justicia y las formas de vivir en comunidad."
+  },
+  "editoriales": {}
+}
